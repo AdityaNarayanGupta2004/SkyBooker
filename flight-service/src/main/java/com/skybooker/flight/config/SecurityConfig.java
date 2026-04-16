@@ -29,7 +29,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+//                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(cors -> cors.disable())
                 .csrf(csrf -> csrf.disable())
                 .exceptionHandling(ex -> ex
                         .authenticationEntryPoint((request, response, e) -> {
@@ -52,26 +53,47 @@ public class SecurityConfig {
                         })
                 )
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/v3/api-docs/**",
+                                "/v3/api-docs"
+                        ).permitAll()
+
+                        // ✅ YAHI FIX HAI — search bina login ke bhi chalega
+                        // ZAROORI: ye line /flights/** se PEHLE aani chahiye
+                        .requestMatchers(HttpMethod.GET, "/flights/search").permitAll()
+
+                        // Baaki GET requests (getAllFlights etc.) login ke baad
                         .requestMatchers(HttpMethod.GET, "/flights/**").authenticated()
+
+                        // Flight add karna sirf STAFF/ADMIN
                         .requestMatchers(HttpMethod.POST, "/flights").hasAnyRole("AIRLINE_STAFF", "ADMIN")
+
+                        // Seat reduce — booking service call karta hai (token hoga)
                         .requestMatchers(HttpMethod.PUT, "/flights/*/reduce-seats").authenticated()
+
+                        // Baaki PUT (flight update) — STAFF/ADMIN
                         .requestMatchers(HttpMethod.PUT, "/flights/**").hasAnyRole("AIRLINE_STAFF", "ADMIN")
+
+                        // Delete — sirf ADMIN
                         .requestMatchers(HttpMethod.DELETE, "/flights/**").hasRole("ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:3000"));
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(true);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
-        return source;
-    }
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration config = new CorsConfiguration();
+//        config.setAllowedOrigins(List.of("http://localhost:8080"));
+//        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+//        config.setAllowedHeaders(List.of("*"));
+//        config.setAllowCredentials(true);
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", config);
+//        return source;
+//    }
 }

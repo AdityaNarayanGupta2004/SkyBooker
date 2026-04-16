@@ -1,6 +1,7 @@
 package com.skybooker.auth.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -21,6 +22,7 @@ public class User {
     // Basic Info
     private String fullName;
 
+    @Email
     @Column(unique = true, nullable = false)
     private String email;
 
