@@ -12,9 +12,13 @@ public class FlightResponse {
     private String airline;
     private String source;
     private String destination;
+
     private LocalDate departureDate;
     private String departureTime;
+
+    private LocalDate arrivalDate;
     private String arrivalTime;
+
     private int availableSeats;
     private double price;
 }
