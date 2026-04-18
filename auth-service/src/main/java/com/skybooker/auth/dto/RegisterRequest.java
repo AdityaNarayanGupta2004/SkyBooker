@@ -14,7 +14,11 @@ public class RegisterRequest {
     private String nationality;
     private String passportNumber;
 
-    // PASSENGER, AIRLINE_STAFF, ADMIN
-    // agar nahi diya toh default PASSENGER rahega
     private String role;
+
+    // AIRLINE_STAFF registration key zaroori hai
+    private String staffSecretKey;
+
+    // ADMIN registration ke liye zaroori
+    private String adminSecretKey;
 }

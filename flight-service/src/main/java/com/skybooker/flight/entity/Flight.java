@@ -15,24 +15,24 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String flightNumber;
-
+    @Column(nullable = false)
     private String airline;
-
+    @Column(nullable = false)
     private String source;
-
+    @Column(nullable = false)
     private String destination;
 
     private LocalDate departureDate;
-
     private String departureTime;
 
+    // arrivalDate alag column — overnight flights ke liye
+    private LocalDate arrivalDate;
     private String arrivalTime;
 
     private int totalSeats;
-
     private int availableSeats;
-
     private double price;
 
     private LocalDateTime createdAt;
