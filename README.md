@@ -94,8 +94,8 @@ Three roles exist: `PASSENGER`, `AIRLINE_STAFF`, and `ADMIN`.
 Anyone can register as a Passenger. Staff registration requires a secret key (`SkyStaff#2025`) that the airline administrator shares out-of-band. Admin registration requires a different key (`SkyAdmin#9999`) and is limited to a maximum of 5 admin accounts. Both keys are configured in `auth-service/src/main/resources/application.properties`.
 
 ```properties
-app.admin.secret-key=SkyAdmin#9999
-app.staff.secret-key=SkyStaff#2025
+app.admin.secret-key=xxxxxxx
+app.staff.secret-key=xxxxxxx
 ```
 
 ---
