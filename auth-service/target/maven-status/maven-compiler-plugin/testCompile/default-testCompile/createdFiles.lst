@@ -1,1 +1,2 @@
-com\skybooker\auth\AuthServiceApplicationTests.class
+com\skybooker\auth\AuthServiceImplTest.class
+com\skybooker\auth\JwtUtilTest.class

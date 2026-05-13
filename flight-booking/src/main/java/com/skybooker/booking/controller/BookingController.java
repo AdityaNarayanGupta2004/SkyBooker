@@ -18,8 +18,12 @@ public class BookingController {
             @RequestBody BookingRequest request,
             @RequestHeader("Authorization") String token
     ) {
-        // token ko request object mein set karo taaki service flight-service ko forward kar sake
         request.setToken(token);
         return bookingService.bookFlight(request);
+    }
+
+    @GetMapping("/{bookingId}")
+    public BookingResponse getBookingById(@PathVariable Long bookingId) {
+        return bookingService.getBookingById(bookingId);
     }
 }

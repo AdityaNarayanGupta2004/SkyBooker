@@ -1,1 +1,14 @@
+com\skybooker\auth\repository\UserRepository.class
+com\skybooker\auth\security\JwtUtil.class
+com\skybooker\auth\dto\RegisterRequest.class
+com\skybooker\auth\security\JwtFilter.class
+com\skybooker\auth\exception\GlobalExceptionHandler.class
+com\skybooker\auth\service\AuthServiceImpl.class
+com\skybooker\auth\service\AuthService.class
 com\skybooker\auth\AuthServiceApplication.class
+com\skybooker\auth\controller\AuthController.class
+com\skybooker\auth\dto\AuthResponse.class
+com\skybooker\auth\dto\GoogleAuthRequest.class
+com\skybooker\auth\config\SecurityConfig.class
+com\skybooker\auth\dto\LoginRequest.class
+com\skybooker\auth\entity\User.class

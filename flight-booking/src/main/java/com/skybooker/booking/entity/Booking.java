@@ -21,6 +21,12 @@ public class Booking {
     private double totalPrice;
 
     private String status;
-
     private LocalDateTime bookingTime;
+
+    // Flight details — booking time pe save karo taaki MyBookings mein dikh sake
+    private String source;
+    private String destination;
+    private String departureDate;
+    private String departureTime;
+    private String airline;
 }
