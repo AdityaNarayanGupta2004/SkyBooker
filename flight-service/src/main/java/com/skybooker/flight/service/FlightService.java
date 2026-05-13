@@ -7,12 +7,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface FlightService {
-
     FlightResponse addFlight(FlightRequest request);
-
     List<FlightResponse> getAllFlights();
-
+    FlightResponse getFlightById(Long id);
     List<FlightResponse> searchFlights(String source, String destination, LocalDate date);
-
     String reduceSeats(Long id, int seats);
 }

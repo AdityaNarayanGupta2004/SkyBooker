@@ -11,4 +11,9 @@ public class BookingResponse {
     private Long bookingId;
     private String message;
     private boolean success;
+    private String source;
+    private String destination;
+    private String departureDate;
+    private String departureTime;
+    private String airline;
 }
