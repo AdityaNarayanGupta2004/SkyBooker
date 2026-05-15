@@ -13,9 +13,9 @@
 	</parent>
 
 	<groupId>com.skybooker</groupId>
-	<artifactId>auth-service</artifactId>
+	<artifactId>flight-booking</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>auth-service</name>
+	<name>flight-booking</name>
 	<description>Auth Service</description>
 
 	<properties>

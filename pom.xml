@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.skybooker</groupId>
+    <artifactId>skybooker-aggregator</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>SkyBooker Aggregator</name>
+    <description>Aggregator POM for SkyBooker Microservices</description>
+
+    <properties>
+        <sonar.organization>adityanarayangupta2004</sonar.organization>
+    </properties>
+
+    <modules>
+        <module>airline-service</module>
+        <module>api-gateway</module>
+        <module>auth-service</module>
+        <module>flight-booking</module>
+        <module>flight-service</module>
+        <module>passenger-service</module>
+        <module>payment-service</module>
+        <module>seat-service</module>
+    </modules>
+
+</project>
