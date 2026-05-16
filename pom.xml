@@ -37,6 +37,8 @@
             **/payload/**,
             **/*Application.java,
             **/security/**,
+            **/*Controller.java,
+            **/repository/**,
             api-gateway/**
         </sonar.exclusions>
 

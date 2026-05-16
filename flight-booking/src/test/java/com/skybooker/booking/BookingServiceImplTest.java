@@ -91,4 +91,27 @@ class BookingServiceImplTest {
         when(bookingRepository.findById(50L)).thenReturn(Optional.of(b));
         assertEquals(50L, bookingService.getBookingById(50L).getBookingId());
     }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void bookFlight_FlightFetchFails_ShouldContinueWithEmptyDetails() {
+        BookingRequest req = new BookingRequest();
+        req.setFlightId(1L);
+        req.setSeats(1);
+        req.setToken("Bearer token");
+
+        // Mock Step 1: Fetch flight FAILS (throws exception)
+        when(restTemplate.exchange(contains("/flights/1"), eq(HttpMethod.GET), any(), eq(Map.class)))
+                .thenThrow(new RuntimeException("Service down"));
+
+        // Mock Step 2: Reduce seats succeeds
+        when(restTemplate.exchange(contains("/reduce-seats"), eq(HttpMethod.PUT), any(), eq(String.class)))
+                .thenReturn(new ResponseEntity<>("Success", HttpStatus.OK));
+
+        // Mock Step 3: Save booking
+        when(bookingRepository.save(any())).thenAnswer(i -> i.getArgument(0));
+
+        BookingResponse res = bookingService.bookFlight(req);
+        assertEquals("", res.getSource()); 
+    }
 }
