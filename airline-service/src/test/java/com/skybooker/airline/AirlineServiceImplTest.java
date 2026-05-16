@@ -105,7 +105,7 @@ class AirlineServiceImplTest {
         when(airlineRepository.findById(1L)).thenReturn(Optional.of(a));
         when(airlineRepository.save(any())).thenReturn(a);
         
-        AirlineResponse res = airlineService.toggleAirlineStatus(1L);
+        airlineService.toggleAirlineStatus(1L);
         assertFalse(a.isActive()); // toggled from true to false
     }
 
