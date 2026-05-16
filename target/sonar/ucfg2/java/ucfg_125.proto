@@ -1,20 +1,0 @@
-
-Icom.skybooker.airline.dto.AirportRequest#setTimezone(Ljava/lang/String;)V
-__unknown_file ("1*Ä
-1 (Æ
-Ã
-U
-Kairline-service\src\main\java\com\skybooker\airline\dto\AirportRequest.java (8*
-(com.skybooker.airline.dto.AirportRequest"
-
-timezone"__id**
- (
-
-timezonejava.lang.String"l
-U
-Kairline-service\src\main\java\com\skybooker\airline\dto\AirportRequest.java (
-implicit return:u
-U
-Kairline-service\src\main\java\com\skybooker\airline\dto\AirportRequest.java (
-timezonejava.lang.StringB,*
-(com.skybooker.airline.dto.AirportRequestH

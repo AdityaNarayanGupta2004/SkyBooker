@@ -1,50 +1,0 @@
-
-acom.skybooker.flight.controller.FlightController#reduceSeats(Ljava/lang/Long;I)Ljava/lang/String;\
-Rflight-service\src\main\java\com\skybooker\flight\controller\FlightController.java+ +("1*Ì
-1, ,(ª
-§
-, ,(0
-%0*com.skybooker.flight.service.FlightService"__id*c
-
-__unknown_file (G*E2
-0com.skybooker.flight.controller.FlightController"
-flightServiceÒÏ
-, ,(3
-%1java.lang.String"[com.skybooker.flight.service.FlightService#reduceSeats(Ljava/lang/Long;I)Ljava/lang/String;*N
-
-__unknown_file (2
-0
-%0*com.skybooker.flight.service.FlightService*2
-
-__unknown_file (
-
-idjava.lang.Long**
-
-__unknown_file (
-
-seatsint2reduceSeats(Ljava/lang/Long;I)·
-´
-, ,(3
-%2"Horg.springframework.web.servlet.ModelAndView#<init>(Ljava/lang/String;)V*"
-
-__unknown_file (
-""*4
-
-__unknown_file (
-
-%1java.lang.String[
-Y
-, ,(4
-%3"__return_xss_sink*4
-
-__unknown_file (
-
-%1java.lang.String"$
-, ,(4
-
-%1java.lang.String: 
-+ +(4
-idjava.lang.Long:
-+5 +(L
-seatsintB42
-0com.skybooker.flight.controller.FlightControllerH

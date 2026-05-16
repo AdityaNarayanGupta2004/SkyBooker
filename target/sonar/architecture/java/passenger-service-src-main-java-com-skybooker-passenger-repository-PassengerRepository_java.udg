@@ -1,241 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917102384*java2.B‹
-`
-[passenger-service/src/main/java/com/skybooker/passenger/repository/PassengerRepository.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-passenger-service6
-
-package8
-9
-4passenger-service:com.skybooker.passenger.repository9
-<
-6com.skybooker.passenger.repository.PassengerRepository11
-
-	interface12
-
-access13
-
-public14
-
-
-full-range15
-
-(9:1)-(28:2)16
-
-simple-name17
-
-PassengerRepository18
-;
-5org.springframework.data.jpa.repository.JpaRepository20
-
-unknown21
-
-
-implements22
-
-
-uses23
-2
-,com.skybooker.passenger.entity.PassengerInfo25
-p
-jcom.skybooker.passenger.repository.PassengerRepository#findByBookingId(Ljava/lang/String;)Ljava/util/List;27
-
-method28
-
-(12:5)-(12:59)29
-
-findByBookingId30
-y
-scom.skybooker.passenger.repository.PassengerRepository#findByPassportNumber(Ljava/lang/String;)Ljava/util/Optional;32
-
-(15:5)-(15:73)33
-
-findByPassportNumber34
-w
-qcom.skybooker.passenger.repository.PassengerRepository#findByTicketNumber(Ljava/lang/String;)Ljava/util/Optional;36
-
-(18:5)-(18:69)37
-
-findByTicketNumber38
-o
-icom.skybooker.passenger.repository.PassengerRepository#findBySeatId(Ljava/lang/Long;)Ljava/util/Optional;40
-
-(21:5)-(21:55)41
-
-findBySeatId42
-b
-\com.skybooker.passenger.repository.PassengerRepository#countByBookingId(Ljava/lang/String;)I44
-
-(24:5)-(24:44)45
-
-countByBookingId46
-c
-]com.skybooker.passenger.repository.PassengerRepository#deleteByBookingId(Ljava/lang/String;)V48
-
-(27:5)-(27:46)49
-
-deleteByBookingId50J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68jÔ
-
-24
-242521
-N
-26H
-262728 *
-1 ((210:7B$
-
-
-13
-14
-
-
-15
-29
-
-
-17
-30
-N
-35H
-353628 *
-1 (/210:7B$
-
-
-13
-14
-
-
-15
-37
-
-
-17
-38
-N
-31H
-313228 *
-1 (1210:7B$
-
-
-13
-14
-
-
-15
-33
-
-
-17
-34
-N
-43H
-434428 *
-1	 (210:7B$
-
-
-13
-14
-
-
-15
-45
-
-
-17
-46
-J
-10D
-101112 *
-1	 	(%:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-N
-47H
-474828 *
-1
- (210:7B$
-
-
-13
-14
-
-
-15
-49
-
-
-17
-50
-
-19
-192021
-N
-39H
-394028 *
-1 ()210:7B$
-
-
-13
-14
-
-
-15
-41
-
-
-17
-42r½
-
-101922*
-1	. 	(P
-
-101923*
-1	. 	(;
-
-102423*
-1	< 	(I
-
-262423*
-1
- (
-
-312423*
-1 (
-
-352423*
-1 (
-
-392423*
-1 (

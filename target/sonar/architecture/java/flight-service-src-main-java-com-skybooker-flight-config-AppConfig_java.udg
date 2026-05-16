@@ -1,139 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917094224*java2.Bö
-L
-Gflight-service/src/main/java/com/skybooker/flight/config/AppConfig.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-flight-service6
-
-package8
-/
-*flight-service:com.skybooker.flight.config9
-+
-%com.skybooker.flight.config.AppConfig11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(7:1)-(15:2)16
-
-simple-name17
-
-	AppConfig18
-:
-4org.springframework.context.annotation.Configuration20
-
-unknown21
-
-annotated by22
-
-
-uses23
-g
-acom.skybooker.flight.config.AppConfig#restTemplate()Lorg/springframework/web/client/RestTemplate;25
-
-method26
-
-(11:5)-(14:6)27
-
-restTemplate28
-1
-+org.springframework.web.client.RestTemplate30
-
-returns31
-1
-+org.springframework.context.annotation.Bean33
-
-calls34J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68jØ
-
-19
-192021
-J
-10D
-101112 *
-1 (:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-N
-24H
-242526 *
-1 (%210:7B$
-
-
-13
-14
-
-
-15
-27
-
-
-17
-28
-
-32
-323321
-
-29
-293021r½
-
-101922*
-1 (
-
-101923*
-1 (
-
-242931*
-1 (
-
-243222*
-1 (
-
-
-243223*
-1 (
-
-
-242923*
-1 (
-
-242934*
-1 ( 

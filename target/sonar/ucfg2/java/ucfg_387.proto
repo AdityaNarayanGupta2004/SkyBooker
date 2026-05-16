@@ -1,16 +1,0 @@
-
-Ncom.skybooker.passenger.dto.SeatAssignRequest#getPassengerId()Ljava/lang/Long;
-__unknown_file ("1*Õ
-1 (Í
-Ê
-\
-Rpassenger-service\src\main\java\com\skybooker\passenger\dto\SeatAssignRequest.java (
-%0java.lang.Long"__id*N
- (B*@/
--com.skybooker.passenger.dto.SeatAssignRequest"
-passengerId"v
-\
-Rpassenger-service\src\main\java\com\skybooker\passenger\dto\SeatAssignRequest.java (
-
-%0java.lang.LongB1/
--com.skybooker.passenger.dto.SeatAssignRequestH

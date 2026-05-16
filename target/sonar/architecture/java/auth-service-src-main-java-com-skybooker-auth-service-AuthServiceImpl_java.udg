@@ -1,1292 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917115718*java2.BÍ1
-O
-Jauth-service/src/main/java/com/skybooker/auth/service/AuthServiceImpl.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-auth-service6
-
-package8
-,
-'auth-service:com.skybooker.auth.service9
-0
-*com.skybooker.auth.service.AuthServiceImpl11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(21:1)-(227:2)16
-
-simple-name17
-
-AuthServiceImpl18
-,
-&com.skybooker.auth.service.AuthService20
-
-unknown21
-
-
-implements22
-
-lombok.extern.slf4j.Slf4j24
-
-annotated by25
-
-
-uses26
-,
-&org.springframework.stereotype.Service28
-$
-lombok.RequiredArgsConstructor30
-?
-9com.skybooker.auth.service.AuthServiceImpl.ROLE_PASSENGER32
-
-field33
-
-private34
-
-(26:5)-(26:62)35
-
-ROLE_PASSENGER36
-;
-5com.skybooker.auth.service.AuthServiceImpl.ROLE_ADMIN38
-
-(27:5)-(27:54)39
-
-
-ROLE_ADMIN40
-C
-=com.skybooker.auth.service.AuthServiceImpl.ROLE_AIRLINE_STAFF42
-
-(28:5)-(28:70)43
-
-ROLE_AIRLINE_STAFF44
-@
-:com.skybooker.auth.service.AuthServiceImpl.PROVIDER_GOOGLE46
-
-(29:5)-(29:60)47
-
-PROVIDER_GOOGLE48
-?
-9com.skybooker.auth.service.AuthServiceImpl.PROVIDER_LOCAL50
-
-(30:5)-(30:58)51
-
-PROVIDER_LOCAL52
-A
-;com.skybooker.auth.service.AuthServiceImpl.VAL_NOT_PROVIDED54
-
-(31:5)-(31:67)55
-
-VAL_NOT_PROVIDED56
-B
-<com.skybooker.auth.service.AuthServiceImpl.VAL_NOT_SPECIFIED58
-
-(32:5)-(32:69)59
-
-VAL_NOT_SPECIFIED60
-?
-9com.skybooker.auth.service.AuthServiceImpl.userRepository62
-
-(34:5)-(34:49)63
-
-userRepository64
-2
-,com.skybooker.auth.repository.UserRepository66
-
-is type67
-8
-2com.skybooker.auth.service.AuthServiceImpl.jwtUtil69
-
-(35:5)-(35:35)70
-
-jwtUtil71
-)
-#com.skybooker.auth.security.JwtUtil73
-@
-:com.skybooker.auth.service.AuthServiceImpl.passwordEncoder75
-
-(36:5)-(36:51)76
-
-passwordEncoder77
-B
-<org.springframework.security.crypto.password.PasswordEncoder79
-?
-9com.skybooker.auth.service.AuthServiceImpl.adminSecretKey81
-
-(38:5)-(39:35)82
-
-adminSecretKey83
-8
-2org.springframework.beans.factory.annotation.Value85
-?
-9com.skybooker.auth.service.AuthServiceImpl.staffSecretKey87
-
-(41:5)-(42:35)88
-
-staffSecretKey89
-?
-9com.skybooker.auth.service.AuthServiceImpl.googleClientId91
-
-(44:5)-(45:35)92
-
-googleClientId93
-‰
-‚com.skybooker.auth.service.AuthServiceImpl#register(Lcom/skybooker/auth/dto/RegisterRequest;)Lcom/skybooker/auth/dto/AuthResponse;95
-
-method96
-
-(47:5)-(76:6)97
-
-register98
-*
-#com.skybooker.auth.dto.AuthResponse100
-
-returns101
--
-&com.skybooker.auth.dto.RegisterRequest103
-
-	has param104
-
-
-references105
-V
-Ocom.skybooker.auth.repository.UserRepository#existsByEmail(Ljava/lang/String;)Z107
-
-calls108
-€
-ycom.skybooker.auth.service.AuthServiceImpl#validateAndGetRole(Lcom/skybooker/auth/dto/RegisterRequest;)Ljava/lang/String;110
-%
-com.skybooker.auth.entity.User112
-v
-oorg.springframework.security.crypto.password.PasswordEncoder#encode(Ljava/lang/CharSequence;)Ljava/lang/String;114
-9
-2org.springframework.data.repository.CrudRepository116
-d
-]org.springframework.data.repository.CrudRepository#save(Ljava/lang/Object;)Ljava/lang/Object;118
-r
-kcom.skybooker.auth.dto.AuthResponse#successMessage(Ljava/lang/String;)Lcom/skybooker/auth/dto/AuthResponse;120
-
-(78:5)-(96:6)121
-
-validateAndGetRole122
-n
-gcom.skybooker.auth.service.AuthServiceImpl#validateAdminRole(Lcom/skybooker/auth/dto/RegisterRequest;)V124
-n
-gcom.skybooker.auth.service.AuthServiceImpl#validateStaffRole(Lcom/skybooker/auth/dto/RegisterRequest;)V126
-
-(98:5)-(111:6)127
-
-validateAdminRole128
-T
-Mcom.skybooker.auth.repository.UserRepository#countByRole(Ljava/lang/String;)J130
-
-(113:5)-(122:6)131
-
-validateStaffRole132
-ƒ
-|com.skybooker.auth.service.AuthServiceImpl#login(Lcom/skybooker/auth/dto/LoginRequest;)Lcom/skybooker/auth/dto/AuthResponse;134
-
-(124:5)-(153:6)135
-
-login136
-*
-#com.skybooker.auth.dto.LoginRequest138
-g
-`com.skybooker.auth.repository.UserRepository#findByEmail(Ljava/lang/String;)Ljava/util/Optional;140
-x
-qorg.springframework.security.crypto.password.PasswordEncoder#matches(Ljava/lang/CharSequence;Ljava/lang/String;)Z142
-p
-icom.skybooker.auth.security.JwtUtil#generateToken(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;144
-i
-bcom.skybooker.auth.dto.AuthResponse#token(Ljava/lang/String;)Lcom/skybooker/auth/dto/AuthResponse;146
-
-‡com.skybooker.auth.service.AuthServiceImpl#googleLogin(Lcom/skybooker/auth/dto/GoogleAuthRequest;)Lcom/skybooker/auth/dto/AuthResponse;148
-
-(155:5)-(203:6)149
-
-googleLogin150
-/
-(com.skybooker.auth.dto.GoogleAuthRequest152
-I
-Bcom.google.api.client.googleapis.auth.oauth2.GoogleIdToken$Payload154
-A
-:com.google.api.client.googleapis.auth.oauth2.GoogleIdToken156
-œ
-”com.skybooker.auth.service.AuthServiceImpl#verifyGoogleToken(Ljava/lang/String;)Lcom/google/api/client/googleapis/auth/oauth2/GoogleIdToken$Payload;158
-f
-_com.google.api.client.googleapis.auth.oauth2.GoogleIdToken$Payload#getEmail()Ljava/lang/String;160
--
-&com.google.api.client.util.GenericData162
-W
-Pcom.google.api.client.util.GenericData#get(Ljava/lang/Object;)Ljava/lang/Object;164
-§
-Ÿcom.skybooker.auth.dto.AuthResponse#googleLogin(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/skybooker/auth/dto/AuthResponse;166
-
-(205:5)-(226:6)167
-
-verifyGoogleToken168
-I
-Bcom.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier170
-Q
-Jcom.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier$Builder172
-ž
-–com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier$Builder#build()Lcom/google/api/client/googleapis/auth/oauth2/GoogleIdTokenVerifier;174
-Â
-ºcom.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier$Builder#setAudience(Ljava/util/Collection;)Lcom/google/api/client/googleapis/auth/oauth2/GoogleIdTokenVerifier$Builder;176
-:
-3com.google.api.client.http.javanet.NetHttpTransport178
-2
-+com.google.api.client.json.gson.GsonFactory180
-¡
-™com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier#verify(Ljava/lang/String;)Lcom/google/api/client/googleapis/auth/oauth2/GoogleIdToken;182
-“
-‹com.google.api.client.googleapis.auth.oauth2.GoogleIdToken#getPayload()Lcom/google/api/client/googleapis/auth/oauth2/GoogleIdToken$Payload;184J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68jç
-
-165
-16516621
-
-139
-13914021
-
-179
-17918021
-
-29
-293021
-
-145
-14514621
-S
-133L
-13313496 *
-1} }(210:7B&
-
-
-13
-14
-
-15
-135
-
-17
-136
-
-171
-17117221
-S
-125L
-12512696 *
-1q q(#210:7B&
-
-
-13
-34
-
-15
-131
-
-17
-132
-N
-94H
-949596 *
-10 0(!210:7B$
-
-
-13
-14
-
-
-15
-97
-
-
-17
-98
-N
-61H
-616233 *
-1"" "(0210:7B$
-
-
-13
-34
-
-
-15
-63
-
-
-17
-64
-
-137
-13713821
-S
-109L
-10911096 *
-1N N(&210:7B&
-
-
-13
-34
-
-15
-121
-
-17
-122
-N
-45H
-454633 *
-1! (0210:7B$
-
-
-13
-34
-
-
-15
-47
-
-
-17
-48
-
-159
-15916021
-N
-41H
-414233 *
-1! (3210:7B$
-
-
-13
-34
-
-
-15
-43
-
-
-17
-44
-
-117
-11711821
-
-161
-16116221
-
-65
-656621
-N
-57H
-575833 *
-1 !  (2210:7B$
-
-
-13
-34
-
-
-15
-59
-
-
-17
-60
-
-151
-15115221
-
-155
-15515621
-N
-90H
-909133 *
-1- -("210:7B$
-
-
-13
-34
-
-
-15
-92
-
-
-17
-93
-
-111
-11111221
-
-23
-232421
-
-119
-11912021
-
-163
-16316421
-N
-86H
-868733 *
-1* *("210:7B$
-
-
-13
-34
-
-
-15
-88
-
-
-17
-89
-U
-147N
-14714896 *
-1œ œ($210:7B&
-
-
-13
-14
-
-15
-149
-
-17
-150
-
-129
-12913021
-N
-68H
-686933 *
-1# #("210:7B$
-
-
-13
-34
-
-
-15
-70
-
-
-17
-71
-S
-123L
-12312496 *
-1b b(#210:7B&
-
-
-13
-34
-
-15
-127
-
-17
-128
-N
-53H
-535433 *
-1! (1210:7B$
-
-
-13
-34
-
-
-15
-55
-
-
-17
-56
-
-99
-9910021
-N
-80H
-808133 *
-1' '("210:7B$
-
-
-13
-34
-
-
-15
-82
-
-
-17
-83
-
-115
-11511621
-
-173
-17317421
-
-84
-848521
-
-169
-16917021
-
-27
-272821
-J
-10D
-101112 *
-1 (:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-N
-37H
-373833 *
-1! (+210:7B$
-
-
-13
-34
-
-
-15
-39
-
-
-17
-40
-
-181
-18118221
-
-102
-10210321
-
-177
-17717821
-
-153
-15315421
-
-143
-14314421
-
-175
-17517621
-
-141
-14114221
-N
-31H
-313233 *
-1! (/210:7B$
-
-
-13
-34
-
-
-15
-35
-
-
-17
-36
-
-113
-11311421
-
-78
-787921
-
-183
-18318421
-N
-49H
-495033 *
-1! (/210:7B$
-
-
-13
-34
-
-
-15
-51
-
-
-17
-52
-N
-74H
-747533 *
-1$# $(2210:7B$
-
-
-13
-34
-
-
-15
-76
-
-
-17
-77
-
-106
-10610721
-
-19
-192021
-
-72
-727321
-U
-157N
-15715896 *
-1Í# Í(4210:7B&
-
-
-13
-34
-
-15
-167
-
-17
-168r½-
-
-101922*
-1) (4
-
-102325*
-1 (
-
-102326*
-1 (
-
-102725*
-1 (	
-
-102726*
-1 (	
-
-102925*
-1 (
-
-102926*
-1 (
-
-101926*
-1) (4
-
-616567*
-1" "(!
-
-616526*
-1" "(!
-
-616526*
-1"" "(0
-
-687267*
-1# #(
-
-687226*
-1# #(
-
-687226*
-1# #("
-
-747867*
-1$ $("
-
-747826*
-1$ $("
-
-747826*
-1$# $(2
-
-808425*
-1& &(&
-
-808426*
-1& &(
-
-868425*
-1) )(&
-
-868426*
-1) )(
-
-908425*
-1, ,("
-
-908426*
-1, ,(
-
-9499101*
-10 0(
-
-94102104*
-10" 0(1
-
-949926*
-10 0(
-
-9410267*
-102 0(9
-
-9410226*
-10" 0(1
-
-9465105*
-13 3()
-
-94106108*
-13 3()
-
-9461105*
-13 3(
-
-946526*
-13 3(
-
-9461105*
-13 3(
-
-9410105*
-18 8()
-
-94109108*
-18 8()
-
-9411167*
-1: :(
-
-9411126*
-1:	 :(
-
-94111108*
-1: :(
-
-9478105*
-1= =(0
-
-94113108*
-1=* =(0
-
-9474105*
-1= =()
-
-947826*
-1= =()
-
-9474105*
-1= =()
-
-9453105*
-1>I >(Y
-
-9449105*
-1B B((
-
-9457105*
-1EL E(]
-
-9457105*
-1F[ F(l
-
-9453105*
-1Gd G(t
-
-94111101*
-1I	 I(
-
-94115105*
-1I	 I(
-
-94117108*
-1I I(
-
-9461105*
-1I	 I(
-
-946526*
-1I	 I(
-
-9461105*
-1I	 I(
-
-9499101*
-1K K(+
-
-9499105*
-1K K(+
-
-94119108*
-1K K(+
-
-949926*
-1K K(
-
-109102104*
-1N' N(6
-
-10910267*
-1N7 N(>
-
-10910226*
-1N' N(6
-
-10931105*
-1Oe O(s
-
-10937105*
-1Q Q(
-
-10910105*
-1R R("
-
-109123108*
-1R R("
-
-10937105*
-1S S("
-
-10941105*
-1U U($
-
-10910105*
-1V V("
-
-109125108*
-1V V("
-
-10941105*
-1W W(*
-
-10931105*
-1Y Y( 
-
-10931105*
-1Z Z(&
-
-123102104*
-1b$ b(3
-
-12310267*
-1b4 b(;
-
-12310226*
-1b$ b(3
-
-12380105*
-1g1 g(?
-
-12365105*
-1k k('
-
-123129108*
-1k k('
-
-12361105*
-1k k(
-
-1236526*
-1k k(
-
-12361105*
-1k k(
-
-12337105*
-1k( k(2
-
-125102104*
-1q$ q(3
-
-12510267*
-1q4 q(;
-
-12510226*
-1q$ q(3
-
-12586105*
-1v1 v(?
-
-13399101*
-1} }(
-
-133137104*
-1} }(+
-
-1339926*
-1} }(
-
-13313767*
-1}, }(3
-
-13313726*
-1} }(+
-
-13311167*
-1€ €(
-
-13311126*
-1€	 €(
-
-13365105*
-1€ €(/
-
-133139108*
-1€$ €(/
-
-13361105*
-1€ €(#
-
-1336526*
-1€ €(#
-
-13361105*
-1€ €(#
-
-13345105*
-1‹ ‹(
-
-13345105*
-1‹ ‹(
-
-13378105*
-1‘ ‘(%
-
-133141108*
-1‘ ‘(%
-
-13374105*
-1‘ ‘(
-
-1337826*
-1‘ ‘(
-
-13374105*
-1‘ ‘(
-
-13372105*
-1– –(-
-
-133143108*
-1–  –(-
-
-13368105*
-1– –(
-
-1337226*
-1– –(
-
-13368105*
-1– –(
-
-13399101*
-1˜ ˜("
-
-13399105*
-1˜ ˜("
-
-133145108*
-1˜ ˜("
-
-1339926*
-1˜ ˜(
-
-14799101*
-1œ œ(
-
-147151104*
-1œ% œ(6
-
-1479926*
-1œ œ(
-
-14715167*
-1œ7 œ(>
-
-14715126*
-1œ% œ(6
-
-14715367*
-1Ÿ Ÿ(&
-
-14715526*
-1Ÿ	 Ÿ(
-
-14715326*
-1Ÿ Ÿ(
-
-147153105*
-1Ÿ Ÿ(
-
-147153101*
-1Ÿ) Ÿ(:
-
-14710105*
-1Ÿ) Ÿ(:
-
-147157108*
-1Ÿ) Ÿ(:
-
-147153105*
-1   (+
-
-147159108*
-1 #  (+
-
-147161105*
-1¡$ ¡(/
-
-147163108*
-1¡, ¡(/
-
-14711126*
-1£ £(
-
-14765105*
-1£# £(=
-
-147139108*
-1£2 £(=
-
-14761105*
-1£# £(1
-
-1476526*
-1£# £(1
-
-14761105*
-1£# £(1
-
-14711167*
-1¥ ¥(
-
-14711126*
-1¥	 ¥(
-
-147111108*
-1© ©(
-
-14753105*
-1­ ­(+
-
-14731105*
-1® ®((
-
-14745105*
-1¯ ¯(-
-
-14757105*
-1² ²(-
-
-14757105*
-1³! ³(2
-
-14753105*
-1´$ ´(4
-
-147111101*
-1· ·( 
-
-147115105*
-1· ·( 
-
-147117108*
-1· ·( 
-
-14761105*
-1· ·(
-
-1476526*
-1· ·(
-
-14761105*
-1· ·(
-
-147111101*
-1º º( 
-
-14745105*
-1¿ ¿(!
-
-14745105*
-1¿ ¿(!
-
-14745105*
-1Á" Á(1
-
-147111101*
-1Ä Ä($
-
-147115105*
-1Ä Ä($
-
-147117108*
-1Ä  Ä($
-
-14761105*
-1Ä Ä(
-
-1476526*
-1Ä Ä(
-
-14761105*
-1Ä Ä(
-
-14772105*
-1È È(0
-
-147143108*
-1È# È(0
-
-14768105*
-1È È("
-
-1477226*
-1È È("
-
-14768105*
-1È È("
-
-14799101*
-1Ê Ê((
-
-14799105*
-1Ê Ê((
-
-147165108*
-1Ê Ê((
-
-1479926*
-1Ê Ê(
-
-157153101*
-1Í Í("
-
-15715526*
-1Í Í(
-
-15715326*
-1Í Í("
-
-157153105*
-1Í Í("
-
-15716967*
-1Ð# Ð(+
-
-15716926*
-1Ð Ð("
-
-157169101*
-1Ð. Ó(
-
-157171105*
-1Ð. Ó(
-
-157173108*
-1Ó Ó(
-
-157171101*
-1Ð. Ò(!
-
-157171105*
-1Ð. Ò(!
-
-157175108*
-1Ò Ò(!
-
-15716926*
-1Ð2 Ð(G
-
-157171108*
-1ÐH Ð(O
-
-157177108*
-1Ñ Ñ()
-
-157179108*
-1Ñ1 Ñ(<
-
-15790105*
-1Ò< Ò(J
-
-15715567*
-1Õ Õ("
-
-15715526*
-1Õ Õ(
-
-157155101*
-1Õ% Õ(4
-
-157169105*
-1Õ% Õ(4
-
-157181108*
-1Õ. Õ(4
-
-157153101*
-1Ú Ú(&
-
-157155105*
-1Ú Ú(&
-
-157183108*
-1Ú Ú(&

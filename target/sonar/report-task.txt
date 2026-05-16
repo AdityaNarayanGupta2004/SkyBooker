@@ -1,7 +1,0 @@
-organization=adityanarayangupta2004
-projectKey=AdityaNarayanGupta2004_SkyBooker
-serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.87504
-dashboardUrl=https://sonarcloud.io/dashboard?id=AdityaNarayanGupta2004_SkyBooker
-ceTaskId=AZ4vuZ4qAtZWVZVfjbqX
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZ4vuZ4qAtZWVZVfjbqX

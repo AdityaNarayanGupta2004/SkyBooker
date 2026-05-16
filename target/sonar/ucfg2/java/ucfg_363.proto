@@ -1,22 +1,0 @@
-
-Pcom.skybooker.passenger.dto.PassengerResponse#setSeatNumber(Ljava/lang/String;)V
-__unknown_file ("1*Û
-1 (Ö
-Ó
-\
-Rpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerResponse.java (?/
--com.skybooker.passenger.dto.PassengerResponse"
-
-seatNumber"__id*,
- ( 
-
-
-seatNumberjava.lang.String"s
-\
-Rpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerResponse.java (
-implicit return:~
-\
-Rpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerResponse.java (
-
-seatNumberjava.lang.StringB1/
--com.skybooker.passenger.dto.PassengerResponseH

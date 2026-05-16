@@ -1,19 +1,0 @@
-
-Icom.skybooker.flight.entity.Flight#setArrivalDate(Ljava/time/LocalDate;)V
-__unknown_file ("1*¹
-1 (Â
-¿
-N
-Dflight-service\src\main\java\com\skybooker\flight\entity\Flight.java ("5$
-"com.skybooker.flight.entity.Flight"
-arrivalDate"__id*0
- ($
-"
-arrivalDatejava.time.LocalDate"e
-N
-Dflight-service\src\main\java\com\skybooker\flight\entity\Flight.java ("
-implicit return:t
-N
-Dflight-service\src\main\java\com\skybooker\flight\entity\Flight.java (""
-arrivalDatejava.time.LocalDateB&$
-"com.skybooker.flight.entity.FlightH

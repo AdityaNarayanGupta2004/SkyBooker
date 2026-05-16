@@ -1,699 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917100635*java2.B³1
-W
-Rpassenger-service/src/main/java/com/skybooker/passenger/config/SecurityConfig.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-passenger-service6
-
-package8
-5
-0passenger-service:com.skybooker.passenger.config9
-3
--com.skybooker.passenger.config.SecurityConfig11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(21:1)-(70:2)16
-
-simple-name17
-
-SecurityConfig18
-:
-4org.springframework.context.annotation.Configuration20
-
-unknown21
-
-annotated by22
-
-
-uses23
-^
-Xorg.springframework.security.config.annotation.method.configuration.EnableMethodSecurity25
-$
-lombok.RequiredArgsConstructor27
-=
-7com.skybooker.passenger.config.SecurityConfig.jwtFilter29
-
-field30
-
-private31
-
-(26:5)-(26:39)32
-
-	jwtFilter33
-0
-*com.skybooker.passenger.security.JwtFilter35
-
-is type36
-F
-@com.skybooker.passenger.config.SecurityConfig.PASSENGERS_PATTERN38
-
-(28:5)-(28:71)39
-
-PASSENGERS_PATTERN40
-B
-<com.skybooker.passenger.config.SecurityConfig.ROLE_PASSENGER42
-
-(29:5)-(29:62)43
-
-ROLE_PASSENGER44
-Ê
-Ãcom.skybooker.passenger.config.SecurityConfig#securityFilterChain(Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;)Lorg/springframework/security/web/SecurityFilterChain;46
-
-method47
-
-(31:5)-(68:6)48
-
-securityFilterChain49
-:
-4org.springframework.security.web.SecurityFilterChain51
-
-returns52
-N
-Horg.springframework.security.config.annotation.web.builders.HttpSecurity54
-
-	has param55
-1
-+org.springframework.context.annotation.Bean57
-A
-;org.springframework.security.web.DefaultSecurityFilterChain59
-L
-Forg.springframework.security.config.annotation.AbstractSecurityBuilder61
-
-
-references62
-f
-`org.springframework.security.config.annotation.AbstractSecurityBuilder#build()Ljava/lang/Object;64
-
-calls65
-Ô
-Íorg.springframework.security.config.annotation.web.builders.HttpSecurity#addFilterBefore(Ljakarta/servlet/Filter;Ljava/lang/Class;)Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;67
-á
-Úorg.springframework.security.config.annotation.web.builders.HttpSecurity#authorizeHttpRequests(Lorg/springframework/security/config/Customizer;)Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;69
-Ý
-Öorg.springframework.security.config.annotation.web.builders.HttpSecurity#exceptionHandling(Lorg/springframework/security/config/Customizer;)Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;71
-Ð
-Éorg.springframework.security.config.annotation.web.builders.HttpSecurity#csrf(Lorg/springframework/security/config/Customizer;)Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;73
-Ð
-Éorg.springframework.security.config.annotation.web.builders.HttpSecurity#cors(Lorg/springframework/security/config/Customizer;)Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;75
-S
-Morg.springframework.security.config.annotation.web.configurers.CorsConfigurer77
-[
-Uorg.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer79
-®
-§org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer#disable()Lorg/springframework/security/config/annotation/web/HttpSecurityBuilder;81
-S
-Morg.springframework.security.config.annotation.web.configurers.CsrfConfigurer83
-`
-Zorg.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer85
-
-‰org.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer#accessDeniedHandler(Lorg/springframework/security/web/access/AccessDeniedHandler;)Lorg/springframework/security/config/annotation/web/configurers/ExceptionHandlingConfigurer;87
-“
-Œorg.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer#authenticationEntryPoint(Lorg/springframework/security/web/AuthenticationEntryPoint;)Lorg/springframework/security/config/annotation/web/configurers/ExceptionHandlingConfigurer;89
--
-'jakarta.servlet.http.HttpServletRequest91
-.
-(jakarta.servlet.http.HttpServletResponse93
-?
-9org.springframework.security.core.AuthenticationException95
-<
-6jakarta.servlet.http.HttpServletResponse#setStatus(I)V97
->
-8jakarta.servlet.http.HttpServletResponse.SC_UNAUTHORIZED99
-&
-jakarta.servlet.ServletResponse101
-J
-Cjakarta.servlet.ServletResponse#setContentType(Ljava/lang/String;)V103
-G
-@jakarta.servlet.ServletResponse#getWriter()Ljava/io/PrintWriter;105
-2
-+com.fasterxml.jackson.databind.ObjectMapper107
-k
-dcom.fasterxml.jackson.databind.ObjectMapper#writeValueAsString(Ljava/lang/Object;)Ljava/lang/String;109
-@
-9org.springframework.security.access.AccessDeniedException111
-<
-5jakarta.servlet.http.HttpServletResponse.SC_FORBIDDEN113
-‘
-‰org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry115
-s
-lorg.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl117
-
-‡org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl#authenticated()Lorg/springframework/security/config/annotation/web/configurers/AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry;119
-X
-Qorg.springframework.security.config.annotation.web.AbstractRequestMatcherRegistry121
-w
-porg.springframework.security.config.annotation.web.AbstractRequestMatcherRegistry#anyRequest()Ljava/lang/Object;123
-›
-“org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl#hasRole(Ljava/lang/String;)Lorg/springframework/security/config/annotation/web/configurers/AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry;125
-
-ˆorg.springframework.security.config.annotation.web.AbstractRequestMatcherRegistry#requestMatchers([Ljava/lang/String;)Ljava/lang/Object;127
-‹
-ƒorg.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl#permitAll()Lorg/springframework/security/config/annotation/web/configurers/AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry;129
-[
-Torg.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter131J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68j˜
-
-
-112
-11211321
-
-116
-11611721
-
-72
-727321
-
-102
-10210321
-
-120
-12012121
-
-90
-909121
-J
-10D
-101112 *
-1 (:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-
-74
-747521
-
-26
-262721
-
-96
-969721
-N
-28H
-282930 *
-1 (&210:7B$
-
-
-13
-31
-
-
-15
-32
-
-
-17
-33
-
-58
-585921
-
-84
-848521
-
-53
-535421
-
-78
-787921
-
-82
-828321
-N
-37H
-373830 *
-1! (3210:7B$
-
-
-13
-31
-
-
-15
-39
-
-
-17
-40
-
-24
-242521
-
-122
-12212321
-
-128
-12812921
-
-94
-949521
-
-108
-10810921
-
-118
-11811921
-
-70
-707121
-
-104
-10410521
-
-98
-989921
-
-34
-343521
-
-86
-868721
-
-106
-10610721
-
-63
-636421
-
-110
-11011121
-
-88
-888921
-
-66
-666721
-
-124
-12412521
-
-50
-505121
-
-19
-192021
-
-130
-13013121
-N
-41H
-414230 *
-1! (/210:7B$
-
-
-13
-31
-
-
-15
-43
-
-
-17
-44
-N
-45H
-454647 *
-1    (3210:7B$
-
-
-13
-14
-
-
-15
-48
-
-
-17
-49
-
-114
-11411521
-
-100
-10010121
-
-68
-686921
-
-76
-767721
-
-60
-606121
-
-56
-565721
-
-92
-929321
-
-126
-12612721
-
-80
-808121rË
-
-101922*
-1 (
-
-101923*
-1 (
-
-102422*
-1 (
-
-102423*
-1 (
-
-102622*
-1 (
-
-102623*
-1 (
-
-283436*
-1 (
-
-283423*
-1 (
-
-283423*
-1 (&
-
-455052*
-1   (
-
-455355*
-1 4  (@
-
-455622*
-1 (
-
-
-455623*
-1 (
-
-
-455023*
-1   (
-
-455336*
-1 A  (E
-
-455323*
-1 4  (@
-
-455852*
-1! C(
-
-456062*
-1! C(
-
-456365*
-1C C(
-
-455352*
-1! B(!
-
-455362*
-1! B(!
-
-456665*
-1B B(!
-
-455352*
-1! 8('
-
-455362*
-1! 8('
-
-456865*
-18 8('
-
-455352*
-1! $(#
-
-455362*
-1! $(#
-
-457065*
-1$ $(#
-
-455352*
-1! #(
-
-455362*
-1! #(
-
-457265*
-1# #(
-
-455352*
-1! "(
-
-455362*
-1! "(
-
-457465*
-1" "(
-
-457636*
-1" "(
-
-455352*
-1" "(+
-
-457862*
-1" "(+
-
-458065*
-1"$ "(+
-
-458236*
-1# #(
-
-455352*
-1# #(+
-
-457862*
-1# #(+
-
-458065*
-1#$ #(+
-
-458436*
-1$$ $(&
-
-458452*
-1$* .(-
-
-458462*
-1$* .(-
-
-458665*
-1. .(-
-
-458452*
-1$* %(2
-
-458462*
-1$* %(2
-
-458865*
-1% %(2
-
-459036*
-1%4 %(;
-
-459236*
-1%= %(E
-
-459436*
-1%G %(H
-
-459262*
-1& &(/
-
-459665*
-1&& &(/
-
-459223*
-1&0 &(C
-
-459862*
-1&D &(S
-
-4510062*
-1' '(4
-
-4510265*
-1'& '(4
-
-4510062*
-1, ,(/
-
-4510465*
-1,& ,(/
-
-4510662*
-1,8 ,(]
-
-4510865*
-1,K ,(]
-
-4510665*
-1,< ,(H
-
-459036*
-1./ .(6
-
-459236*
-1.8 .(@
-
-4511036*
-1.B .(C
-
-459262*
-1/ /(/
-
-459665*
-1/& /(/
-
-459223*
-1/0 /(C
-
-4511262*
-1/D /(P
-
-4510062*
-10 0(4
-
-4510265*
-10& 0(4
-
-4510062*
-15 5(/
-
-4510465*
-15& 5(/
-
-4510662*
-158 5(]
-
-4510865*
-15K 5(]
-
-4510665*
-15< 5(H
-
-4511436*
-18( 8(,
-
-4511452*
-180 @(4
-
-4511662*
-180 @(4
-
-4511865*
-1@' @(4
-
-4511652*
-180 @($
-
-4512062*
-180 @($
-
-4512265*
-1@ @($
-
-4511452*
-180 ?(E
-
-4511662*
-180 ?(E
-
-4512465*
-1?> ?(E
-
-4511652*
-180 ?()
-
-4512062*
-180 ?()
-
-4512665*
-1? ?()
-
-4511452*
-180 >($
-
-4511662*
-180 >($
-
-4512865*
-1> >($
-
-4511652*
-180 9()
-
-4512062*
-180 9()
-
-4512665*
-19 9()
-
-453762*
-1?* ?(<
-
-454162*
-1?F ?(T
-
-453423*
-1B" B(+
-
-452862*
-1B" B(+
-
-4513023*
-1B- B(Q

@@ -1,20 +1,0 @@
-
-?com.skybooker.auth.entity.User#setProvider(Ljava/lang/String;)V
-__unknown_file ("1* 
-1 (¯
-¬
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaC D(. 
-com.skybooker.auth.entity.User"
-
-provider"__id**
- (
-
-providerjava.lang.String"_
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaC D(
-implicit return:h
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaC D(
-providerjava.lang.StringB" 
-com.skybooker.auth.entity.UserH

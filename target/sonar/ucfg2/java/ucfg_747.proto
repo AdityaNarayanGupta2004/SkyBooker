@@ -1,16 +1,0 @@
-
-9__sonar_lambda_1$com.skybooker.auth.config.SecurityConfigR
-Hauth-service\src\main\java\com\skybooker\auth\config\SecurityConfig.java (,"1*õ
-1 ("‡„
- (,N
-%1Horg.springframework.security.config.annotation.web.builders.HttpSecurity"§org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer#disable()Lorg/springframework/security/config/annotation/web/HttpSecurityBuilder;*s
-
-__unknown_file (W
-U
-corsMorg.springframework.security.config.annotation.web.configurers.CorsConfigurer2	disable()"\
- (,P
-N
-%1Horg.springframework.security.config.annotation.web.builders.HttpSecurity:a
- (U
-corsMorg.springframework.security.config.annotation.web.configurers.CorsConfigurerB,*
-(com.skybooker.auth.config.SecurityConfig

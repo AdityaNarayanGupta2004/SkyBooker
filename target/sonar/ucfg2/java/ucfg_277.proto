@@ -1,16 +1,0 @@
-
-Mcom.skybooker.passenger.entity.PassengerInfo#getBookingId()Ljava/lang/String;
-__unknown_file ("1*Ô
-1 (Ë
-È
-[
-Qpassenger-service\src\main\java\com\skybooker\passenger\entity\PassengerInfo.java (
-%0java.lang.String"__id*K
- (?*=.
-,com.skybooker.passenger.entity.PassengerInfo"
-	bookingId"w
-[
-Qpassenger-service\src\main\java\com\skybooker\passenger\entity\PassengerInfo.java (
-
-%0java.lang.StringB0.
-,com.skybooker.passenger.entity.PassengerInfoH

@@ -1,16 +1,0 @@
-
-Icom.skybooker.flight.dto.FlightRequest#getArrivalTime()Ljava/lang/String;
-__unknown_file ("1*¾
-1 (¾
-»
-R
-Hflight-service\src\main\java\com\skybooker\flight\dto\FlightRequest.java (
-%0java.lang.String"__id*G
- (;*9(
-&com.skybooker.flight.dto.FlightRequest"
-arrivalTime"n
-R
-Hflight-service\src\main\java\com\skybooker\flight\dto\FlightRequest.java (
-
-%0java.lang.StringB*(
-&com.skybooker.flight.dto.FlightRequestH

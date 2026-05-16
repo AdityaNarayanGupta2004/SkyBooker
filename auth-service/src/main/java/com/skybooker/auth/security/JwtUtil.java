@@ -9,12 +9,18 @@ import java.util.Date;
 
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Value;
+import jakarta.annotation.PostConstruct;
+
 @Slf4j
 @Component
 public class JwtUtil {
 
-    private static final String SECRET = "my-super-secret-key-my-super-secret-key-12345";
-    private final SecretKey key = Keys.hmacShaKeyFor(SECRET.getBytes());
+    private final SecretKey key;
+
+    public JwtUtil(@Value("${jwt.secret:my-new-secure-random-secret-key-for-skybooker-2026-auth}") String secret) {
+        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+    }
 
     // role bhi token mein daalo - baaki services role check karenge isse
     public String generateToken(String email, String role) {

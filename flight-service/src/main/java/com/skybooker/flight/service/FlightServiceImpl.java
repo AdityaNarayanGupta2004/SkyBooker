@@ -6,11 +6,13 @@ import com.skybooker.flight.entity.Flight;
 import com.skybooker.flight.repository.FlightRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 
 import javax.crypto.SecretKey;
 import java.time.LocalDate;
@@ -20,15 +22,22 @@ import java.util.*;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class FlightServiceImpl implements FlightService {
 
     private final FlightRepository flightRepository;
     private final RestTemplate restTemplate;
+    private final SecretKey internalKey;
 
     private static final String SEAT_SERVICE_URL = "http://localhost:8086/seats";
-    private static final String JWT_SECRET = "my-super-secret-key-my-super-secret-key-12345";
     private static final String FLIGHT_NOT_FOUND_ID = "Flight not found with id: ";
+
+    public FlightServiceImpl(FlightRepository flightRepository, 
+                             RestTemplate restTemplate,
+                             @Value("${jwt.secret:my-new-secure-random-secret-key-for-skybooker-2026-flight}") String jwtSecret) {
+        this.flightRepository = flightRepository;
+        this.restTemplate = restTemplate;
+        this.internalKey = Keys.hmacShaKeyFor(jwtSecret.getBytes());
+    }
 
     @Override
     public FlightResponse addFlight(FlightRequest request) {
@@ -81,6 +90,19 @@ public class FlightServiceImpl implements FlightService {
                             "Please select today or a future date. (Today: " + today + ")");
         }
 
+        validateDepartureTime(request, today, now);
+
+        LocalDate arrivalDate = request.getArrivalDate() != null
+                ? request.getArrivalDate()
+                : request.getDepartureDate();
+
+        if (arrivalDate.isBefore(request.getDepartureDate()))
+            throw new IllegalArgumentException("Arrival date cannot be before departure date.");
+
+        validateArrivalTime(request, arrivalDate);
+    }
+
+    private void validateDepartureTime(FlightRequest request, LocalDate today, LocalDateTime now) {
         if (request.getDepartureDate().isEqual(today)) {
             LocalTime depTime;
             try {
@@ -96,14 +118,9 @@ public class FlightServiceImpl implements FlightService {
                                 ". Please select a future departure time or a future date.");
             }
         }
+    }
 
-        LocalDate arrivalDate = request.getArrivalDate() != null
-                ? request.getArrivalDate()
-                : request.getDepartureDate();
-
-        if (arrivalDate.isBefore(request.getDepartureDate()))
-            throw new IllegalArgumentException("Arrival date cannot be before departure date.");
-
+    private void validateArrivalTime(FlightRequest request, LocalDate arrivalDate) {
         if (arrivalDate.equals(request.getDepartureDate())
                 && request.getDepartureTime() != null
                 && request.getArrivalTime() != null
@@ -126,59 +143,77 @@ public class FlightServiceImpl implements FlightService {
         headers.setBearerAuth(token);
 
         int created = 0;
-
         for (int row = 1; row <= totalRows && created < totalSeats; row++) {
-            for (int colIdx = 0; colIdx < columns.length && created < totalSeats; colIdx++) {
-
-                String col    = columns[colIdx];
-                String seatNo = row + col;
-
-                String seatClass;
-                if      (row <= 2) seatClass = "FIRST";
-                else if (row <= 6) seatClass = "BUSINESS";
-                else               seatClass = "ECONOMY";
-
-                double multi;
-                if      (seatClass.equals("FIRST"))    multi = 3.0;
-                else if (seatClass.equals("BUSINESS")) multi = 2.0;
-                else                                   multi = 1.0;
-
-                Map<String, Object> body = new HashMap<>();
-                body.put("flightId",        flightId);
-                body.put("seatNumber",      seatNo);
-                body.put("seatClass",       seatClass);
-                body.put("row",             row);
-                body.put("column",          col);
-                body.put("window",          col.equals("A") || col.equals("F"));
-                body.put("aisle",           col.equals("C") || col.equals("D"));
-                body.put("hasExtraLegroom", row == 1 || row == 7);
-                body.put("priceMultiplier", multi);
-
-                try {
-                    restTemplate.postForObject(
-                            SEAT_SERVICE_URL,
-                            new HttpEntity<>(body, headers),
-                            Object.class
-                    );
-                    created++;
-                } catch (Exception e) {
-                    log.error("Seat auto-generate FAILED — seat: {}, flightId: {}, reason: {}",
-                            seatNo, flightId, e.getMessage());
-                }
-            }
+            created = generateRowSeats(flightId, totalSeats, columns, headers, row, created);
         }
         log.info("Seat auto-generation complete — {}/{} seats created for flightId: {}",
                 created, totalSeats, flightId);
     }
 
+    private int generateRowSeats(Long flightId, int totalSeats, String[] columns, HttpHeaders headers, int row, int created) {
+        for (int colIdx = 0; colIdx < columns.length && created < totalSeats; colIdx++) {
+            String col = columns[colIdx];
+            String seatNo = row + col;
+            String seatClass = determineSeatClass(row);
+            double multi = determinePriceMultiplier(seatClass);
+
+            Map<String, Object> body = buildSeatBody(flightId, row, col, seatNo, seatClass, multi);
+
+            if (postSeat(body, headers, seatNo, flightId)) {
+                created++;
+            }
+        }
+        return created;
+    }
+
+    private String determineSeatClass(int row) {
+        if      (row <= 2) return "FIRST";
+        else if (row <= 6) return "BUSINESS";
+        else               return "ECONOMY";
+    }
+
+    private double determinePriceMultiplier(String seatClass) {
+        if      (seatClass.equals("FIRST"))    return 3.0;
+        else if (seatClass.equals("BUSINESS")) return 2.0;
+        else                                   return 1.0;
+    }
+
+    private Map<String, Object> buildSeatBody(Long flightId, int row, String col, String seatNo, String seatClass, double multi) {
+        Map<String, Object> body = new HashMap<>();
+        body.put("flightId",        flightId);
+        body.put("seatNumber",      seatNo);
+        body.put("seatClass",       seatClass);
+        body.put("row",             row);
+        body.put("column",          col);
+        body.put("window",          col.equals("A") || col.equals("F"));
+        body.put("aisle",           col.equals("C") || col.equals("D"));
+        body.put("hasExtraLegroom", row == 1 || row == 7);
+        body.put("priceMultiplier", multi);
+        return body;
+    }
+
+    private boolean postSeat(Map<String, Object> body, HttpHeaders headers, String seatNo, Long flightId) {
+        try {
+            restTemplate.postForObject(
+                    SEAT_SERVICE_URL,
+                    new HttpEntity<>(body, headers),
+                    Object.class
+            );
+            return true;
+        } catch (Exception e) {
+            log.error("Seat auto-generate FAILED — seat: {}, flightId: {}, reason: {}",
+                    seatNo, flightId, e.getMessage());
+            return false;
+        }
+    }
+
     private String buildInternalJwt() {
-        SecretKey key = Keys.hmacShaKeyFor(JWT_SECRET.getBytes());
         return Jwts.builder()
                 .setSubject("flight-service-internal")
                 .claim("role", "AIRLINE_STAFF")
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 300_000))
-                .signWith(key)
+                .signWith(internalKey)
                 .compact();
     }
 

@@ -1,124 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917115431*java2.BÛ
-M
-Hauth-service/src/main/java/com/skybooker/auth/dto/GoogleAuthRequest.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-auth-service6
-
-package8
-(
-#auth-service:com.skybooker.auth.dto9
-.
-(com.skybooker.auth.dto.GoogleAuthRequest11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(6:1)-(11:2)16
-
-simple-name17
-
-GoogleAuthRequest18
-
-lombok.Data20
-
-unknown21
-
-annotated by22
-
-
-uses23
-9
-3com.skybooker.auth.dto.GoogleAuthRequest.credential25
-
-field26
-
-private27
-
-(9:5)-(10:31)28
-
-
-credential29
--
-'jakarta.validation.constraints.NotBlank31J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68jÄ
-
-30
-303121
-
-19
-192021
-N
-24H
-242526 *
-1
- 
-(210:7B$
-
-
-13
-27
-
-
-15
-28
-
-
-17
-29
-J
-10D
-101112 *
-1 (:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18rl
-
-101922*
-1 (
-
-101923*
-1 (
-
-243022*
-1	 	(?
-
-243023*
-1	 	(

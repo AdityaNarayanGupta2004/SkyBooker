@@ -1,332 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917094440*java2.Bù
-N
-Iflight-service/src/main/java/com/skybooker/flight/dto/FlightResponse.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-flight-service6
-
-package8
-,
-'flight-service:com.skybooker.flight.dto9
--
-'com.skybooker.flight.dto.FlightResponse11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(7:1)-(24:2)16
-
-simple-name17
-
-FlightResponse18
-
-lombok.Data20
-
-unknown21
-
-annotated by22
-
-
-uses23
-0
-*com.skybooker.flight.dto.FlightResponse.id25
-
-field26
-
-private27
-
-(10:5)-(10:21)28
-
-id29
-:
-4com.skybooker.flight.dto.FlightResponse.flightNumber31
-
-(11:5)-(11:33)32
-
-flightNumber33
-5
-/com.skybooker.flight.dto.FlightResponse.airline35
-
-(12:5)-(12:28)36
-
-airline37
-4
-.com.skybooker.flight.dto.FlightResponse.source39
-
-(13:5)-(13:27)40
-
-source41
-9
-3com.skybooker.flight.dto.FlightResponse.destination43
-
-(14:5)-(14:32)44
-
-destination45
-;
-5com.skybooker.flight.dto.FlightResponse.departureDate47
-
-(16:5)-(16:37)48
-
-departureDate49
-;
-5com.skybooker.flight.dto.FlightResponse.departureTime51
-
-(17:5)-(17:34)52
-
-departureTime53
-9
-3com.skybooker.flight.dto.FlightResponse.arrivalDate55
-
-(19:5)-(19:35)56
-
-arrivalDate57
-9
-3com.skybooker.flight.dto.FlightResponse.arrivalTime59
-
-(20:5)-(20:32)60
-
-arrivalTime61
-<
-6com.skybooker.flight.dto.FlightResponse.availableSeats63
-
-(22:5)-(22:32)64
-
-availableSeats65
-3
--com.skybooker.flight.dto.FlightResponse.price67
-
-(23:5)-(23:26)68
-
-price69J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68jÐ
-N
-46H
-464726 *
-1 ($210:7B$
-
-
-13
-27
-
-
-15
-48
-
-
-17
-49
-N
-38H
-383926 *
-1 (210:7B$
-
-
-13
-27
-
-
-15
-40
-
-
-17
-41
-N
-62H
-626326 *
-1 (210:7B$
-
-
-13
-27
-
-
-15
-64
-
-
-17
-65
-N
-34H
-343526 *
-1 (210:7B$
-
-
-13
-27
-
-
-15
-36
-
-
-17
-37
-N
-42H
-424326 *
-1 (210:7B$
-
-
-13
-27
-
-
-15
-44
-
-
-17
-45
-N
-24H
-242526 *
-1
- 
-(210:7B$
-
-
-13
-27
-
-
-15
-28
-
-
-17
-29
-N
-54H
-545526 *
-1 ("210:7B$
-
-
-13
-27
-
-
-15
-56
-
-
-17
-57
-N
-30H
-303126 *
-1 ( 210:7B$
-
-
-13
-27
-
-
-15
-32
-
-
-17
-33
-N
-66H
-666726 *
-1 (210:7B$
-
-
-13
-27
-
-
-15
-68
-
-
-17
-69
-N
-58H
-585926 *
-1 (210:7B$
-
-
-13
-27
-
-
-15
-60
-
-
-17
-61
-
-19
-192021
-N
-50H
-505126 *
-1 (!210:7B$
-
-
-13
-27
-
-
-15
-52
-
-
-17
-53
-J
-10D
-101112 *
-1 (:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18r6
-
-101922*
-1 (
-
-101923*
-1 (

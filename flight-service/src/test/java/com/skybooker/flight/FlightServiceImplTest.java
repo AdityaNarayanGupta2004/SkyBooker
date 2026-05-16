@@ -1,6 +1,5 @@
 package com.skybooker.flight;
 
-import com.skybooker.flight.dto.FlightRequest;
 import com.skybooker.flight.dto.FlightResponse;
 import com.skybooker.flight.entity.Flight;
 import com.skybooker.flight.repository.FlightRepository;
@@ -32,8 +31,12 @@ class FlightServiceImplTest {
     @Mock
     private RestTemplate restTemplate;
 
-    @InjectMocks
     private FlightServiceImpl flightServiceImpl;
+
+    @BeforeEach
+    void setUp() {
+        flightServiceImpl = new FlightServiceImpl(flightRepository, restTemplate, "test-secret-key-must-be-long-enough-1234567890");
+    }
 
     // Ek ready-made Flight entity banana ka helper
     private Flight banaoFlight() {

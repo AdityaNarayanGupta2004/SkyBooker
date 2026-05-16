@@ -1,16 +1,0 @@
-
-<com.skybooker.seat.entity.Seat#getStatus()Ljava/lang/String;
-__unknown_file ("1*
-1 (§
-¤
-H
->seat-service\src\main\java\com\skybooker\seat\entity\Seat.java2 2(
-%0java.lang.String"__id*:
- (.*, 
-com.skybooker.seat.entity.Seat"
-status"d
-H
->seat-service\src\main\java\com\skybooker\seat\entity\Seat.java2 2(
-
-%0java.lang.StringB" 
-com.skybooker.seat.entity.SeatH

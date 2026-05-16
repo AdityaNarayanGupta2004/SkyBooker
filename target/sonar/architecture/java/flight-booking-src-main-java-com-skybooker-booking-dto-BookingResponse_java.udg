@@ -1,289 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917109703*java2.B¦
-
-P
-Kflight-booking/src/main/java/com/skybooker/booking/dto/BookingResponse.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-flight-booking6
-
-package8
--
-(flight-booking:com.skybooker.booking.dto9
-/
-)com.skybooker.booking.dto.BookingResponse11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(7:1)-(19:2)16
-
-simple-name17
-
-BookingResponse18
-
-lombok.Data20
-
-unknown21
-
-annotated by22
-
-
-uses23
-
-lombok.AllArgsConstructor25
-
-lombok.NoArgsConstructor27
-9
-3com.skybooker.booking.dto.BookingResponse.bookingId29
-
-field30
-
-private31
-
-(11:5)-(11:28)32
-
-	bookingId33
-7
-1com.skybooker.booking.dto.BookingResponse.message35
-
-(12:5)-(12:28)36
-
-message37
-7
-1com.skybooker.booking.dto.BookingResponse.success39
-
-(13:5)-(13:29)40
-
-success41
-6
-0com.skybooker.booking.dto.BookingResponse.source43
-
-(14:5)-(14:27)44
-
-source45
-;
-5com.skybooker.booking.dto.BookingResponse.destination47
-
-(15:5)-(15:32)48
-
-destination49
-=
-7com.skybooker.booking.dto.BookingResponse.departureDate51
-
-(16:5)-(16:34)52
-
-departureDate53
-=
-7com.skybooker.booking.dto.BookingResponse.departureTime55
-
-(17:5)-(17:34)56
-
-departureTime57
-7
-1com.skybooker.booking.dto.BookingResponse.airline59
-
-(18:5)-(18:28)60
-
-airline61J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68jˆ
-N
-34H
-343530 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-36
-
-
-17
-37
-N
-38H
-383930 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-40
-
-
-17
-41
-N
-42H
-424330 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-44
-
-
-17
-45
-N
-58H
-585930 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-60
-
-
-17
-61
-N
-46H
-464730 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-48
-
-
-17
-49
-N
-54H
-545530 *
-1 (!210:7B$
-
-
-13
-31
-
-
-15
-56
-
-
-17
-57
-
-19
-192021
-J
-10D
-101112 *
-1
- 
-(:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-
-24
-242521
-N
-28H
-282930 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-32
-
-
-17
-33
-
-26
-262721
-N
-50H
-505130 *
-1 (!210:7B$
-
-
-13
-31
-
-
-15
-52
-
-
-17
-53r¢
-
-101922*
-1 (
-
-101923*
-1 (
-
-102422*
-1 (
-
-102423*
-1 (
-
-102622*
-1	 	(
-
-102623*
-1	 	(

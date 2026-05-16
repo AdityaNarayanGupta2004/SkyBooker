@@ -1,16 +1,0 @@
-
-Ocom.skybooker.seat.dto.SeatResponse#getHoldExpiresAt()Ljava/time/LocalDateTime;
-__unknown_file ("1*Á
-1 (¿
-¼
-M
-Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java ((
-%0java.time.LocalDateTime"__id*F
- (:*8%
-#com.skybooker.seat.dto.SeatResponse"
-holdExpiresAt"p
-M
-Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java ((
-
-%0java.time.LocalDateTimeB'%
-#com.skybooker.seat.dto.SeatResponseH

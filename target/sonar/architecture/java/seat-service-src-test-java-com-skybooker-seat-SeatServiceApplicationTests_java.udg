@@ -1,123 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917113764*java2.BŠ
-S
-Nseat-service/src/test/java/com/skybooker/seat/SeatServiceApplicationTests.java2
-	
-type3
-	
-TEST4
-
-
-module-key5
-
-seat-service6
-
-package8
-$
-seat-service:com.skybooker.seat9
-4
-.com.skybooker.seat.SeatServiceApplicationTests11
-
-class12
-
-access13
-
-	protected14
-
-
-full-range15
-
-(6:1)-(13:2)16
-
-simple-name17
-!
-SeatServiceApplicationTests18
-:
-4org.springframework.boot.test.context.SpringBootTest20
-
-unknown21
-
-annotated by22
-
-
-uses23
-D
->com.skybooker.seat.SeatServiceApplicationTests#contextLoads()V25
-
-method26
-
-(9:5)-(12:6)27
-
-contextLoads28
- 
-org.junit.jupiter.api.Test30J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68jÄ
-
-29
-293021
-
-19
-192021
-N
-24H
-242526 *
-1
-
- 
-(210:7B$
-
-
-13
-14
-
-
-15
-27
-
-
-17
-28
-J
-10D
-101112 *
-1 (":7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18rl
-
-101922*
-1 (
-
-101923*
-1 (
-
-242922*
-1	 	(
-
-
-242923*
-1	 	(

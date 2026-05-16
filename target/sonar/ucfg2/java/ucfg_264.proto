@@ -1,17 +1,0 @@
-
-Lcom.skybooker.passenger.entity.PassengerInfo#getLastName()Ljava/lang/String;
-__unknown_file ("1*Ó
-1 (Ê
-Ç
-[
-Qpassenger-service\src\main\java\com\skybooker\passenger\entity\PassengerInfo.java (
-%0java.lang.String"__id*J
- (>*<.
-,com.skybooker.passenger.entity.PassengerInfo"
-
-lastName"w
-[
-Qpassenger-service\src\main\java\com\skybooker\passenger\entity\PassengerInfo.java (
-
-%0java.lang.StringB0.
-,com.skybooker.passenger.entity.PassengerInfoH

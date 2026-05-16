@@ -1,17 +1,0 @@
-
-2com.skybooker.seat.dto.SeatResponse#getIsWindow()Z
-__unknown_file ("1*œ
-1 (ª
-§
-M
-Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java (
-%0boolean"__id*A
- (5*3%
-#com.skybooker.seat.dto.SeatResponse"
-
-isWindow"`
-M
-Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java (
-
-%0booleanB'%
-#com.skybooker.seat.dto.SeatResponseH

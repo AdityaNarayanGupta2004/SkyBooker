@@ -1,67 +1,0 @@
-
-…com.skybooker.seat.controller.SeatController#confirmSeat(Ljava/lang/Long;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;V
-Lseat-service\src\main\java\com\skybooker\seat\controller\SeatController.java7( 7(3"startingBlock*´
-startingBlock73 9(,³
-°
-9 9(
-%3"
-__annotate*T
-
-__unknown_file (86
-4org.springframework.web.bind.annotation.PathVariable*<
-
-__unknown_file ( 
-
-
-seatNumberjava.lang.String^
-\
-9! 9(+
-
-seatNumberjava.lang.String"__annotation*"
-
-__unknown_file (
-
-%3*
-1*Ô
-1: :( 
-
-:! :(,,
-%0&com.skybooker.seat.service.SeatService"__id*]
-
-__unknown_file (A*?.
-,com.skybooker.seat.controller.SeatController"
-seatServiceª§
-:! :(N)
-%1#com.skybooker.seat.dto.SeatResponse"{com.skybooker.seat.service.SeatService#confirmSeat(Ljava/lang/Long;Ljava/lang/String;)Lcom/skybooker/seat/dto/SeatResponse;*J
-
-__unknown_file (.
-,
-%0&com.skybooker.seat.service.SeatService*8
-
-__unknown_file (
-
-flightIdjava.lang.Long*<
-
-__unknown_file ( 
-
-
-seatNumberjava.lang.String2/confirmSeat(Ljava/lang/Long;Ljava/lang/String;)·
-´
-: :(O-
-%2'org.springframework.http.ResponseEntity"gorg.springframework.http.ResponseEntity#ok(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;*G
-
-__unknown_file (+")
-'org.springframework.http.ResponseEntity*G
-
-__unknown_file (+
-)
-%1#com.skybooker.seat.dto.SeatResponse";
-: :(P/
--
-%2'org.springframework.http.ResponseEntity:&
-8 8((
-flightIdjava.lang.Long:*
-9 9(+
-
-seatNumberjava.lang.StringB0.
-,com.skybooker.seat.controller.SeatControllerH

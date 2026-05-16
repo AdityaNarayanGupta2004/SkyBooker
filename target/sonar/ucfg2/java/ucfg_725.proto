@@ -1,20 +1,0 @@
-
-.com.skybooker.auth.entity.User#setIsActive(Z)V
-__unknown_file ("1*—
-1 (¦
-£
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaH I(. 
-com.skybooker.auth.entity.User"
-
-isActive"__id*!
- (
-
-isActiveboolean"_
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaH I(
-implicit return:_
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaH I(
-isActivebooleanB" 
-com.skybooker.auth.entity.UserH

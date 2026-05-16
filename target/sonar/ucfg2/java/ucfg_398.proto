@@ -1,16 +1,0 @@
-
-Jcom.skybooker.payment.dto.PaymentResponse#getUserEmail()Ljava/lang/String;
-__unknown_file ("1*Ç
-1 (Ã
-À
-V
-Lpayment-service\src\main\java\com\skybooker\payment\dto\PaymentResponse.java (
-%0java.lang.String"__id*H
- (<*:+
-)com.skybooker.payment.dto.PaymentResponse"
-	userEmail"r
-V
-Lpayment-service\src\main\java\com\skybooker\payment\dto\PaymentResponse.java (
-
-%0java.lang.StringB-+
-)com.skybooker.payment.dto.PaymentResponseH

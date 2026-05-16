@@ -1,22 +1,0 @@
-
-Ecom.skybooker.seat.dto.SeatRequest#setSeatNumber(Ljava/lang/String;)V
-__unknown_file ("1*°
-1 (»
-¸
-L
-Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (4$
-"com.skybooker.seat.dto.SeatRequest"
-
-seatNumber"__id*,
- ( 
-
-
-seatNumberjava.lang.String"c
-L
-Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (
-implicit return:n
-L
-Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (
-
-seatNumberjava.lang.StringB&$
-"com.skybooker.seat.dto.SeatRequestH

@@ -8,36 +8,42 @@ import javax.crypto.SecretKey;
 
 import lombok.extern.slf4j.Slf4j;
 
-<span class="fc" id="L11">@Slf4j</span>
-@Component
-<span class="fc" id="L13">public class JwtUtil {</span>
+import org.springframework.beans.factory.annotation.Value;
+import jakarta.annotation.PostConstruct;
 
-    private static final String SECRET = &quot;my-super-secret-key-my-super-secret-key-12345&quot;;
-<span class="fc" id="L16">    private final SecretKey key = Keys.hmacShaKeyFor(SECRET.getBytes());</span>
+<span class="fc" id="L14">@Slf4j</span>
+@Component
+public class JwtUtil {
+
+    private final SecretKey key;
+
+<span class="fc" id="L20">    public JwtUtil(@Value(&quot;${jwt.secret:my-new-secure-random-secret-key-for-skybooker-2026-passenger}&quot;) String secret) {</span>
+<span class="fc" id="L21">        this.key = Keys.hmacShaKeyFor(secret.getBytes());</span>
+<span class="fc" id="L22">    }</span>
 
     public boolean validateToken(String token) {
         try {
-<span class="nc" id="L20">            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);</span>
-<span class="nc" id="L21">            return true;</span>
-<span class="nc" id="L22">        } catch (Exception e) {</span>
-<span class="nc" id="L23">            log.error(&quot;JWT validation failed: {}&quot;, e.getMessage());</span>
-<span class="nc" id="L24">            return false;</span>
+<span class="nc" id="L26">            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);</span>
+<span class="nc" id="L27">            return true;</span>
+<span class="nc" id="L28">        } catch (Exception e) {</span>
+<span class="nc" id="L29">            log.error(&quot;JWT validation failed: {}&quot;, e.getMessage());</span>
+<span class="nc" id="L30">            return false;</span>
         }
     }
 
     public String extractEmail(String token) {
-<span class="nc" id="L29">        return Jwts.parserBuilder()</span>
-<span class="nc" id="L30">                .setSigningKey(key).build()</span>
-<span class="nc" id="L31">                .parseClaimsJws(token)</span>
-<span class="nc" id="L32">                .getBody().getSubject();</span>
+<span class="nc" id="L35">        return Jwts.parserBuilder()</span>
+<span class="nc" id="L36">                .setSigningKey(key).build()</span>
+<span class="nc" id="L37">                .parseClaimsJws(token)</span>
+<span class="nc" id="L38">                .getBody().getSubject();</span>
     }
 
     public String extractRole(String token) {
-<span class="nc" id="L36">        Object role = Jwts.parserBuilder()</span>
-<span class="nc" id="L37">                .setSigningKey(key).build()</span>
-<span class="nc" id="L38">                .parseClaimsJws(token)</span>
-<span class="nc" id="L39">                .getBody().get(&quot;role&quot;);</span>
-<span class="nc bnc" id="L40" title="All 2 branches missed.">        return role != null ? role.toString() : &quot;PASSENGER&quot;;</span>
+<span class="nc" id="L42">        Object role = Jwts.parserBuilder()</span>
+<span class="nc" id="L43">                .setSigningKey(key).build()</span>
+<span class="nc" id="L44">                .parseClaimsJws(token)</span>
+<span class="nc" id="L45">                .getBody().get(&quot;role&quot;);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        return role != null ? role.toString() : &quot;PASSENGER&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

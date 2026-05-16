@@ -1,19 +1,0 @@
-
-;com.skybooker.auth.entity.User#setCity(Ljava/lang/String;)V
-__unknown_file ("1*˜
-1 (§
-¤
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.java8 8(* 
-com.skybooker.auth.entity.User"
-city"__id*&
- (
-
-cityjava.lang.String"_
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.java8 8(
-implicit return:d
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.java8 8(
-cityjava.lang.StringB" 
-com.skybooker.auth.entity.UserH

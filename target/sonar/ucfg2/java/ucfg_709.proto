@@ -1,17 +1,0 @@
-
--com.skybooker.auth.entity.User#getIsActive()Z
-__unknown_file ("1*
-1 ( 
-
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaH I(
-%0boolean"__id*<
- (0*. 
-com.skybooker.auth.entity.User"
-
-isActive"[
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaH I(
-
-%0booleanB" 
-com.skybooker.auth.entity.UserH

@@ -1,16 +1,0 @@
-
-Fcom.skybooker.auth.entity.User#getUpdatedAt()Ljava/time/LocalDateTime;
-__unknown_file ("1*®
-1 (±
-®
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaP P($
-%0java.time.LocalDateTime"__id*=
- (1*/ 
-com.skybooker.auth.entity.User"
-	updatedAt"k
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaP P($
-
-%0java.time.LocalDateTimeB" 
-com.skybooker.auth.entity.UserH

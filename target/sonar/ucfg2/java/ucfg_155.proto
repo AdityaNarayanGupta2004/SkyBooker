@@ -1,17 +1,0 @@
-
-Icom.skybooker.airline.dto.AirportResponse#getIcaoCode()Ljava/lang/String;
-__unknown_file ("1*Æ
-1 (Â
-¿
-V
-Lairline-service\src\main\java\com\skybooker\airline\dto\AirportResponse.java (
-%0java.lang.String"__id*G
- (;*9+
-)com.skybooker.airline.dto.AirportResponse"
-
-icaoCode"r
-V
-Lairline-service\src\main\java\com\skybooker\airline\dto\AirportResponse.java (
-
-%0java.lang.StringB-+
-)com.skybooker.airline.dto.AirportResponseH

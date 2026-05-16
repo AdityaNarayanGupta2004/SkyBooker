@@ -1,334 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917090175*java2.B¹
-Q
-Lairline-service/src/main/java/com/skybooker/airline/dto/AirportResponse.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-airline-service6
-
-package8
-.
-)airline-service:com.skybooker.airline.dto9
-/
-)com.skybooker.airline.dto.AirportResponse11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(7:1)-(22:2)16
-
-simple-name17
-
-AirportResponse18
-
-lombok.Data20
-
-unknown21
-
-annotated by22
-
-
-uses23
-
-lombok.AllArgsConstructor25
-
-lombok.NoArgsConstructor27
-2
-,com.skybooker.airline.dto.AirportResponse.id29
-
-field30
-
-private31
-
-(12:5)-(12:21)32
-
-id33
-4
-.com.skybooker.airline.dto.AirportResponse.name35
-
-(13:5)-(13:25)36
-
-
-name37
-8
-2com.skybooker.airline.dto.AirportResponse.iataCode39
-
-(14:5)-(14:29)40
-
-iataCode41
-8
-2com.skybooker.airline.dto.AirportResponse.icaoCode43
-
-(15:5)-(15:29)44
-
-icaoCode45
-4
-.com.skybooker.airline.dto.AirportResponse.city47
-
-(16:5)-(16:25)48
-
-
-city49
-7
-1com.skybooker.airline.dto.AirportResponse.country51
-
-(17:5)-(17:28)52
-
-country53
-8
-2com.skybooker.airline.dto.AirportResponse.latitude55
-
-(18:5)-(18:29)56
-
-latitude57
-9
-3com.skybooker.airline.dto.AirportResponse.longitude59
-
-(19:5)-(19:30)60
-
-	longitude61
-8
-2com.skybooker.airline.dto.AirportResponse.timezone63
-
-(20:5)-(20:29)64
-
-timezone65
-7
-1com.skybooker.airline.dto.AirportResponse.message67
-
-(21:5)-(21:28)68
-
-message69J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68j¨
-N
-54H
-545530 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-56
-
-
-17
-57
-N
-50H
-505130 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-52
-
-
-17
-53
-N
-38H
-383930 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-40
-
-
-17
-41
-N
-58H
-585930 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-60
-
-
-17
-61
-N
-66H
-666730 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-68
-
-
-17
-69
-N
-42H
-424330 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-44
-
-
-17
-45
-
-19
-192021
-N
-28H
-282930 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-32
-
-
-17
-33
-N
-46H
-464730 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-48
-
-
-17
-49
-N
-62H
-626330 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-64
-
-
-17
-65
-J
-10D
-101112 *
-1
- 
-(:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-
-24
-242521
-N
-34H
-343530 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-36
-
-
-17
-37
-
-26
-262721r¢
-
-101922*
-1 (
-
-101923*
-1 (
-
-102422*
-1 (
-
-102423*
-1 (
-
-102622*
-1	 	(
-
-102623*
-1	 	(

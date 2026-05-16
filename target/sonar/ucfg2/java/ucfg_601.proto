@@ -1,16 +1,0 @@
-
-,com.skybooker.seat.entity.Seat#getIsAisle()Z
-__unknown_file ("1*Œ
-1 (Ÿ
-œ
-H
->seat-service\src\main\java\com\skybooker\seat\entity\Seat.java, ,(
-%0boolean"__id*;
- (/*- 
-com.skybooker.seat.entity.Seat"	
-isAisle"[
-H
->seat-service\src\main\java\com\skybooker\seat\entity\Seat.java, ,(
-
-%0booleanB" 
-com.skybooker.seat.entity.SeatH

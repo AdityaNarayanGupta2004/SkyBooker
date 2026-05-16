@@ -1,19 +1,0 @@
-
-Dcom.skybooker.payment.entity.Payment#setBookingId(Ljava/lang/Long;)V
-__unknown_file ("1*¸
-1 (¾
-»
-Q
-Gpayment-service\src\main\java\com\skybooker\payment\entity\Payment.java (5&
-$com.skybooker.payment.entity.Payment"
-	bookingId"__id*)
- (
-
-	bookingIdjava.lang.Long"h
-Q
-Gpayment-service\src\main\java\com\skybooker\payment\entity\Payment.java (
-implicit return:p
-Q
-Gpayment-service\src\main\java\com\skybooker\payment\entity\Payment.java (
-	bookingIdjava.lang.LongB(&
-$com.skybooker.payment.entity.PaymentH

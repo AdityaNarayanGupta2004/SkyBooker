@@ -1,37 +1,0 @@
-
-ucom.skybooker.airline.controller.AirlineController#getById(Ljava/lang/Long;)Lorg/springframework/http/ResponseEntity;_
-Uairline-service\src\main\java\com\skybooker\airline\controller\AirlineController.java+ (2"1*Ÿ
-1 (¯
-¬
-! (/2
-%0,com.skybooker.airline.service.AirlineService"__id*f
-
-__unknown_file (J*H4
-2com.skybooker.airline.controller.AirlineController"
-airlineServiceàÝ
-! (B/
-%1)com.skybooker.airline.dto.AirlineResponse"xcom.skybooker.airline.service.AirlineService#getAirlineById(Ljava/lang/Long;)Lcom/skybooker/airline/dto/AirlineResponse;*P
-
-__unknown_file (4
-2
-%0,com.skybooker.airline.service.AirlineService*2
-
-__unknown_file (
-
-idjava.lang.Long2 getAirlineById(Ljava/lang/Long;)½
-º
- (C-
-%2'org.springframework.http.ResponseEntity"gorg.springframework.http.ResponseEntity#ok(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;*G
-
-__unknown_file (+")
-'org.springframework.http.ResponseEntity*M
-
-__unknown_file (1
-/
-%1)com.skybooker.airline.dto.AirlineResponse";
- (D/
--
-%2'org.springframework.http.ResponseEntity: 
-3 (H
-idjava.lang.LongB64
-2com.skybooker.airline.controller.AirlineControllerH

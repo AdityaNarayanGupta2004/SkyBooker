@@ -49,7 +49,7 @@ public class RegisterRequest {
 
     // Passport: optional on register, validated if provided
     @Pattern(
-            regexp = "^([A-Z]{1}[0-9]{7}|[A-Z]{2}[0-9]{7}|NOT_PROVIDED)$",
+            regexp = "^([A-Z]\\d{7}|[A-Z]{2}\\d{7}|NOT_PROVIDED)$",
             message = "Passport number must be like A1234567 or AB1234567"
     )
     private String passportNumber;

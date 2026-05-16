@@ -1,164 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917116873*java2.BÄ
-H
-Cauth-service/src/main/java/com/skybooker/auth/dto/LoginRequest.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-auth-service6
-
-package8
-(
-#auth-service:com.skybooker.auth.dto9
-)
-#com.skybooker.auth.dto.LoginRequest11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(7:1)-(16:2)16
-
-simple-name17
-
-LoginRequest18
-
-lombok.Data20
-
-unknown21
-
-annotated by22
-
-
-uses23
-/
-)com.skybooker.auth.dto.LoginRequest.email25
-
-field26
-
-private27
-
-(10:5)-(12:26)28
-
-email29
--
-'jakarta.validation.constraints.NotBlank31
-*
-$jakarta.validation.constraints.Email33
-2
-,com.skybooker.auth.dto.LoginRequest.password35
-
-(14:5)-(15:29)36
-
-password37J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68j¨
-J
-10D
-101112 *
-1 (:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-
-30
-303121
-
-32
-323321
-
-19
-192021
-N
-34H
-343526 *
-1 (210:7B$
-
-
-13
-27
-
-
-15
-36
-
-
-17
-37
-N
-24H
-242526 *
-1 (210:7B$
-
-
-13
-27
-
-
-15
-28
-
-
-17
-29rØ
-
-101922*
-1 (
-
-101923*
-1 (
-
-243022*
-1
- 
-(-
-
-243023*
-1
- 
-(
-
-243222*
-1 (;
-
-243223*
-1 (
-
-343022*
-1 (0
-
-343023*
-1 (

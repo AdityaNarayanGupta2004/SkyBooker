@@ -1,276 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917088277*java2.B°
-[
-Vairline-service/src/main/java/com/skybooker/airline/config/GlobalExceptionHandler.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-airline-service6
-
-package8
-1
-,airline-service:com.skybooker.airline.config9
-9
-3com.skybooker.airline.config.GlobalExceptionHandler11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(13:1)-(37:2)16
-
-simple-name17
-
-GlobalExceptionHandler18
-B
-<org.springframework.web.bind.annotation.RestControllerAdvice20
-
-unknown21
-
-annotated by22
-
-
-uses23
-˜
-‘com.skybooker.airline.config.GlobalExceptionHandler#handleRuntimeException(Ljava/lang/RuntimeException;)Lorg/springframework/http/ResponseEntity;25
-
-method26
-
-(17:5)-(25:6)27
-
-handleRuntimeException28
--
-'org.springframework.http.ResponseEntity30
-
-returns31
->
-8org.springframework.web.bind.annotation.ExceptionHandler33
-9
-3org.springframework.http.ResponseEntity$BodyBuilder35
-
-
-references36
-{
-uorg.springframework.http.ResponseEntity$BodyBuilder#body(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;38
-
-calls39
-•
-Žorg.springframework.http.ResponseEntity#status(Lorg/springframework/http/HttpStatusCode;)Lorg/springframework/http/ResponseEntity$BodyBuilder;41
-)
-#org.springframework.http.HttpStatus43
-5
-/org.springframework.http.HttpStatus.BAD_REQUEST45
-³
-¬com.skybooker.airline.config.GlobalExceptionHandler#handleAccessDenied(Lorg/springframework/security/access/AccessDeniedException;)Lorg/springframework/http/ResponseEntity;47
-
-(28:5)-(36:6)48
-
-handleAccessDenied49
-?
-9org.springframework.security.access.AccessDeniedException51
-
-	has param52
-
-is type53
-3
--org.springframework.http.HttpStatus.FORBIDDEN55J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68j´
-
-44
-444521
-
-34
-343521
-
-50
-505121
-N
-46H
-464726 *
-10 (B210:7B$
-
-
-13
-14
-
-
-15
-48
-
-
-17
-49
-
-42
-424321
-
-19
-192021
-
-37
-373821
-
-32
-323321
-
-29
-293021
-J
-10D
-101112 *
-1 ($:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-N
-24H
-242526 *
-10 (F210:7B$
-
-
-13
-14
-
-
-15
-27
-
-
-17
-28
-
-54
-545521
-
-40
-404121rà
-
-101922*
-1 (
-
-101923*
-1 (
-
-242931*
-1 (/
-
-243222*
-1 (.
-
-243223*
-1 (
-
-242923*
-1 (
-
-242931*
-1 (B
-
-243436*
-1 (B
-
-243739*
-1> (B
-
-243431*
-1 (%
-
-242936*
-1 (%
-
-244039*
-1 (%
-
-244223*
-1& (0
-
-244223*
-11 (<
-
-244436*
-11 (<
-
-462931*
-1 (/
-
-465052*
-1C (X
-
-463222*
-1 (3
-
-463223*
-1 (
-
-465023*
-1 (,
-
-462923*
-1 (
-
-465053*
-1Y ([
-
-465023*
-1C (X
-
-462931*
-1# #(@
-
-463436*
-1# #(@
-
-463739*
-1#< #(@
-
-463431*
-1# #(%
-
-462936*
-1# #(%
-
-464039*
-1# #(%
-
-464223*
-1#& #(0
-
-464223*
-1#1 #(:
-
-465436*
-1#1 #(:

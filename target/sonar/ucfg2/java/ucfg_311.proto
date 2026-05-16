@@ -1,82 +1,0 @@
-
-ƒcom.skybooker.passenger.controller.PassengerController#deleteByBooking(Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;e
-[passenger-service\src\main\java\com\skybooker\passenger\controller\PassengerController.javaP" P(1"startingBlock*²
-startingBlockP1 P(Q²
-¯
-P2 P(?
-%6"
-__annotate*T
-
-__unknown_file (86
-4org.springframework.web.bind.annotation.PathVariable*;
-
-__unknown_file (
-
-	bookingIdjava.lang.String]
-[
-PG P(P
-	bookingIdjava.lang.String"__annotation*"
-
-__unknown_file (
-
-%6*
-1*Ì	
-1Q Q(¹
-¶
-Q Q(6
-%00com.skybooker.passenger.service.PassengerService"__id*l
-
-__unknown_file (P*N8
-6com.skybooker.passenger.controller.PassengerController"
-passengerService¬©
-Q Q(5
-
-%1void"Wcom.skybooker.passenger.service.PassengerService#deleteByBookingId(Ljava/lang/String;)V*T
-
-__unknown_file (8
-6
-%00com.skybooker.passenger.service.PassengerService*;
-
-__unknown_file (
-
-	bookingIdjava.lang.String2%deleteByBookingId(Ljava/lang/String;)‰
-†
-R! R(J
-%2java.lang.String"__concat*+
-R! R(>
-All passengers for booking *+
-RA R(J
-
-	bookingIdjava.lang.Stringn
-l
-R! R(W
-%3java.lang.String"__concat*$
-R! R(J
-
-%2java.lang.String*
-RM R(W
-
- deleted¤
-¡
-R R(X-
-%4'org.springframework.http.ResponseEntity"gorg.springframework.http.ResponseEntity#ok(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;*G
-
-__unknown_file (+")
-'org.springframework.http.ResponseEntity*4
-
-__unknown_file (
-
-%3java.lang.Stringr
-p
-R R(Y
-%5"__return_xss_sink*K
-
-__unknown_file (/
--
-%4'org.springframework.http.ResponseEntity";
-R R(Y/
--
-%4'org.springframework.http.ResponseEntity:)
-P2 P(P
-	bookingIdjava.lang.StringB:8
-6com.skybooker.passenger.controller.PassengerControllerH

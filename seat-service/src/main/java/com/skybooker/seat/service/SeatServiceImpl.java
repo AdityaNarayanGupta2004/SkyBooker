@@ -19,6 +19,9 @@ public class SeatServiceImpl implements SeatService {
 
     private static final String SUCCESS = "Success";
     private static final String SEAT_NOT_FOUND = "Seat not found: ";
+    private static final String STATUS_AVAILABLE = "AVAILABLE";
+    private static final String STATUS_HELD = "HELD";
+    private static final String STATUS_CONFIRMED = "CONFIRMED";
     private final SeatRepository seatRepository;
 
     @Override
@@ -46,7 +49,7 @@ public class SeatServiceImpl implements SeatService {
         seat.setAisle(request.isAisle());
         seat.setHasExtraLegroom(request.isHasExtraLegroom());
         seat.setPriceMultiplier(request.getPriceMultiplier());
-        seat.setStatus("AVAILABLE");
+        seat.setStatus(STATUS_AVAILABLE);
 
         Seat saved = seatRepository.save(seat);
         log.debug("Seat added — ID: {}, seat: {}", saved.getId(), saved.getSeatNumber());
@@ -84,13 +87,13 @@ public class SeatServiceImpl implements SeatService {
                     return new IllegalArgumentException(SEAT_NOT_FOUND + seatNumber);
                 });
 
-        if (!seat.getStatus().equals("AVAILABLE")) {
+        if (!seat.getStatus().equals(STATUS_AVAILABLE)) {
             log.warn("Hold failed — seat not available: {} status: {}", seatNumber, seat.getStatus());
             throw new IllegalStateException("Seat " + seatNumber
                     + " is not available. Current status: " + seat.getStatus());
         }
 
-        seat.setStatus("HELD");
+        seat.setStatus(STATUS_HELD);
         seat.setHoldExpiresAt(LocalDateTime.now().plusMinutes(15));
         Seat updated = seatRepository.save(seat);
         log.info("Seat held — flightId: {}, seat: {}, expires: {}", flightId, seatNumber, seat.getHoldExpiresAt());
@@ -107,12 +110,12 @@ public class SeatServiceImpl implements SeatService {
                     return new IllegalArgumentException(SEAT_NOT_FOUND + seatNumber);
                 });
 
-        if (seat.getStatus().equals("CONFIRMED")) {
+        if (seat.getStatus().equals(STATUS_CONFIRMED)) {
             log.info("Seat already confirmed — flightId: {}, seat: {}", flightId, seatNumber);
             return mapToResponse(seat, "Seat already confirmed");
         }
 
-        if (!seat.getStatus().equals("HELD")) {
+        if (!seat.getStatus().equals(STATUS_HELD)) {
             log.warn("Confirm failed — seat not held: {} status: {}", seatNumber, seat.getStatus());
             throw new IllegalStateException("Seat " + seatNumber + " is not held. Cannot confirm.");
         }
@@ -120,13 +123,13 @@ public class SeatServiceImpl implements SeatService {
         if (seat.getHoldExpiresAt() != null
                 && seat.getHoldExpiresAt().isBefore(LocalDateTime.now())) {
             log.warn("Confirm failed — hold expired for seat: {} flightId: {}", seatNumber, flightId);
-            seat.setStatus("AVAILABLE");
+            seat.setStatus(STATUS_AVAILABLE);
             seat.setHoldExpiresAt(null);
             seatRepository.save(seat);
             throw new IllegalStateException("Seat hold expired. Please select the seat again.");
         }
 
-        seat.setStatus("CONFIRMED");
+        seat.setStatus(STATUS_CONFIRMED);
         seat.setHoldExpiresAt(null);
         Seat updated = seatRepository.save(seat);
         log.info("Seat confirmed — flightId: {}, seat: {}", flightId, seatNumber);
@@ -138,14 +141,14 @@ public class SeatServiceImpl implements SeatService {
         log.info("Release request — flightId: {}, seat: {}", flightId, seatNumber);
 
         Seat seat = seatRepository.findByFlightIdAndSeatNumber(flightId, seatNumber)
-                .orElseThrow(() -> new IllegalArgumentException("Seat not found: " + seatNumber));
+                .orElseThrow(() -> new IllegalArgumentException(SEAT_NOT_FOUND + seatNumber));
 
-        if (seat.getStatus().equals("CONFIRMED")) {
+        if (seat.getStatus().equals(STATUS_CONFIRMED)) {
             log.warn("Release rejected — seat is CONFIRMED: {} flightId: {}", seatNumber, flightId);
             throw new IllegalStateException("Confirmed seat cannot be released directly. Please cancel the booking.");
         }
 
-        seat.setStatus("AVAILABLE");
+        seat.setStatus(STATUS_AVAILABLE);
         seat.setHoldExpiresAt(null);
         Seat updated = seatRepository.save(seat);
         log.info("Seat released — flightId: {}, seat: {}", flightId, seatNumber);
@@ -154,7 +157,7 @@ public class SeatServiceImpl implements SeatService {
 
     @Override
     public int getAvailableCount(Long flightId) {
-        int count = seatRepository.countByFlightIdAndStatus(flightId, "AVAILABLE");
+        int count = seatRepository.countByFlightIdAndStatus(flightId, STATUS_AVAILABLE);
         log.debug("Available seat count — flightId: {}, count: {}", flightId, count);
         return count;
     }
@@ -163,14 +166,14 @@ public class SeatServiceImpl implements SeatService {
     @Override
     public void releaseExpiredHolds() {
         List<Seat> expired = seatRepository
-                .findByStatusAndHoldExpiresAtBefore("HELD", LocalDateTime.now());
+                .findByStatusAndHoldExpiresAtBefore(STATUS_HELD, LocalDateTime.now());
 
         if (!expired.isEmpty()) {
             log.info("Releasing {} expired seat hold(s)", expired.size());
         }
 
         for (Seat seat : expired) {
-            seat.setStatus("AVAILABLE");
+            seat.setStatus(STATUS_AVAILABLE);
             seat.setHoldExpiresAt(null);
             seatRepository.save(seat);
             log.info("Expired hold released — seat: {}, flightId: {}",

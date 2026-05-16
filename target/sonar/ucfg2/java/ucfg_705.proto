@@ -1,16 +1,0 @@
-
-Acom.skybooker.auth.entity.User#getNationality()Ljava/lang/String;
-__unknown_file ("1*¢
-1 (¬
-©
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.java+ ,(
-%0java.lang.String"__id*?
- (3*1 
-com.skybooker.auth.entity.User"
-nationality"d
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.java+ ,(
-
-%0java.lang.StringB" 
-com.skybooker.auth.entity.UserH

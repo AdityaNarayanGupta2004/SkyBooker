@@ -11,12 +11,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Configuration
@@ -28,6 +23,7 @@ public class SecurityConfig {
 
     private static final String ROLE_ADMIN = "ADMIN";
     private static final String ROLE_AIRLINE_STAFF = "AIRLINE_STAFF";
+    private static final String SEATS_PATTERN = "/seats/**";
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -61,9 +57,9 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/v3/api-docs"
                         ).permitAll()
-                        .requestMatchers(HttpMethod.GET, "/seats/**").authenticated()
-                        .requestMatchers(HttpMethod.POST, "/seats/**").hasAnyRole(ROLE_AIRLINE_STAFF, ROLE_ADMIN)
-                        .requestMatchers(HttpMethod.PUT, "/seats/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, SEATS_PATTERN).authenticated()
+                        .requestMatchers(HttpMethod.POST, SEATS_PATTERN).hasAnyRole(ROLE_AIRLINE_STAFF, ROLE_ADMIN)
+                        .requestMatchers(HttpMethod.PUT, SEATS_PATTERN).authenticated()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)

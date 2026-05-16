@@ -1,19 +1,0 @@
-
-Ecom.skybooker.auth.entity.User#setPassportNumber(Ljava/lang/String;)V
-__unknown_file ("1*¬
-1 (»
-¸
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.java/ 0("4 
-com.skybooker.auth.entity.User"
-passportNumber"__id*0
- ($
-"
-passportNumberjava.lang.String"_
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.java/ 0("
-implicit return:n
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.java/ 0(""
-passportNumberjava.lang.StringB" 
-com.skybooker.auth.entity.UserH

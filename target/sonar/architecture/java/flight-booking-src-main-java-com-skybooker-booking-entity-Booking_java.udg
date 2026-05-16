@@ -1,434 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917109102*java2.B¸
-K
-Fflight-booking/src/main/java/com/skybooker/booking/entity/Booking.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-flight-booking6
-
-package8
-0
-+flight-booking:com.skybooker.booking.entity9
-*
-$com.skybooker.booking.entity.Booking11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(7:1)-(32:2)16
-
-simple-name17
-
-Booking18
- 
-jakarta.persistence.Entity20
-
-unknown21
-
-annotated by22
-
-
-uses23
-
-lombok.Data25
-
-lombok.NoArgsConstructor27
-
-lombok.AllArgsConstructor29
--
-'com.skybooker.booking.entity.Booking.id31
-
-field32
-
-private33
-
-(13:5)-(15:21)34
-
-id35
-
-jakarta.persistence.Id37
-(
-"jakarta.persistence.GeneratedValue39
-(
-"jakarta.persistence.GenerationType41
-1
-+jakarta.persistence.GenerationType.IDENTITY43
-
-
-references44
-3
--com.skybooker.booking.entity.Booking.flightId46
-
-(17:5)-(17:27)47
-
-flightId48
-4
-.com.skybooker.booking.entity.Booking.userEmail50
-
-(18:5)-(18:30)51
-
-	userEmail52
-6
-0com.skybooker.booking.entity.Booking.seatsBooked54
-
-(20:5)-(20:29)55
-
-seatsBooked56
-5
-/com.skybooker.booking.entity.Booking.totalPrice58
-
-(21:5)-(21:31)59
-
-
-totalPrice60
-1
-+com.skybooker.booking.entity.Booking.status62
-
-(23:5)-(23:27)63
-
-status64
-6
-0com.skybooker.booking.entity.Booking.bookingTime66
-
-(24:5)-(24:39)67
-
-bookingTime68
-1
-+com.skybooker.booking.entity.Booking.source70
-
-(27:5)-(27:27)71
-
-source72
-6
-0com.skybooker.booking.entity.Booking.destination74
-
-(28:5)-(28:32)75
-
-destination76
-8
-2com.skybooker.booking.entity.Booking.departureDate78
-
-(29:5)-(29:34)79
-
-departureDate80
-8
-2com.skybooker.booking.entity.Booking.departureTime82
-
-(30:5)-(30:34)83
-
-departureTime84
-2
-,com.skybooker.booking.entity.Booking.airline86
-
-(31:5)-(31:28)87
-
-airline88J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68j¬	
-
-19
-192021
-J
-10D
-101112 *
-1 (:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-N
-69H
-697032 *
-1 (210:7B$
-
-
-13
-33
-
-
-15
-71
-
-
-17
-72
-N
-57H
-575832 *
-1 (210:7B$
-
-
-13
-33
-
-
-15
-59
-
-
-17
-60
-N
-61H
-616232 *
-1 (210:7B$
-
-
-13
-33
-
-
-15
-63
-
-
-17
-64
-N
-45H
-454632 *
-1 (210:7B$
-
-
-13
-33
-
-
-15
-47
-
-
-17
-48
-N
-85H
-858632 *
-1 (210:7B$
-
-
-13
-33
-
-
-15
-87
-
-
-17
-88
-N
-30H
-303132 *
-1 (210:7B$
-
-
-13
-33
-
-
-15
-34
-
-
-17
-35
-
-36
-363721
-
-38
-383921
-
-42
-424321
-
-40
-404121
-N
-65H
-656632 *
-1 (&210:7B$
-
-
-13
-33
-
-
-15
-67
-
-
-17
-68
-N
-81H
-818232 *
-1 (!210:7B$
-
-
-13
-33
-
-
-15
-83
-
-
-17
-84
-N
-49H
-495032 *
-1 (210:7B$
-
-
-13
-33
-
-
-15
-51
-
-
-17
-52
-N
-73H
-737432 *
-1 (210:7B$
-
-
-13
-33
-
-
-15
-75
-
-
-17
-76
-N
-77H
-777832 *
-1 (!210:7B$
-
-
-13
-33
-
-
-15
-79
-
-
-17
-80
-
-24
-242521
-N
-53H
-535432 *
-1 (210:7B$
-
-
-13
-33
-
-
-15
-55
-
-
-17
-56
-
-28
-282921
-
-26
-262721r•
-
-101922*
-1 (
-
-101923*
-1 (
-
-102422*
-1 (
-
-102423*
-1 (
-
-102622*
-1	 	(
-
-102623*
-1	 	(
-
-102822*
-1
- 
-(
-
-102823*
-1
- 
-(
-
-303622*
-1 (
-
-303623*
-1 (
-
-303822*
-1 (8
-
-303823*
-1 (
-
-304023*
-1  (.
-
-304023*
-1/ (7
-
-304244*
-1/ (7

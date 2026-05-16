@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-payment-service,com.skybooker.payment.security,JwtUtil,48,12,2,0,14,3,4,2,3,2
+payment-service,com.skybooker.payment.security,JwtUtil,48,12,2,0,14,4,4,2,3,2
 payment-service,com.skybooker.payment.security,JwtFilter,63,10,10,0,16,4,6,2,1,2
 payment-service,com.skybooker.payment.dto,PaymentResponse,465,75,90,0,5,10,54,21,9,21
 payment-service,com.skybooker.payment.dto,PaymentRequest,171,31,32,0,1,6,21,9,5,9

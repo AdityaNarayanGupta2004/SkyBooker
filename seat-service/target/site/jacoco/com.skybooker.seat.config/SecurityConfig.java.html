@@ -11,63 +11,59 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Configuration
 @EnableMethodSecurity
-<span class="fc" id="L24">@RequiredArgsConstructor</span>
+<span class="fc" id="L19">@RequiredArgsConstructor</span>
 public class SecurityConfig {
 
     private final JwtFilter jwtFilter;
 
     private static final String ROLE_ADMIN = &quot;ADMIN&quot;;
     private static final String ROLE_AIRLINE_STAFF = &quot;AIRLINE_STAFF&quot;;
+    private static final String SEATS_PATTERN = &quot;/seats/**&quot;;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-<span class="fc" id="L34">        return http</span>
-<span class="fc" id="L35">                .cors(cors -&gt; cors.disable())</span>
-<span class="fc" id="L36">                .csrf(csrf -&gt; csrf.disable())</span>
-<span class="fc" id="L37">                .exceptionHandling(ex -&gt; ex</span>
-<span class="fc" id="L38">                        .authenticationEntryPoint((request, response, e) -&gt; {</span>
-<span class="nc" id="L39">                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);</span>
-<span class="nc" id="L40">                            response.setContentType(&quot;application/json&quot;);</span>
-<span class="nc" id="L41">                            Map&lt;String, Object&gt; error = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L42">                            error.put(&quot;status&quot;, 401);</span>
-<span class="nc" id="L43">                            error.put(&quot;error&quot;, &quot;Unauthorized&quot;);</span>
-<span class="nc" id="L44">                            error.put(&quot;message&quot;, &quot;Please login first. Token missing or invalid.&quot;);</span>
-<span class="nc" id="L45">                            response.getWriter().write(new ObjectMapper().writeValueAsString(error));</span>
-<span class="nc" id="L46">                        })</span>
-<span class="fc" id="L47">                        .accessDeniedHandler((request, response, e) -&gt; {</span>
-<span class="nc" id="L48">                            response.setStatus(HttpServletResponse.SC_FORBIDDEN);</span>
-<span class="nc" id="L49">                            response.setContentType(&quot;application/json&quot;);</span>
-<span class="nc" id="L50">                            Map&lt;String, Object&gt; error = new HashMap&lt;&gt;();</span>
-<span class="nc" id="L51">                            error.put(&quot;status&quot;, 403);</span>
-<span class="nc" id="L52">                            error.put(&quot;error&quot;, &quot;Access Denied&quot;);</span>
-<span class="nc" id="L53">                            error.put(&quot;message&quot;, &quot;You do not have permission to perform this action&quot;);</span>
-<span class="nc" id="L54">                            response.getWriter().write(new ObjectMapper().writeValueAsString(error));</span>
-<span class="nc" id="L55">                        })</span>
+<span class="fc" id="L30">        return http</span>
+<span class="fc" id="L31">                .cors(cors -&gt; cors.disable())</span>
+<span class="fc" id="L32">                .csrf(csrf -&gt; csrf.disable())</span>
+<span class="fc" id="L33">                .exceptionHandling(ex -&gt; ex</span>
+<span class="fc" id="L34">                        .authenticationEntryPoint((request, response, e) -&gt; {</span>
+<span class="nc" id="L35">                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);</span>
+<span class="nc" id="L36">                            response.setContentType(&quot;application/json&quot;);</span>
+<span class="nc" id="L37">                            Map&lt;String, Object&gt; error = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L38">                            error.put(&quot;status&quot;, 401);</span>
+<span class="nc" id="L39">                            error.put(&quot;error&quot;, &quot;Unauthorized&quot;);</span>
+<span class="nc" id="L40">                            error.put(&quot;message&quot;, &quot;Please login first. Token missing or invalid.&quot;);</span>
+<span class="nc" id="L41">                            response.getWriter().write(new ObjectMapper().writeValueAsString(error));</span>
+<span class="nc" id="L42">                        })</span>
+<span class="fc" id="L43">                        .accessDeniedHandler((request, response, e) -&gt; {</span>
+<span class="nc" id="L44">                            response.setStatus(HttpServletResponse.SC_FORBIDDEN);</span>
+<span class="nc" id="L45">                            response.setContentType(&quot;application/json&quot;);</span>
+<span class="nc" id="L46">                            Map&lt;String, Object&gt; error = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L47">                            error.put(&quot;status&quot;, 403);</span>
+<span class="nc" id="L48">                            error.put(&quot;error&quot;, &quot;Access Denied&quot;);</span>
+<span class="nc" id="L49">                            error.put(&quot;message&quot;, &quot;You do not have permission to perform this action&quot;);</span>
+<span class="nc" id="L50">                            response.getWriter().write(new ObjectMapper().writeValueAsString(error));</span>
+<span class="nc" id="L51">                        })</span>
                 )
-<span class="fc" id="L57">                .authorizeHttpRequests(auth -&gt; auth</span>
-<span class="fc" id="L58">                        .requestMatchers(</span>
+<span class="fc" id="L53">                .authorizeHttpRequests(auth -&gt; auth</span>
+<span class="fc" id="L54">                        .requestMatchers(</span>
                                 &quot;/swagger-ui/**&quot;,
                                 &quot;/swagger-ui.html&quot;,
                                 &quot;/v3/api-docs/**&quot;,
                                 &quot;/v3/api-docs&quot;
-<span class="fc" id="L63">                        ).permitAll()</span>
-<span class="fc" id="L64">                        .requestMatchers(HttpMethod.GET, &quot;/seats/**&quot;).authenticated()</span>
-<span class="fc" id="L65">                        .requestMatchers(HttpMethod.POST, &quot;/seats/**&quot;).hasAnyRole(ROLE_AIRLINE_STAFF, ROLE_ADMIN)</span>
-<span class="fc" id="L66">                        .requestMatchers(HttpMethod.PUT, &quot;/seats/**&quot;).authenticated()</span>
-<span class="fc" id="L67">                        .anyRequest().authenticated()</span>
+<span class="fc" id="L59">                        ).permitAll()</span>
+<span class="fc" id="L60">                        .requestMatchers(HttpMethod.GET, SEATS_PATTERN).authenticated()</span>
+<span class="fc" id="L61">                        .requestMatchers(HttpMethod.POST, SEATS_PATTERN).hasAnyRole(ROLE_AIRLINE_STAFF, ROLE_ADMIN)</span>
+<span class="fc" id="L62">                        .requestMatchers(HttpMethod.PUT, SEATS_PATTERN).authenticated()</span>
+<span class="fc" id="L63">                        .anyRequest().authenticated()</span>
                 )
-<span class="fc" id="L69">                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)</span>
-<span class="fc" id="L70">                .build();</span>
+<span class="fc" id="L65">                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)</span>
+<span class="fc" id="L66">                .build();</span>
     }
 
 }

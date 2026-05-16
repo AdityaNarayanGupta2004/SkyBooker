@@ -1,16 +1,0 @@
-
-=com.skybooker.auth.entity.User#getCountry()Ljava/lang/String;
-__unknown_file ("1*ž
-1 (¨
-¥
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.java: :(
-%0java.lang.String"__id*;
- (/*- 
-com.skybooker.auth.entity.User"	
-country"d
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.java: :(
-
-%0java.lang.StringB" 
-com.skybooker.auth.entity.UserH

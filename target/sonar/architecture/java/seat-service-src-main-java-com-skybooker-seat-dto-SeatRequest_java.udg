@@ -1,312 +1,0 @@
-
-1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917112479*java2.B¨
-
-G
-Bseat-service/src/main/java/com/skybooker/seat/dto/SeatRequest.java2
-	
-type3
-	
-MAIN4
-
-
-module-key5
-
-seat-service6
-
-package8
-(
-#seat-service:com.skybooker.seat.dto9
-(
-"com.skybooker.seat.dto.SeatRequest11
-
-class12
-
-access13
-
-public14
-
-
-full-range15
-
-(7:1)-(21:2)16
-
-simple-name17
-
-SeatRequest18
-
-lombok.Data20
-
-unknown21
-
-annotated by22
-
-
-uses23
-
-lombok.AllArgsConstructor25
-
-lombok.NoArgsConstructor27
-1
-+com.skybooker.seat.dto.SeatRequest.flightId29
-
-field30
-
-private31
-
-(12:5)-(12:27)32
-
-flightId33
-3
--com.skybooker.seat.dto.SeatRequest.seatNumber35
-
-(13:5)-(13:31)36
-
-
-seatNumber37
-2
-,com.skybooker.seat.dto.SeatRequest.seatClass39
-
-(14:5)-(14:30)40
-
-	seatClass41
-,
-&com.skybooker.seat.dto.SeatRequest.row43
-
-(15:5)-(15:21)44
-	
-row45
-/
-)com.skybooker.seat.dto.SeatRequest.column47
-
-(16:5)-(16:27)48
-
-column49
-1
-+com.skybooker.seat.dto.SeatRequest.isWindow51
-
-(17:5)-(17:30)52
-
-isWindow53
-0
-*com.skybooker.seat.dto.SeatRequest.isAisle55
-
-(18:5)-(18:29)56
-
-isAisle57
-8
-2com.skybooker.seat.dto.SeatRequest.hasExtraLegroom59
-
-(19:5)-(19:37)60
-
-hasExtraLegroom61
-8
-2com.skybooker.seat.dto.SeatRequest.priceMultiplier63
-
-(20:5)-(20:36)64
-
-priceMultiplier65J%
-#
-1
-12
-
-3
-4
-
-5
-6 Z
-
-7
-7982
-
-
-5
-68jÿ
-N
-34H
-343530 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-36
-
-
-17
-37
-N
-54H
-545530 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-56
-
-
-17
-57
-N
-42H
-424330 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-44
-
-
-17
-45
-N
-62H
-626330 *
-1 (#210:7B$
-
-
-13
-31
-
-
-15
-64
-
-
-17
-65
-N
-38H
-383930 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-40
-
-
-17
-41
-N
-58H
-585930 *
-1 ($210:7B$
-
-
-13
-31
-
-
-15
-60
-
-
-17
-61
-J
-10D
-101112 *
-1
- 
-(:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-
-19
-192021
-N
-28H
-282930 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-32
-
-
-17
-33
-
-24
-242521
-N
-46H
-464730 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-48
-
-
-17
-49
-N
-50H
-505130 *
-1 (210:7B$
-
-
-13
-31
-
-
-15
-52
-
-
-17
-53
-
-26
-262721r¢
-
-101922*
-1 (
-
-101923*
-1 (
-
-102422*
-1 (
-
-102423*
-1 (
-
-102622*
-1	 	(
-
-102623*
-1	 	(

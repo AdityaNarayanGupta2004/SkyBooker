@@ -1,19 +1,0 @@
-
-Gcom.skybooker.auth.entity.User#setUpdatedAt(Ljava/time/LocalDateTime;)V
-__unknown_file ("1*©
-1 (¸
-µ
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaP P($/ 
-com.skybooker.auth.entity.User"
-	updatedAt"__id*2
- (&
-$
-	updatedAtjava.time.LocalDateTime"_
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaP P($
-implicit return:p
-H
->auth-service\src\main\java\com\skybooker\auth\entity\User.javaP P($$
-	updatedAtjava.time.LocalDateTimeB" 
-com.skybooker.auth.entity.UserH

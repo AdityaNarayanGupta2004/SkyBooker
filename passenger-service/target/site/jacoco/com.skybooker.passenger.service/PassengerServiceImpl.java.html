@@ -96,7 +96,7 @@ public class PassengerServiceImpl implements PassengerService {
     public PassengerResponse updatePassenger(Long passengerId, PassengerRequest request) {
 <span class="nc" id="L97">        log.info(&quot;Updating passenger — id: {}&quot;, passengerId);</span>
 <span class="nc" id="L98">        PassengerInfo passenger = passengerRepository.findById(passengerId)</span>
-<span class="nc" id="L99">                .orElseThrow(() -&gt; new IllegalArgumentException(&quot;Passenger not found with id: &quot; + passengerId));</span>
+<span class="nc" id="L99">                .orElseThrow(() -&gt; new IllegalArgumentException(PASSENGER_NOT_FOUND_ID + passengerId));</span>
 
 <span class="nc" id="L101">        passenger.setTitle(request.getTitle());</span>
 <span class="nc" id="L102">        passenger.setFirstName(request.getFirstName());</span>

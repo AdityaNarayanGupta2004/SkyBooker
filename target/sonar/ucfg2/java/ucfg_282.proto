@@ -1,19 +1,0 @@
-
-Rcom.skybooker.passenger.entity.PassengerInfo#setPassengerType(Ljava/lang/String;)V
-__unknown_file ("1*Þ
-1 (Ú
-×
-[
-Qpassenger-service\src\main\java\com\skybooker\passenger\entity\PassengerInfo.java( ((!A.
-,com.skybooker.passenger.entity.PassengerInfo"
-passengerType"__id*/
- (#
-!
-passengerTypejava.lang.String"r
-[
-Qpassenger-service\src\main\java\com\skybooker\passenger\entity\PassengerInfo.java( ((!
-implicit return:€
-[
-Qpassenger-service\src\main\java\com\skybooker\passenger\entity\PassengerInfo.java( ((!!
-passengerTypejava.lang.StringB0.
-,com.skybooker.passenger.entity.PassengerInfoH

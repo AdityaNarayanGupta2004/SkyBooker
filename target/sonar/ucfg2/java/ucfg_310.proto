@@ -1,44 +1,0 @@
-
-com.skybooker.passenger.controller.PassengerController#deletePassenger(Ljava/lang/Long;)Lorg/springframework/http/ResponseEntity;e
-[passenger-service\src\main\java\com\skybooker\passenger\controller\PassengerController.javaI" I(1"1*Ò
-1J J(¹
-¶
-J J(6
-%00com.skybooker.passenger.service.PassengerService"__id*l
-
-__unknown_file (P*N8
-6com.skybooker.passenger.controller.PassengerController"
-passengerService¤¡
-J J(5
-
-%1void"Scom.skybooker.passenger.service.PassengerService#deletePassenger(Ljava/lang/Long;)V*T
-
-__unknown_file (8
-6
-%00com.skybooker.passenger.service.PassengerService*;
-
-__unknown_file (
-
-passengerIdjava.lang.Long2!deletePassenger(Ljava/lang/Long;)®
-«
-K K(B-
-%2'org.springframework.http.ResponseEntity"gorg.springframework.http.ResponseEntity#ok(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;*G
-
-__unknown_file (+")
-'org.springframework.http.ResponseEntity*>
-
-__unknown_file (" 
-Passenger deleted successfullyr
-p
-K K(C
-%3"__return_xss_sink*K
-
-__unknown_file (/
--
-%2'org.springframework.http.ResponseEntity";
-K K(C/
--
-%2'org.springframework.http.ResponseEntity:)
-I2 I(P
-passengerIdjava.lang.LongB:8
-6com.skybooker.passenger.controller.PassengerControllerH

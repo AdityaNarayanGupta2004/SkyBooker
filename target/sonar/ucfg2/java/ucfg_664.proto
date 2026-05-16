@@ -1,19 +1,0 @@
-
-@com.skybooker.auth.dto.AuthResponse#setRole(Ljava/lang/String;)V
-__unknown_file ("1*§
-1 (±
-®
-M
-Cauth-service\src\main\java\com\skybooker\auth\dto\AuthResponse.java (/%
-#com.skybooker.auth.dto.AuthResponse"
-role"__id*&
- (
-
-rolejava.lang.String"d
-M
-Cauth-service\src\main\java\com\skybooker\auth\dto\AuthResponse.java (
-implicit return:i
-M
-Cauth-service\src\main\java\com\skybooker\auth\dto\AuthResponse.java (
-rolejava.lang.StringB'%
-#com.skybooker.auth.dto.AuthResponseH
