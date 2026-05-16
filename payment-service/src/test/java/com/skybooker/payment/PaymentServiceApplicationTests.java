@@ -8,5 +8,6 @@ class PaymentServiceApplicationTests {
 
     @Test
     void contextLoads() {
+        // Test context loads successfully
     }
 }

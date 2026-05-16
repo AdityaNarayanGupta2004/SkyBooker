@@ -8,6 +8,7 @@ class FlightBookingApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// context loads
 	}
 
 }

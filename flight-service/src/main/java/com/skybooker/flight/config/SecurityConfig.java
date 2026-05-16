@@ -26,6 +26,9 @@ public class SecurityConfig {
 
     private final JwtFilter jwtFilter;
 
+    private static final String ROLE_ADMIN = "ADMIN";
+    private static final String FLIGHTS_PATTERN = "/flights/**";
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -65,19 +68,19 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/flights/search").permitAll()
 
                         // Baaki GET requests (getAllFlights etc.) login ke baad
-                        .requestMatchers(HttpMethod.GET, "/flights/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, FLIGHTS_PATTERN).authenticated()
 
                         // Flight add karna sirf STAFF/ADMIN
-                        .requestMatchers(HttpMethod.POST, "/flights").hasAnyRole("AIRLINE_STAFF", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/flights").hasAnyRole("AIRLINE_STAFF", ROLE_ADMIN)
 
                         // Seat reduce — booking service call karta hai (token hoga)
                         .requestMatchers(HttpMethod.PUT, "/flights/*/reduce-seats").authenticated()
 
                         // Baaki PUT (flight update) — STAFF/ADMIN
-                        .requestMatchers(HttpMethod.PUT, "/flights/**").hasAnyRole("AIRLINE_STAFF", "ADMIN")
+                        .requestMatchers(HttpMethod.PUT, FLIGHTS_PATTERN).hasAnyRole("AIRLINE_STAFF", ROLE_ADMIN)
 
                         // Delete — sirf ADMIN
-                        .requestMatchers(HttpMethod.DELETE, "/flights/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, FLIGHTS_PATTERN).hasRole(ROLE_ADMIN)
 
                         .anyRequest().authenticated()
                 )
@@ -85,15 +88,4 @@ public class SecurityConfig {
                 .build();
     }
 
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration config = new CorsConfiguration();
-//        config.setAllowedOrigins(List.of("http://localhost:8080"));
-//        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-//        config.setAllowedHeaders(List.of("*"));
-//        config.setAllowCredentials(true);
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", config);
-//        return source;
-//    }
 }

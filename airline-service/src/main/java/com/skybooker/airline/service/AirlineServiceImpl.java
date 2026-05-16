@@ -20,6 +20,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AirlineServiceImpl implements AirlineService {
 
+    private static final String SUCCESS_MSG = "Success";
+    private static final String AIRLINE_NOT_FOUND_ID_MSG = "Airline not found with id: ";
+
     private final AirlineRepository airlineRepository;
     private final AirportRepository airportRepository;
 
@@ -31,7 +34,7 @@ public class AirlineServiceImpl implements AirlineService {
 
         if (airlineRepository.existsByIataCode(request.getIataCode())) {
             log.warn("Airline add rejected — IATA code already exists: {}", request.getIataCode());
-            throw new RuntimeException("Airline with IATA code " + request.getIataCode() + " already exists");
+            throw new IllegalArgumentException("Airline with IATA code " + request.getIataCode() + " already exists");
         }
 
         Airline airline = new Airline();
@@ -54,9 +57,9 @@ public class AirlineServiceImpl implements AirlineService {
         Airline airline = airlineRepository.findById(id)
                 .orElseThrow(() -> {
                     log.warn("Airline not found — id: {}", id);
-                    return new RuntimeException("Airline not found with id: " + id);
+                    return new IllegalArgumentException(AIRLINE_NOT_FOUND_ID_MSG + id);
                 });
-        return mapAirlineToResponse(airline, "Success");
+        return mapAirlineToResponse(airline, SUCCESS_MSG);
     }
 
     @Override
@@ -65,16 +68,16 @@ public class AirlineServiceImpl implements AirlineService {
         Airline airline = airlineRepository.findByIataCode(iataCode.toUpperCase())
                 .orElseThrow(() -> {
                     log.warn("Airline not found — IATA: {}", iataCode);
-                    return new RuntimeException("Airline not found with IATA code: " + iataCode);
+                    return new IllegalArgumentException("Airline not found with IATA code: " + iataCode);
                 });
-        return mapAirlineToResponse(airline, "Success");
+        return mapAirlineToResponse(airline, SUCCESS_MSG);
     }
 
     @Override
     public List<AirlineResponse> getAllAirlines() {
         log.debug("Fetching all airlines");
         List<AirlineResponse> list = airlineRepository.findAll()
-                .stream().map(a -> mapAirlineToResponse(a, "Success")).collect(Collectors.toList());
+                .stream().map(a -> mapAirlineToResponse(a, SUCCESS_MSG)).toList();
         log.debug("Total airlines found: {}", list.size());
         return list;
     }
@@ -83,7 +86,7 @@ public class AirlineServiceImpl implements AirlineService {
     public List<AirlineResponse> getActiveAirlines() {
         log.debug("Fetching active airlines");
         return airlineRepository.findByIsActive(true)
-                .stream().map(a -> mapAirlineToResponse(a, "Success")).collect(Collectors.toList());
+                .stream().map(a -> mapAirlineToResponse(a, SUCCESS_MSG)).toList();
     }
 
     @Override
@@ -92,7 +95,7 @@ public class AirlineServiceImpl implements AirlineService {
         Airline airline = airlineRepository.findById(id)
                 .orElseThrow(() -> {
                     log.warn("Update failed — airline not found: {}", id);
-                    return new RuntimeException("Airline not found with id: " + id);
+                    return new IllegalArgumentException(AIRLINE_NOT_FOUND_ID_MSG + id);
                 });
 
         airline.setName(request.getName());
@@ -111,7 +114,7 @@ public class AirlineServiceImpl implements AirlineService {
         Airline airline = airlineRepository.findById(id)
                 .orElseThrow(() -> {
                     log.warn("Toggle failed — airline not found: {}", id);
-                    return new RuntimeException("Airline not found with id: " + id);
+                    return new IllegalArgumentException(AIRLINE_NOT_FOUND_ID_MSG + id);
                 });
 
         airline.setActive(!airline.isActive());
@@ -132,7 +135,7 @@ public class AirlineServiceImpl implements AirlineService {
 
         if (airportRepository.existsByIataCode(request.getIataCode())) {
             log.warn("Airport add rejected — IATA code already exists: {}", request.getIataCode());
-            throw new RuntimeException("Airport with IATA code " + request.getIataCode() + " already exists");
+            throw new IllegalArgumentException("Airport with IATA code " + request.getIataCode() + " already exists");
         }
 
         Airport airport = new Airport();
@@ -156,9 +159,9 @@ public class AirlineServiceImpl implements AirlineService {
         Airport airport = airportRepository.findById(id)
                 .orElseThrow(() -> {
                     log.warn("Airport not found — id: {}", id);
-                    return new RuntimeException("Airport not found with id: " + id);
+                    return new IllegalArgumentException("Airport not found with id: " + id);
                 });
-        return mapAirportToResponse(airport, "Success");
+        return mapAirportToResponse(airport, SUCCESS_MSG);
     }
 
     @Override
@@ -167,16 +170,16 @@ public class AirlineServiceImpl implements AirlineService {
         Airport airport = airportRepository.findByIataCode(iataCode.toUpperCase())
                 .orElseThrow(() -> {
                     log.warn("Airport not found — IATA: {}", iataCode);
-                    return new RuntimeException("Airport not found with IATA code: " + iataCode);
+                    return new IllegalArgumentException("Airport not found with IATA code: " + iataCode);
                 });
-        return mapAirportToResponse(airport, "Success");
+        return mapAirportToResponse(airport, SUCCESS_MSG);
     }
 
     @Override
     public List<AirportResponse> getAllAirports() {
         log.debug("Fetching all airports");
         return airportRepository.findAll()
-                .stream().map(a -> mapAirportToResponse(a, "Success")).collect(Collectors.toList());
+                .stream().map(a -> mapAirportToResponse(a, SUCCESS_MSG)).toList();
     }
 
     @Override
@@ -184,7 +187,7 @@ public class AirlineServiceImpl implements AirlineService {
         log.info("Searching airports — keyword: {}", keyword);
         List<AirportResponse> results = airportRepository
                 .findByCityContainingIgnoreCaseOrNameContainingIgnoreCase(keyword, keyword)
-                .stream().map(a -> mapAirportToResponse(a, "Success")).collect(Collectors.toList());
+                .stream().map(a -> mapAirportToResponse(a, SUCCESS_MSG)).toList();
         log.info("Airport search results — {} found for keyword: {}", results.size(), keyword);
         return results;
     }
@@ -195,7 +198,7 @@ public class AirlineServiceImpl implements AirlineService {
         Airport airport = airportRepository.findById(id)
                 .orElseThrow(() -> {
                     log.warn("Update failed — airport not found: {}", id);
-                    return new RuntimeException("Airport not found with id: " + id);
+                    return new IllegalArgumentException("Airport not found with id: " + id);
                 });
 
         airport.setName(request.getName());

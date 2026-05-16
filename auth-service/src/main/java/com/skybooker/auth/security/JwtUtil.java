@@ -7,10 +7,13 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.util.Date;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 public class JwtUtil {
 
-    private final String SECRET = "my-super-secret-key-my-super-secret-key-12345";
+    private static final String SECRET = "my-super-secret-key-my-super-secret-key-12345";
     private final SecretKey key = Keys.hmacShaKeyFor(SECRET.getBytes());
 
     // role bhi token mein daalo - baaki services role check karenge isse
@@ -29,7 +32,7 @@ public class JwtUtil {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
         } catch (Exception e) {
-            System.out.println("JWT validation failed: " + e.getMessage());
+            log.error("JWT validation failed: {}", e.getMessage());
             return false;
         }
     }
