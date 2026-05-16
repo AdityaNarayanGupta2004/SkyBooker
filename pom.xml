@@ -16,7 +16,35 @@
         <sonar.organization>adityanarayangupta2004</sonar.organization>
         <sonar.projectKey>AdityaNarayanGupta2004_SkyBooker</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.coverage.jacoco.xmlReportPaths>**/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        
+        <!-- Coverage and Exclusions -->
+        <sonar.coverage.jacoco.xmlReportPaths>
+            airline-service/target/site/jacoco/jacoco.xml,
+            api-gateway/target/site/jacoco/jacoco.xml,
+            auth-service/target/site/jacoco/jacoco.xml,
+            flight-booking/target/site/jacoco/jacoco.xml,
+            flight-service/target/site/jacoco/jacoco.xml,
+            passenger-service/target/site/jacoco/jacoco.xml,
+            payment-service/target/site/jacoco/jacoco.xml,
+            seat-service/target/site/jacoco/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
+
+        <sonar.exclusions>
+            **/dto/**,
+            **/entity/**,
+            **/config/**,
+            **/exception/**,
+            **/payload/**,
+            **/*Application.java,
+            **/security/**
+        </sonar.exclusions>
+
+        <sonar.cpd.exclusions>
+            **/dto/**,
+            **/entity/**,
+            **/config/**,
+            **/security/**
+        </sonar.cpd.exclusions>
     </properties>
 
     <modules>

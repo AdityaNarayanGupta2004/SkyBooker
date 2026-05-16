@@ -312,4 +312,16 @@ class AuthServiceImplTest {
 
         assertTrue(ex.getMessage().contains("No account found"));
     }
+
+    @Test
+    void register_AdminWithEmptyKey_ShouldThrowException() {
+        RegisterRequest req = banaoRegisterRequest();
+        req.setRole("ADMIN");
+        req.setAdminSecretKey("   ");
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> authServiceImpl.register(req));
+
+        assertTrue(ex.getMessage().contains("admin secret key"));
+    }
 }

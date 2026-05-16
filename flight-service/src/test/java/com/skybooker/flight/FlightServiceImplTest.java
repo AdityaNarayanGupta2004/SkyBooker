@@ -81,14 +81,30 @@ class FlightServiceImplTest {
 
     // Test 2: Galat ID se exception aaye
     @Test
-    void getFlightById_WhenFlightNotFound_ShouldThrowException() {
-        when(flightRepository.findById(99L)).thenReturn(Optional.empty());
+    void login_WithNonExistentAccount_ShouldThrowException() {
+        LoginRequest req = new LoginRequest();
+        req.setEmail("nobody@gmail.com");
 
-        RuntimeException ex = assertThrows(RuntimeException.class,
-                () -> flightServiceImpl.getFlightById(99L));
+        when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
 
-        assertTrue(ex.getMessage().contains("Flight not found"));
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> authServiceImpl.login(req));
+
+        assertTrue(ex.getMessage().contains("No account found"));
     }
+
+    @Test
+    void register_AdminWithEmptyKey_ShouldThrowException() {
+        RegisterRequest req = banaoRegisterRequest();
+        req.setRole("ADMIN");
+        req.setAdminSecretKey("   ");
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> authServiceImpl.register(req));
+
+        assertTrue(ex.getMessage().contains("admin secret key"));
+    }
+}
 
     // ---------------------------------------------------------------
     // GET ALL FLIGHTS TESTS
@@ -296,5 +312,19 @@ class FlightServiceImplTest {
             () -> flightServiceImpl.addFlight(req));
         
         assertTrue(ex.getMessage().contains("Invalid departure time format"));
+    }
+
+    @Test
+    void addFlight_WithSameDayPastTime_ShouldThrowException() {
+        com.skybooker.flight.dto.FlightRequest req = new com.skybooker.flight.dto.FlightRequest();
+        req.setDepartureDate(LocalDate.now());
+        // Set time to 1 hour ago
+        java.time.LocalTime pastTime = java.time.LocalTime.now().minusHours(1);
+        req.setDepartureTime(pastTime.toString());
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, 
+            () -> flightServiceImpl.addFlight(req));
+        
+        assertTrue(ex.getMessage().contains("Departure time has already passed"));
     }
 }
