@@ -13,7 +13,7 @@
     <description>Aggregator POM for SkyBooker Microservices</description>
 
     <properties>
-        <sonar.organization>AdityaNarayanGupta2004</sonar.organization>
+        <sonar.organization>adityanarayangupta2004</sonar.organization>
         <sonar.projectKey>AdityaNarayanGupta2004_SkyBooker</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.coverage.jacoco.xmlReportPaths>**/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>

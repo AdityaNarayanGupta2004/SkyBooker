@@ -12,12 +12,8 @@
 	<groupId>com.skybooker</groupId>
 	<artifactId>flight-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
+	<name>flight-service</name>
+	<description>SkyBooker Flight Service</description>
 	<developers>
 		<developer/>
 	</developers>
