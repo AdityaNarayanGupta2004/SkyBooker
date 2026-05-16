@@ -36,3 +36,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=AdityaNarayanGupta2004_SkyBooker -Dsonar.organization=adityanarayangupta2004 -Dsonar.host.url=https://sonarcloud.io
 
+
+# [Aditya Narayan Gupta] refactor.refactored the backend code for sonar qube
