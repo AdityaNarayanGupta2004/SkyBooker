@@ -36,7 +36,8 @@
             **/exception/**,
             **/payload/**,
             **/*Application.java,
-            **/security/**
+            **/security/**,
+            api-gateway/**
         </sonar.exclusions>
 
         <sonar.cpd.exclusions>

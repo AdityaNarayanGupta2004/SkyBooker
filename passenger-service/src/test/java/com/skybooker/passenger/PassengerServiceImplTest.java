@@ -13,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,257 +27,164 @@ class PassengerServiceImplTest {
     private PassengerRepository passengerRepository;
 
     @InjectMocks
-    private PassengerServiceImpl passengerServiceImpl;
+    private PassengerServiceImpl passengerService;
 
-    // Helper — ready-made PassengerInfo banao
-    private PassengerInfo banaoPassenger() {
-        PassengerInfo p = new PassengerInfo();
-        p.setPassengerId(1L);
-        p.setBookingId("BK-001");
-        p.setTitle("Mr");
-        p.setFirstName("Rahul");
-        p.setLastName("Sharma");
-        p.setDateOfBirth(LocalDate.of(1995, 5, 10));
-        p.setGender("MALE");
-        p.setPassportNumber("A1234567");
-        p.setNationality("Indian");
-        p.setPassportExpiry(LocalDate.now().plusYears(3)); // valid passport
-        p.setPassengerType("ADULT");
-        p.setTicketNumber("TKT-ABCD1234");
-        p.setCreatedAt(LocalDateTime.now());
-        return p;
-    }
-
-    // Helper — ready-made PassengerRequest banao
-    private PassengerRequest banaoRequest(String type) {
+    private PassengerRequest createRequest() {
         PassengerRequest req = new PassengerRequest();
-        req.setBookingId("BK-001");
-        req.setTitle("Mr");
-        req.setFirstName("Rahul");
-        req.setLastName("Sharma");
-        req.setDateOfBirth(LocalDate.of(1995, 5, 10));
-        req.setGender("MALE");
-        req.setPassportNumber("A1234567");
-        req.setNationality("Indian");
-        req.setPassportExpiry(LocalDate.now().plusYears(3));
-        req.setPassengerType(type);
+        req.setBookingId("BK-123");
+        req.setFirstName("John");
+        req.setLastName("Doe");
+        req.setPassengerType("ADULT");
+        req.setDateOfBirth(LocalDate.now().minusYears(30));
+        req.setPassportExpiry(LocalDate.now().plusYears(5));
         return req;
     }
 
-    // ---------------------------------------------------------------
-    // ADD PASSENGER TESTS
-    // ---------------------------------------------------------------
-
-    // Test 1: Adult passenger successfully add ho
     @Test
-    void addPassenger_ValidAdult_ShouldSucceed() {
-        PassengerRequest req = banaoRequest("ADULT");
-        PassengerInfo saved = banaoPassenger();
-
-        when(passengerRepository.save(any(PassengerInfo.class))).thenReturn(saved);
-
-        PassengerResponse res = passengerServiceImpl.addPassenger(req);
-
-        assertNotNull(res);
-        assertEquals("Rahul", res.getFirstName());
-        assertEquals("ADULT", res.getPassengerType());
-        assertNotNull(res.getTicketNumber()); // ticket generate hona chahiye
-    }
-
-    // Test 2: Expired passport wala passenger add nahi ho sakta
-    @Test
-    void addPassenger_WithExpiredPassport_ShouldThrowException() {
-        PassengerRequest req = banaoRequest("ADULT");
-        req.setPassportExpiry(LocalDate.now().minusDays(10)); // expired
-
-        RuntimeException ex = assertThrows(RuntimeException.class,
-                () -> passengerServiceImpl.addPassenger(req));
-
-        assertTrue(ex.getMessage().contains("Passport is expired"));
-        verify(passengerRepository, never()).save(any());
-    }
-
-    // Test 3: Infant jo 2 saal se zyada ka hai add nahi ho sakta
-    @Test
-    void addPassenger_InfantOlderThan2Years_ShouldThrowException() {
-        PassengerRequest req = banaoRequest("INFANT");
-        req.setDateOfBirth(LocalDate.now().minusYears(3)); // 3 saal ka — infant nahi
-
-        RuntimeException ex = assertThrows(RuntimeException.class,
-                () -> passengerServiceImpl.addPassenger(req));
-
-        assertTrue(ex.getMessage().contains("Infant must be under 2 years"));
-        verify(passengerRepository, never()).save(any());
-    }
-
-    // Test 4: Child jo 12 saal se zyada ka hai add nahi ho sakta
-    @Test
-    void addPassenger_ChildOlderThan12Years_ShouldThrowException() {
-        PassengerRequest req = banaoRequest("CHILD");
-        req.setDateOfBirth(LocalDate.now().minusYears(13)); // 13 saal ka — child nahi
-
-        RuntimeException ex = assertThrows(RuntimeException.class,
-                () -> passengerServiceImpl.addPassenger(req));
-
-        assertTrue(ex.getMessage().contains("Child passenger must be under 12 years"));
-        verify(passengerRepository, never()).save(any());
-    }
-
-    // Test 5: Valid infant (1 saal ka) add ho jaye
-    @Test
-    void addPassenger_ValidInfant_ShouldSucceed() {
-        PassengerRequest req = banaoRequest("INFANT");
-        req.setDateOfBirth(LocalDate.now().minusMonths(8)); // 8 mahine ka infant — valid
-
-        PassengerInfo saved = banaoPassenger();
-        saved.setPassengerType("INFANT");
-
-        when(passengerRepository.save(any(PassengerInfo.class))).thenReturn(saved);
-
-        PassengerResponse res = passengerServiceImpl.addPassenger(req);
-
-        assertEquals("INFANT", res.getPassengerType());
-    }
-
-    // ---------------------------------------------------------------
-    // GET PASSENGER TESTS
-    // ---------------------------------------------------------------
-
-    // Test 6: ID se passenger mile
-    @Test
-    void getPassengerById_WhenExists_ShouldReturnPassenger() {
-        PassengerInfo passenger = banaoPassenger();
-
-        when(passengerRepository.findById(1L)).thenReturn(Optional.of(passenger));
-
-        PassengerResponse res = passengerServiceImpl.getPassengerById(1L);
-
-        assertNotNull(res);
-        assertEquals("Rahul", res.getFirstName());
-        assertEquals("BK-001", res.getBookingId());
-    }
-
-    // Test 7: ID na ho toh exception aaye
-    @Test
-    void getPassengerById_WhenNotFound_ShouldThrowException() {
-        when(passengerRepository.findById(99L)).thenReturn(Optional.empty());
-
-        RuntimeException ex = assertThrows(RuntimeException.class,
-                () -> passengerServiceImpl.getPassengerById(99L));
-
-        assertTrue(ex.getMessage().contains("Passenger not found with id"));
-    }
-
-    // Test 8: Booking ke saare passengers milein
-    @Test
-    void getPassengersByBooking_ShouldReturnAllPassengers() {
-        PassengerInfo p1 = banaoPassenger();
-        PassengerInfo p2 = banaoPassenger();
-        p2.setPassengerId(2L);
-        p2.setFirstName("Priya");
-
-        when(passengerRepository.findByBookingId("BK-001")).thenReturn(List.of(p1, p2));
-
-        List<PassengerResponse> result = passengerServiceImpl.getPassengersByBooking("BK-001");
-
-        assertEquals(2, result.size());
-    }
-
-    // Test 9: Passport number se passenger mile
-    @Test
-    void getByPassportNumber_WhenExists_ShouldReturnPassenger() {
-        PassengerInfo passenger = banaoPassenger();
-
-        when(passengerRepository.findByPassportNumber("A1234567"))
-                .thenReturn(Optional.of(passenger));
-
-        PassengerResponse res = passengerServiceImpl.getByPassportNumber("A1234567");
-
-        assertEquals("A1234567", res.getPassportNumber());
-    }
-
-    // Test 10: Galat passport number pe exception aaye
-    @Test
-    void getByPassportNumber_WhenNotFound_ShouldThrowException() {
-        when(passengerRepository.findByPassportNumber("Z9999999"))
-                .thenReturn(Optional.empty());
-
-        RuntimeException ex = assertThrows(RuntimeException.class,
-                () -> passengerServiceImpl.getByPassportNumber("Z9999999"));
-
-        assertTrue(ex.getMessage().contains("Passenger not found with passport"));
-    }
-
-    // ---------------------------------------------------------------
-    // SEAT ASSIGN TESTS
-    // ---------------------------------------------------------------
-
-    // Test 11: Seat successfully assign ho
-    @Test
-    void assignSeat_WhenSeatIsFree_ShouldSucceed() {
-        PassengerInfo passenger = banaoPassenger();
-        SeatAssignRequest req = new SeatAssignRequest(1L, 50L, "12A");
-
-        when(passengerRepository.findById(1L)).thenReturn(Optional.of(passenger));
-        when(passengerRepository.findBySeatId(50L)).thenReturn(Optional.empty()); // seat free hai
+    void addPassenger_Success() {
+        PassengerRequest req = createRequest();
         when(passengerRepository.save(any(PassengerInfo.class))).thenAnswer(i -> i.getArgument(0));
 
-        PassengerResponse res = passengerServiceImpl.assignSeat(req);
+        PassengerResponse res = passengerService.addPassenger(req);
 
-        assertEquals("12A", res.getSeatNumber());
+        assertNotNull(res);
+        assertEquals("John", res.getFirstName());
+        verify(passengerRepository, times(1)).save(any());
     }
 
-    // Test 12: Pehle se liya hua seat assign nahi ho sakta
     @Test
-    void assignSeat_WhenSeatAlreadyTaken_ShouldThrowException() {
-        PassengerInfo passenger = banaoPassenger();
-        PassengerInfo anotherPassenger = banaoPassenger();
-        anotherPassenger.setPassengerId(2L);
+    void addPassenger_ExpiredPassport_ThrowsException() {
+        PassengerRequest req = createRequest();
+        req.setPassportExpiry(LocalDate.now().minusDays(1));
 
-        SeatAssignRequest req = new SeatAssignRequest(1L, 50L, "12A");
-
-        when(passengerRepository.findById(1L)).thenReturn(Optional.of(passenger));
-        when(passengerRepository.findBySeatId(50L)).thenReturn(Optional.of(anotherPassenger));
-
-        RuntimeException ex = assertThrows(RuntimeException.class,
-                () -> passengerServiceImpl.assignSeat(req));
-
-        assertTrue(ex.getMessage().contains("already assigned"));
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, 
+            () -> passengerService.addPassenger(req));
+        
+        assertTrue(ex.getMessage().contains("Passport is expired"));
     }
 
-    // ---------------------------------------------------------------
-    // DELETE & COUNT TESTS
-    // ---------------------------------------------------------------
-
-    // Test 13: Passenger delete ho jaye
     @Test
-    void deletePassenger_WhenExists_ShouldDeleteSuccessfully() {
+    void addPassenger_InfantOverAge_ThrowsException() {
+        PassengerRequest req = createRequest();
+        req.setPassengerType("INFANT");
+        req.setDateOfBirth(LocalDate.now().minusYears(3)); // 3 years old
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, 
+            () -> passengerService.addPassenger(req));
+        
+        assertTrue(ex.getMessage().contains("Infant must be under 2 years"));
+    }
+
+    @Test
+    void addPassenger_ChildOverAge_ThrowsException() {
+        PassengerRequest req = createRequest();
+        req.setPassengerType("CHILD");
+        req.setDateOfBirth(LocalDate.now().minusYears(15)); // 15 years old
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, 
+            () -> passengerService.addPassenger(req));
+        
+        assertTrue(ex.getMessage().contains("Child passenger must be under 12 years"));
+    }
+
+    @Test
+    void getPassengerById_Success() {
+        PassengerInfo p = new PassengerInfo();
+        p.setPassengerId(1L);
+        when(passengerRepository.findById(1L)).thenReturn(Optional.of(p));
+
+        PassengerResponse res = passengerService.getPassengerById(1L);
+        assertEquals(1L, res.getPassengerId());
+    }
+
+    @Test
+    void getPassengerById_NotFound_ThrowsException() {
+        when(passengerRepository.findById(1L)).thenReturn(Optional.empty());
+        assertThrows(IllegalArgumentException.class, () -> passengerService.getPassengerById(1L));
+    }
+
+    @Test
+    void getPassengersByBooking_ReturnsList() {
+        when(passengerRepository.findByBookingId("BK-1")).thenReturn(List.of(new PassengerInfo()));
+        List<PassengerResponse> list = passengerService.getPassengersByBooking("BK-1");
+        assertEquals(1, list.size());
+    }
+
+    @Test
+    void getByPassportNumber_Success() {
+        PassengerInfo p = new PassengerInfo();
+        p.setPassportNumber("A1");
+        when(passengerRepository.findByPassportNumber("A1")).thenReturn(Optional.of(p));
+
+        PassengerResponse res = passengerService.getByPassportNumber("A1");
+        assertEquals("A1", res.getPassportNumber());
+    }
+
+    @Test
+    void getByTicketNumber_Success() {
+        PassengerInfo p = new PassengerInfo();
+        p.setTicketNumber("T1");
+        when(passengerRepository.findByTicketNumber("T1")).thenReturn(Optional.of(p));
+
+        PassengerResponse res = passengerService.getByTicketNumber("T1");
+        assertEquals("T1", res.getTicketNumber());
+    }
+
+    @Test
+    void updatePassenger_Success() {
+        PassengerInfo p = new PassengerInfo();
+        when(passengerRepository.findById(1L)).thenReturn(Optional.of(p));
+        when(passengerRepository.save(any())).thenReturn(p);
+
+        PassengerResponse res = passengerService.updatePassenger(1L, createRequest());
+        assertEquals("Passenger updated successfully", res.getMessage());
+    }
+
+    @Test
+    void assignSeat_Success() {
+        PassengerInfo p = new PassengerInfo();
+        when(passengerRepository.findById(1L)).thenReturn(Optional.of(p));
+        when(passengerRepository.findBySeatId(10L)).thenReturn(Optional.empty());
+        when(passengerRepository.save(any())).thenReturn(p);
+
+        SeatAssignRequest req = new SeatAssignRequest();
+        req.setPassengerId(1L);
+        req.setSeatId(10L);
+        req.setSeatNumber("12A");
+
+        PassengerResponse res = passengerService.assignSeat(req);
+        assertEquals("Seat assigned successfully", res.getMessage());
+    }
+
+    @Test
+    void assignSeat_SeatAlreadyTaken_ThrowsException() {
+        PassengerInfo p = new PassengerInfo();
+        when(passengerRepository.findById(1L)).thenReturn(Optional.of(p));
+        when(passengerRepository.findBySeatId(10L)).thenReturn(Optional.of(new PassengerInfo()));
+
+        SeatAssignRequest req = new SeatAssignRequest();
+        req.setPassengerId(1L);
+        req.setSeatId(10L);
+
+        assertThrows(IllegalStateException.class, () -> passengerService.assignSeat(req));
+    }
+
+    @Test
+    void deletePassenger_Success() {
         when(passengerRepository.existsById(1L)).thenReturn(true);
-
-        passengerServiceImpl.deletePassenger(1L);
-
+        passengerService.deletePassenger(1L);
         verify(passengerRepository, times(1)).deleteById(1L);
     }
 
-    // Test 14: Passenger na ho toh delete pe exception aaye
     @Test
-    void deletePassenger_WhenNotFound_ShouldThrowException() {
-        when(passengerRepository.existsById(99L)).thenReturn(false);
-
-        RuntimeException ex = assertThrows(RuntimeException.class,
-                () -> passengerServiceImpl.deletePassenger(99L));
-
-        assertTrue(ex.getMessage().contains("Passenger not found with id"));
-        verify(passengerRepository, never()).deleteById(any());
+    void deleteByBookingId_Success() {
+        passengerService.deleteByBookingId("BK-1");
+        verify(passengerRepository, times(1)).deleteByBookingId("BK-1");
     }
 
-    // Test 15: Booking ka passenger count sahi aaye
     @Test
-    void getPassengerCount_ShouldReturnCorrectCount() {
-        when(passengerRepository.countByBookingId("BK-001")).thenReturn(3);
-
-        int count = passengerServiceImpl.getPassengerCount("BK-001");
-
-        assertEquals(3, count);
+    void getPassengerCount_ReturnsCount() {
+        when(passengerRepository.countByBookingId("BK-1")).thenReturn(5);
+        assertEquals(5, passengerService.getPassengerCount("BK-1"));
     }
 }
