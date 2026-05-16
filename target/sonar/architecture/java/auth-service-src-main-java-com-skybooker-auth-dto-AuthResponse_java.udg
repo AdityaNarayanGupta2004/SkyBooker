@@ -1,0 +1,379 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917115072*java2.B±
+H
+Cauth-service/src/main/java/com/skybooker/auth/dto/AuthResponse.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+auth-service6
+
+package8
+(
+#auth-service:com.skybooker.auth.dto9
+)
+#com.skybooker.auth.dto.AuthResponse11
+
+class12
+
+access13
+
+public14
+
+
+full-range15
+
+(6:1)-(42:2)16
+
+simple-name17
+
+AuthResponse18
+
+lombok.Data20
+
+unknown21
+
+annotated by22
+
+
+uses23
+2
+,com.fasterxml.jackson.annotation.JsonInclude25
+:
+4com.fasterxml.jackson.annotation.JsonInclude$Include27
+
+
+references28
+C
+=com.fasterxml.jackson.annotation.JsonInclude$Include.NON_NULL30
+1
++com.skybooker.auth.dto.AuthResponse.message32
+
+field33
+
+private34
+
+(10:5)-(10:28)35
+
+message36
+/
+)com.skybooker.auth.dto.AuthResponse.token38
+
+(11:5)-(11:26)39
+
+token40
+.
+(com.skybooker.auth.dto.AuthResponse.role42
+
+(12:5)-(12:25)43
+
+
+role44
+/
+)com.skybooker.auth.dto.AuthResponse.email46
+
+(13:5)-(13:26)47
+
+email48
+2
+,com.skybooker.auth.dto.AuthResponse.fullName50
+
+(14:5)-(14:29)51
+
+fullName52
+3
+-com.skybooker.auth.dto.AuthResponse.isNewUser54
+
+(15:5)-(15:31)55
+
+	isNewUser56
+q
+kcom.skybooker.auth.dto.AuthResponse#successMessage(Ljava/lang/String;)Lcom/skybooker/auth/dto/AuthResponse;58
+
+method59
+
+(17:5)-(21:6)60
+
+successMessage61
+
+returns62
+
+is type63
+
+calls64
+h
+bcom.skybooker.auth.dto.AuthResponse#token(Ljava/lang/String;)Lcom/skybooker/auth/dto/AuthResponse;66
+
+(23:5)-(27:6)67
+¦
+Ÿcom.skybooker.auth.dto.AuthResponse#googleLogin(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/skybooker/auth/dto/AuthResponse;69
+
+(29:5)-(41:6)70
+
+googleLogin71J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68jì
+N
+45H
+454633 *
+1 (210:7B$
+
+
+13
+34
+
+
+15
+47
+
+
+17
+48
+N
+68H
+686959 *
+1  (+210:7B$
+
+
+13
+14
+
+
+15
+70
+
+
+17
+71
+N
+31H
+313233 *
+1
+ 
+(210:7B$
+
+
+13
+34
+
+
+15
+35
+
+
+17
+36
+N
+53H
+535433 *
+1 (210:7B$
+
+
+13
+34
+
+
+15
+55
+
+
+17
+56
+J
+10D
+101112 *
+1 (:7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+N
+65H
+656659 *
+1  (%210:7B$
+
+
+13
+14
+
+
+15
+67
+
+
+17
+40
+N
+41H
+414233 *
+1 (210:7B$
+
+
+13
+34
+
+
+15
+43
+
+
+17
+44
+
+29
+293021
+
+26
+262721
+N
+57H
+575859 *
+1  (.210:7B$
+
+
+13
+14
+
+
+15
+60
+
+
+17
+61
+
+19
+192021
+
+24
+242521
+N
+49H
+495033 *
+1 (210:7B$
+
+
+13
+34
+
+
+15
+51
+
+
+17
+52
+N
+37H
+373833 *
+1 (210:7B$
+
+
+13
+34
+
+
+15
+39
+
+
+17
+40rˆ
+
+101922*
+1 (
+
+101923*
+1 (
+
+102422*
+1 (+
+
+102423*
+1 (
+
+102423*
+1 (
+
+102623*
+1 (!
+
+102628*
+1 (!
+
+102623*
+1" (*
+
+102928*
+1" (*
+
+571062*
+1 (
+
+571023*
+1 (
+
+571063*
+1 (
+
+571023*
+1	 (
+
+571064*
+1  (,
+
+651062*
+1 (
+
+651023*
+1 (
+
+651063*
+1 (
+
+651023*
+1	 (
+
+651064*
+1  (,
+
+681062*
+1 (
+
+681023*
+1 (
+
+681063*
+1 (
+
+681023*
+1	 (
+
+681064*
+1  (,

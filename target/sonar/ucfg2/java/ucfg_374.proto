@@ -1,0 +1,19 @@
+
+Lcom.skybooker.passenger.dto.PassengerResponse#setGender(Ljava/lang/String;)V
+__unknown_file ("1*Ó
+1 (Î
+Ë
+\
+Rpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerResponse.java (;/
+-com.skybooker.passenger.dto.PassengerResponse"
+gender"__id*(
+ (
+
+genderjava.lang.String"s
+\
+Rpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerResponse.java (
+implicit return:z
+\
+Rpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerResponse.java (
+genderjava.lang.StringB1/
+-com.skybooker.passenger.dto.PassengerResponseH

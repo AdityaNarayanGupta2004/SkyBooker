@@ -1,0 +1,19 @@
+
+Dcom.skybooker.seat.dto.SeatRequest#setSeatClass(Ljava/lang/String;)V
+__unknown_file ("1*®
+1 (¹
+¶
+L
+Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (3$
+"com.skybooker.seat.dto.SeatRequest"
+	seatClass"__id*+
+ (
+
+	seatClassjava.lang.String"c
+L
+Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (
+implicit return:m
+L
+Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (
+	seatClassjava.lang.StringB&$
+"com.skybooker.seat.dto.SeatRequestH

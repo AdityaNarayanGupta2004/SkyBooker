@@ -1,0 +1,27 @@
+
+ycom.skybooker.flight.controller.FlightController#getFlightById(Ljava/lang/Long;)Lcom/skybooker/flight/dto/FlightResponse;\
+Rflight-service\src\main\java\com\skybooker\flight\controller\FlightController.java ('"1*Ð
+1 (ª
+§
+ (0
+%0*com.skybooker.flight.service.FlightService"__id*c
+
+__unknown_file (G*E2
+0com.skybooker.flight.controller.FlightController"
+flightServiceÖÓ
+ (.-
+%1'com.skybooker.flight.dto.FlightResponse"scom.skybooker.flight.service.FlightService#getFlightById(Ljava/lang/Long;)Lcom/skybooker/flight/dto/FlightResponse;*N
+
+__unknown_file (2
+0
+%0*com.skybooker.flight.service.FlightService*2
+
+__unknown_file (
+
+idjava.lang.Long2getFlightById(Ljava/lang/Long;)";
+ (//
+-
+%1'com.skybooker.flight.dto.FlightResponse: 
+( (=
+idjava.lang.LongB42
+0com.skybooker.flight.controller.FlightControllerH

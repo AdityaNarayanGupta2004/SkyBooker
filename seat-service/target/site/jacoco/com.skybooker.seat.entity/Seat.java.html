@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Seat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">seat-service</a> &gt; <a href="index.source.html" class="el_package">com.skybooker.seat.entity</a> &gt; <span class="el_source">Seat.java</span></div><h1>Seat.java</h1><pre class="source lang-java linenums">package com.skybooker.seat.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = &quot;seats&quot;)
+<span class="pc bnc" id="L12" title="All 78 branches missed.">@Data</span>
+<span class="fc" id="L13">@NoArgsConstructor</span>
+<span class="nc" id="L14">@AllArgsConstructor</span>
+public class Seat {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+<span class="fc" id="L19">    private Long id;</span>
+
+    // kis flight ka seat hai
+<span class="fc" id="L22">    private Long flightId;</span>
+
+    // seat number jaise 12A, 14C
+<span class="fc" id="L25">    private String seatNumber;</span>
+
+    // ECONOMY, BUSINESS, FIRST
+<span class="fc" id="L28">    private String seatClass;</span>
+
+    // row number - 1, 2, 3...
+    // 'row' MySQL ka reserved word hai isliye column name alag rakha
+    @Column(name = &quot;seat_row&quot;)
+<span class="fc" id="L33">    private int row;</span>
+
+    // column - A, B, C, D, E, F
+    // 'column' bhi MySQL ka reserved word hai isliye rename kiya
+    @Column(name = &quot;seat_column&quot;)
+<span class="fc" id="L38">    private String column;</span>
+
+    // window seat hai ya nahi
+<span class="fc" id="L41">    private boolean isWindow;</span>
+
+    // aisle seat hai ya nahi
+<span class="fc" id="L44">    private boolean isAisle;</span>
+
+    // extra legroom hai ya nahi
+<span class="fc" id="L47">    private boolean hasExtraLegroom;</span>
+
+    // AVAILABLE, HELD, CONFIRMED, BLOCKED
+<span class="fc" id="L50">    private String status;</span>
+
+    // base fare pe multiplier - 1.0 normal, 1.2 extra legroom, 1.5 business
+<span class="fc" id="L53">    private double priceMultiplier;</span>
+
+    // hold kab expire hogi - 15 min baad
+<span class="fc" id="L56">    private LocalDateTime holdExpiresAt;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

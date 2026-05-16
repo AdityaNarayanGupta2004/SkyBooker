@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SeatServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">seat-service</a> &gt; <a href="index.source.html" class="el_package">com.skybooker.seat.service</a> &gt; <span class="el_source">SeatServiceImpl.java</span></div><h1>SeatServiceImpl.java</h1><pre class="source lang-java linenums">package com.skybooker.seat.service;
+
+import com.skybooker.seat.dto.SeatRequest;
+import com.skybooker.seat.dto.SeatResponse;
+import com.skybooker.seat.entity.Seat;
+import com.skybooker.seat.repository.SeatRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+<span class="fc" id="L15">@Slf4j</span>
+@Service
+<span class="fc" id="L17">@RequiredArgsConstructor</span>
+public class SeatServiceImpl implements SeatService {
+
+    private static final String SUCCESS = &quot;Success&quot;;
+    private static final String SEAT_NOT_FOUND = &quot;Seat not found: &quot;;
+    private final SeatRepository seatRepository;
+
+    @Override
+    public SeatResponse addSeat(SeatRequest request) {
+<span class="fc" id="L26">        log.info(&quot;Adding seat — flightId: {}, seat: {}, class: {}&quot;,</span>
+<span class="fc" id="L27">                request.getFlightId(), request.getSeatNumber(), request.getSeatClass());</span>
+
+<span class="fc" id="L29">        boolean exists = seatRepository</span>
+<span class="fc" id="L30">                .findByFlightIdAndSeatNumber(request.getFlightId(), request.getSeatNumber())</span>
+<span class="fc" id="L31">                .isPresent();</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (exists) {</span>
+<span class="fc" id="L33">            log.warn(&quot;Seat already exists — flightId: {}, seat: {}&quot;,</span>
+<span class="fc" id="L34">                    request.getFlightId(), request.getSeatNumber());</span>
+<span class="fc" id="L35">            throw new IllegalArgumentException(&quot;Seat &quot; + request.getSeatNumber()</span>
+<span class="fc" id="L36">                    + &quot; already exists for flight: &quot; + request.getFlightId());</span>
+        }
+
+<span class="fc" id="L39">        Seat seat = new Seat();</span>
+<span class="fc" id="L40">        seat.setFlightId(request.getFlightId());</span>
+<span class="fc" id="L41">        seat.setSeatNumber(request.getSeatNumber());</span>
+<span class="fc" id="L42">        seat.setSeatClass(request.getSeatClass());</span>
+<span class="fc" id="L43">        seat.setRow(request.getRow());</span>
+<span class="fc" id="L44">        seat.setColumn(request.getColumn());</span>
+<span class="fc" id="L45">        seat.setWindow(request.isWindow());</span>
+<span class="fc" id="L46">        seat.setAisle(request.isAisle());</span>
+<span class="fc" id="L47">        seat.setHasExtraLegroom(request.isHasExtraLegroom());</span>
+<span class="fc" id="L48">        seat.setPriceMultiplier(request.getPriceMultiplier());</span>
+<span class="fc" id="L49">        seat.setStatus(&quot;AVAILABLE&quot;);</span>
+
+<span class="fc" id="L51">        Seat saved = seatRepository.save(seat);</span>
+<span class="fc" id="L52">        log.debug(&quot;Seat added — ID: {}, seat: {}&quot;, saved.getId(), saved.getSeatNumber());</span>
+<span class="fc" id="L53">        return mapToResponse(saved, &quot;Seat added successfully&quot;);</span>
+    }
+
+    @Override
+    public List&lt;SeatResponse&gt; getSeatsByFlight(Long flightId) {
+<span class="fc" id="L58">        log.debug(&quot;Fetching all seats for flightId: {}&quot;, flightId);</span>
+<span class="fc" id="L59">        return seatRepository.findByFlightId(flightId)</span>
+<span class="fc" id="L60">                .stream().map(s -&gt; mapToResponse(s, SUCCESS)).toList();</span>
+    }
+
+    @Override
+    public List&lt;SeatResponse&gt; getAvailableSeats(Long flightId) {
+<span class="nc" id="L65">        log.debug(&quot;Fetching seat map for flightId: {}&quot;, flightId);</span>
+<span class="nc" id="L66">        return seatRepository.findByFlightId(flightId)</span>
+<span class="nc" id="L67">                .stream().map(s -&gt; mapToResponse(s, SUCCESS)).toList();</span>
+    }
+
+    @Override
+    public List&lt;SeatResponse&gt; getSeatsByClass(Long flightId, String seatClass) {
+<span class="fc" id="L72">        log.debug(&quot;Fetching {} class seats for flightId: {}&quot;, seatClass, flightId);</span>
+<span class="fc" id="L73">        return seatRepository.findByFlightIdAndSeatClass(flightId, seatClass)</span>
+<span class="fc" id="L74">                .stream().map(s -&gt; mapToResponse(s, SUCCESS)).toList();</span>
+    }
+
+    @Override
+    public SeatResponse holdSeat(Long flightId, String seatNumber) {
+<span class="fc" id="L79">        log.info(&quot;Hold request — flightId: {}, seat: {}&quot;, flightId, seatNumber);</span>
+
+<span class="fc" id="L81">        Seat seat = seatRepository.findByFlightIdAndSeatNumber(flightId, seatNumber)</span>
+<span class="fc" id="L82">                .orElseThrow(() -&gt; {</span>
+<span class="nc" id="L83">                    log.warn(&quot;Hold failed — seat not found: {} flightId: {}&quot;, seatNumber, flightId);</span>
+<span class="nc" id="L84">                    return new IllegalArgumentException(SEAT_NOT_FOUND + seatNumber);</span>
+                });
+
+<span class="fc bfc" id="L87" title="All 2 branches covered.">        if (!seat.getStatus().equals(&quot;AVAILABLE&quot;)) {</span>
+<span class="fc" id="L88">            log.warn(&quot;Hold failed — seat not available: {} status: {}&quot;, seatNumber, seat.getStatus());</span>
+<span class="fc" id="L89">            throw new IllegalStateException(&quot;Seat &quot; + seatNumber</span>
+<span class="fc" id="L90">                    + &quot; is not available. Current status: &quot; + seat.getStatus());</span>
+        }
+
+<span class="fc" id="L93">        seat.setStatus(&quot;HELD&quot;);</span>
+<span class="fc" id="L94">        seat.setHoldExpiresAt(LocalDateTime.now().plusMinutes(15));</span>
+<span class="fc" id="L95">        Seat updated = seatRepository.save(seat);</span>
+<span class="fc" id="L96">        log.info(&quot;Seat held — flightId: {}, seat: {}, expires: {}&quot;, flightId, seatNumber, seat.getHoldExpiresAt());</span>
+<span class="fc" id="L97">        return mapToResponse(updated, &quot;Seat held for 15 minutes. Please complete payment.&quot;);</span>
+    }
+
+    @Override
+    public SeatResponse confirmSeat(Long flightId, String seatNumber) {
+<span class="fc" id="L102">        log.info(&quot;Confirm request — flightId: {}, seat: {}&quot;, flightId, seatNumber);</span>
+
+<span class="fc" id="L104">        Seat seat = seatRepository.findByFlightIdAndSeatNumber(flightId, seatNumber)</span>
+<span class="fc" id="L105">                .orElseThrow(() -&gt; {</span>
+<span class="nc" id="L106">                    log.warn(&quot;Confirm failed — seat not found: {} flightId: {}&quot;, seatNumber, flightId);</span>
+<span class="nc" id="L107">                    return new IllegalArgumentException(SEAT_NOT_FOUND + seatNumber);</span>
+                });
+
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">        if (seat.getStatus().equals(&quot;CONFIRMED&quot;)) {</span>
+<span class="nc" id="L111">            log.info(&quot;Seat already confirmed — flightId: {}, seat: {}&quot;, flightId, seatNumber);</span>
+<span class="nc" id="L112">            return mapToResponse(seat, &quot;Seat already confirmed&quot;);</span>
+        }
+
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">        if (!seat.getStatus().equals(&quot;HELD&quot;)) {</span>
+<span class="nc" id="L116">            log.warn(&quot;Confirm failed — seat not held: {} status: {}&quot;, seatNumber, seat.getStatus());</span>
+<span class="nc" id="L117">            throw new IllegalStateException(&quot;Seat &quot; + seatNumber + &quot; is not held. Cannot confirm.&quot;);</span>
+        }
+
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        if (seat.getHoldExpiresAt() != null</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                &amp;&amp; seat.getHoldExpiresAt().isBefore(LocalDateTime.now())) {</span>
+<span class="fc" id="L122">            log.warn(&quot;Confirm failed — hold expired for seat: {} flightId: {}&quot;, seatNumber, flightId);</span>
+<span class="fc" id="L123">            seat.setStatus(&quot;AVAILABLE&quot;);</span>
+<span class="fc" id="L124">            seat.setHoldExpiresAt(null);</span>
+<span class="fc" id="L125">            seatRepository.save(seat);</span>
+<span class="fc" id="L126">            throw new IllegalStateException(&quot;Seat hold expired. Please select the seat again.&quot;);</span>
+        }
+
+<span class="fc" id="L129">        seat.setStatus(&quot;CONFIRMED&quot;);</span>
+<span class="fc" id="L130">        seat.setHoldExpiresAt(null);</span>
+<span class="fc" id="L131">        Seat updated = seatRepository.save(seat);</span>
+<span class="fc" id="L132">        log.info(&quot;Seat confirmed — flightId: {}, seat: {}&quot;, flightId, seatNumber);</span>
+<span class="fc" id="L133">        return mapToResponse(updated, &quot;Seat confirmed successfully&quot;);</span>
+    }
+
+    @Override
+    public SeatResponse releaseSeat(Long flightId, String seatNumber) {
+<span class="fc" id="L138">        log.info(&quot;Release request — flightId: {}, seat: {}&quot;, flightId, seatNumber);</span>
+
+<span class="fc" id="L140">        Seat seat = seatRepository.findByFlightIdAndSeatNumber(flightId, seatNumber)</span>
+<span class="pc" id="L141">                .orElseThrow(() -&gt; new IllegalArgumentException(&quot;Seat not found: &quot; + seatNumber));</span>
+
+<span class="fc bfc" id="L143" title="All 2 branches covered.">        if (seat.getStatus().equals(&quot;CONFIRMED&quot;)) {</span>
+<span class="fc" id="L144">            log.warn(&quot;Release rejected — seat is CONFIRMED: {} flightId: {}&quot;, seatNumber, flightId);</span>
+<span class="fc" id="L145">            throw new IllegalStateException(&quot;Confirmed seat cannot be released directly. Please cancel the booking.&quot;);</span>
+        }
+
+<span class="fc" id="L148">        seat.setStatus(&quot;AVAILABLE&quot;);</span>
+<span class="fc" id="L149">        seat.setHoldExpiresAt(null);</span>
+<span class="fc" id="L150">        Seat updated = seatRepository.save(seat);</span>
+<span class="fc" id="L151">        log.info(&quot;Seat released — flightId: {}, seat: {}&quot;, flightId, seatNumber);</span>
+<span class="fc" id="L152">        return mapToResponse(updated, &quot;Seat released successfully&quot;);</span>
+    }
+
+    @Override
+    public int getAvailableCount(Long flightId) {
+<span class="nc" id="L157">        int count = seatRepository.countByFlightIdAndStatus(flightId, &quot;AVAILABLE&quot;);</span>
+<span class="nc" id="L158">        log.debug(&quot;Available seat count — flightId: {}, count: {}&quot;, flightId, count);</span>
+<span class="nc" id="L159">        return count;</span>
+    }
+
+    @Scheduled(fixedDelay = 120000)
+    @Override
+    public void releaseExpiredHolds() {
+<span class="fc" id="L165">        List&lt;Seat&gt; expired = seatRepository</span>
+<span class="fc" id="L166">                .findByStatusAndHoldExpiresAtBefore(&quot;HELD&quot;, LocalDateTime.now());</span>
+
+<span class="pc bpc" id="L168" title="1 of 2 branches missed.">        if (!expired.isEmpty()) {</span>
+<span class="nc" id="L169">            log.info(&quot;Releasing {} expired seat hold(s)&quot;, expired.size());</span>
+        }
+
+<span class="pc bpc" id="L172" title="1 of 2 branches missed.">        for (Seat seat : expired) {</span>
+<span class="nc" id="L173">            seat.setStatus(&quot;AVAILABLE&quot;);</span>
+<span class="nc" id="L174">            seat.setHoldExpiresAt(null);</span>
+<span class="nc" id="L175">            seatRepository.save(seat);</span>
+<span class="nc" id="L176">            log.info(&quot;Expired hold released — seat: {}, flightId: {}&quot;,</span>
+<span class="nc" id="L177">                    seat.getSeatNumber(), seat.getFlightId());</span>
+<span class="nc" id="L178">        }</span>
+<span class="fc" id="L179">    }</span>
+
+    private SeatResponse mapToResponse(Seat seat, String message) {
+<span class="fc" id="L182">        SeatResponse res = new SeatResponse();</span>
+<span class="fc" id="L183">        res.setId(seat.getId());</span>
+<span class="fc" id="L184">        res.setFlightId(seat.getFlightId());</span>
+<span class="fc" id="L185">        res.setSeatNumber(seat.getSeatNumber());</span>
+<span class="fc" id="L186">        res.setSeatClass(seat.getSeatClass());</span>
+<span class="fc" id="L187">        res.setRow(seat.getRow());</span>
+<span class="fc" id="L188">        res.setColumn(seat.getColumn());</span>
+<span class="fc" id="L189">        res.setWindow(seat.isWindow());</span>
+<span class="fc" id="L190">        res.setAisle(seat.isAisle());</span>
+<span class="fc" id="L191">        res.setHasExtraLegroom(seat.isHasExtraLegroom());</span>
+<span class="fc" id="L192">        res.setStatus(seat.getStatus());</span>
+<span class="fc" id="L193">        res.setPriceMultiplier(seat.getPriceMultiplier());</span>
+<span class="fc" id="L194">        res.setHoldExpiresAt(seat.getHoldExpiresAt());</span>
+<span class="fc" id="L195">        res.setMessage(message);</span>
+<span class="fc" id="L196">        return res;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

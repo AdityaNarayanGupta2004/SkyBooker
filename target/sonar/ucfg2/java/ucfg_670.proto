@@ -1,0 +1,16 @@
+
+@com.skybooker.auth.dto.AuthResponse#getEmail()Ljava/lang/String;
+__unknown_file ("1*«
+1 (°
+­
+M
+Cauth-service\src\main\java\com\skybooker\auth\dto\AuthResponse.java (
+%0java.lang.String"__id*>
+ (2*0%
+#com.skybooker.auth.dto.AuthResponse"
+email"i
+M
+Cauth-service\src\main\java\com\skybooker\auth\dto\AuthResponse.java (
+
+%0java.lang.StringB'%
+#com.skybooker.auth.dto.AuthResponseH

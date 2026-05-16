@@ -1,0 +1,19 @@
+
+Kcom.skybooker.seat.entity.Seat#setHoldExpiresAt(Ljava/time/LocalDateTime;)V
+__unknown_file ("1*±
+1 (À
+½
+H
+>seat-service\src\main\java\com\skybooker\seat\entity\Seat.java8 8((3 
+com.skybooker.seat.entity.Seat"
+holdExpiresAt"__id*6
+ (*
+(
+holdExpiresAtjava.time.LocalDateTime"_
+H
+>seat-service\src\main\java\com\skybooker\seat\entity\Seat.java8 8((
+implicit return:t
+H
+>seat-service\src\main\java\com\skybooker\seat\entity\Seat.java8 8(((
+holdExpiresAtjava.time.LocalDateTimeB" 
+com.skybooker.seat.entity.SeatH

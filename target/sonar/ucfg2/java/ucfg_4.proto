@@ -1,0 +1,42 @@
+
+<__sonar_lambda_2$com.skybooker.airline.config.SecurityConfigX
+Nairline-service\src\main\java\com\skybooker\airline\config\SecurityConfig.java'# 9("1*ó
+1') '(+¿
+¼
+(2 0(?
+%79org.springframework.security.web.AuthenticationEntryPoint"__declareFunction*\
+
+__unknown_file (@>
+<__sonar_lambda_3$com.skybooker.airline.config.SecurityConfigµ²
+') 0(a
+%21Zorg.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer"Œorg.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer#authenticationEntryPoint(Lorg/springframework/security/web/AuthenticationEntryPoint;)Lorg/springframework/security/config/annotation/web/configurers/ExceptionHandlingConfigurer;*~
+
+__unknown_file (b
+`
+exZorg.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer*]
+
+__unknown_file (A
+?
+%79org.springframework.security.web.AuthenticationEntryPoint2UauthenticationEntryPoint(Lorg/springframework/security/web/AuthenticationEntryPoint;)Â
+¿
+1- 9(B
+%22;org.springframework.security.web.access.AccessDeniedHandler"__declareFunction*\
+
+__unknown_file (@>
+<__sonar_lambda_4$com.skybooker.airline.config.SecurityConfig³°
+') 9(a
+%36Zorg.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer"‰org.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer#accessDeniedHandler(Lorg/springframework/security/web/access/AccessDeniedHandler;)Lorg/springframework/security/config/annotation/web/configurers/ExceptionHandlingConfigurer;*
+
+__unknown_file (c
+a
+%21Zorg.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer*`
+
+__unknown_file (D
+B
+%22;org.springframework.security.web.access.AccessDeniedHandler2RaccessDeniedHandler(Lorg/springframework/security/web/access/AccessDeniedHandler;)"o
+') 9(c
+a
+%36Zorg.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer:l
+'# '(%`
+exZorg.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurerB/-
++com.skybooker.airline.config.SecurityConfig

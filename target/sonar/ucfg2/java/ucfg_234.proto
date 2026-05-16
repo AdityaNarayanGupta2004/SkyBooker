@@ -1,0 +1,21 @@
+
+Pcom.skybooker.flight.controller.FlightController#getAllFlights()Ljava/util/List;\
+Rflight-service\src\main\java\com\skybooker\flight\controller\FlightController.java  (-"1*±
+1 (ª
+§
+ (0
+%0*com.skybooker.flight.service.FlightService"__id*c
+
+__unknown_file (G*E2
+0com.skybooker.flight.controller.FlightController"
+flightServiceÐÍ
+ (,
+%1java.util.List"Jcom.skybooker.flight.service.FlightService#getAllFlights()Ljava/util/List;*N
+
+__unknown_file (2
+0
+%0*com.skybooker.flight.service.FlightService2getAllFlights()""
+ (-
+
+%1java.util.ListB42
+0com.skybooker.flight.controller.FlightControllerH

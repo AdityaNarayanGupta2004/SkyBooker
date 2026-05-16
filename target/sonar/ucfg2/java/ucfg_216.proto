@@ -1,0 +1,19 @@
+
+Ocom.skybooker.flight.dto.FlightRequest#setDepartureDate(Ljava/time/LocalDate;)V
+__unknown_file ("1*É
+1 (Î
+Ë
+R
+Hflight-service\src\main\java\com\skybooker\flight\dto\FlightRequest.java ($;(
+&com.skybooker.flight.dto.FlightRequest"
+departureDate"__id*2
+ (&
+$
+departureDatejava.time.LocalDate"i
+R
+Hflight-service\src\main\java\com\skybooker\flight\dto\FlightRequest.java ($
+implicit return:z
+R
+Hflight-service\src\main\java\com\skybooker\flight\dto\FlightRequest.java ($$
+departureDatejava.time.LocalDateB*(
+&com.skybooker.flight.dto.FlightRequestH

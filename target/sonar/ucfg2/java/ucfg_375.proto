@@ -1,0 +1,19 @@
+
+Tcom.skybooker.passenger.dto.PassengerResponse#setPassportNumber(Ljava/lang/String;)V
+__unknown_file ("1*ã
+1 (Þ
+Û
+\
+Rpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerResponse.java ("C/
+-com.skybooker.passenger.dto.PassengerResponse"
+passportNumber"__id*0
+ ($
+"
+passportNumberjava.lang.String"s
+\
+Rpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerResponse.java ("
+implicit return:‚
+\
+Rpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerResponse.java (""
+passportNumberjava.lang.StringB1/
+-com.skybooker.passenger.dto.PassengerResponseH

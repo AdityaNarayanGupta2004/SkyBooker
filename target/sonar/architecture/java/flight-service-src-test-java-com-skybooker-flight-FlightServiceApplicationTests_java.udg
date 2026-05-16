@@ -1,0 +1,123 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917098412*java2.B 
+Y
+Tflight-service/src/test/java/com/skybooker/flight/FlightServiceApplicationTests.java2
+	
+type3
+	
+TEST4
+
+
+module-key5
+
+flight-service6
+
+package8
+(
+#flight-service:com.skybooker.flight9
+8
+2com.skybooker.flight.FlightServiceApplicationTests11
+
+class12
+
+access13
+
+	protected14
+
+
+full-range15
+
+(6:1)-(14:2)16
+
+simple-name17
+#
+FlightServiceApplicationTests18
+:
+4org.springframework.boot.test.context.SpringBootTest20
+
+unknown21
+
+annotated by22
+
+
+uses23
+H
+Bcom.skybooker.flight.FlightServiceApplicationTests#contextLoads()V25
+
+method26
+
+(9:5)-(12:6)27
+
+contextLoads28
+ 
+org.junit.jupiter.api.Test30J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68jÄ
+
+29
+293021
+
+19
+192021
+J
+10D
+101112 *
+1 ($:7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+N
+24H
+242526 *
+1
+
+ 
+(210:7B$
+
+
+13
+14
+
+
+15
+27
+
+
+17
+28rl
+
+101922*
+1 (
+
+101923*
+1 (
+
+242922*
+1	 	(
+
+
+242923*
+1	 	(

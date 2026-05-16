@@ -1,0 +1,22 @@
+
+Fcom.skybooker.seat.dto.SeatResponse#setSeatNumber(Ljava/lang/String;)V
+__unknown_file ("1*³
+1 (½
+º
+M
+Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java (5%
+#com.skybooker.seat.dto.SeatResponse"
+
+seatNumber"__id*,
+ ( 
+
+
+seatNumberjava.lang.String"d
+M
+Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java (
+implicit return:o
+M
+Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java (
+
+seatNumberjava.lang.StringB'%
+#com.skybooker.seat.dto.SeatResponseH

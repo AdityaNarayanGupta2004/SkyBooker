@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+passenger-service,com.skybooker.passenger.security,JwtUtil,48,12,2,0,14,3,4,2,3,2
+passenger-service,com.skybooker.passenger.security,JwtFilter,63,10,10,0,16,4,6,2,1,2
+passenger-service,com.skybooker.passenger.entity,PassengerInfo,584,102,126,0,3,15,70,29,7,29
+passenger-service,com.skybooker.passenger.config,SecurityConfig,70,74,0,0,16,14,2,6,2,6
+passenger-service,com.skybooker.passenger.config,GlobalExceptionHandler,63,3,0,0,12,1,2,1,2,1
+passenger-service,com.skybooker.passenger.dto,PassengerResponse,565,77,118,0,9,8,72,21,13,21
+passenger-service,com.skybooker.passenger.dto,PassengerRequest,397,73,86,0,1,12,48,21,5,21
+passenger-service,com.skybooker.passenger.dto,SeatAssignRequest,146,21,30,0,2,4,23,4,8,4
+passenger-service,com.skybooker.passenger,PassengerServiceApplication,5,3,0,0,2,1,1,1,1,1
+passenger-service,com.skybooker.passenger.controller,PassengerController,81,6,0,0,20,1,10,1,10,1
+passenger-service,com.skybooker.passenger.service,PassengerServiceImpl,114,431,4,16,24,97,10,21,6,15

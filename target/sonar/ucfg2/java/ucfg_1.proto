@@ -1,0 +1,16 @@
+
+<__sonar_lambda_1$com.skybooker.airline.config.SecurityConfigX
+Nairline-service\src\main\java\com\skybooker\airline\config\SecurityConfig.java& &(,"1*õ
+1& &("‡„
+& &(,N
+%4Horg.springframework.security.config.annotation.web.builders.HttpSecurity"§org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer#disable()Lorg/springframework/security/config/annotation/web/HttpSecurityBuilder;*s
+
+__unknown_file (W
+U
+csrfMorg.springframework.security.config.annotation.web.configurers.CsrfConfigurer2	disable()"\
+& &(,P
+N
+%4Horg.springframework.security.config.annotation.web.builders.HttpSecurity:a
+& &(U
+csrfMorg.springframework.security.config.annotation.web.configurers.CsrfConfigurerB/-
++com.skybooker.airline.config.SecurityConfig

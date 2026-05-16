@@ -1,0 +1,37 @@
+
+vcom.skybooker.seat.controller.SeatController#getAllByFlight(Ljava/lang/Long;)Lorg/springframework/http/ResponseEntity;V
+Lseat-service\src\main\java\com\skybooker\seat\controller\SeatController.java. (<"1*½
+1 ( 
+
+! (,,
+%0&com.skybooker.seat.service.SeatService"__id*]
+
+__unknown_file (A*?.
+,com.skybooker.seat.controller.SeatController"
+seatService¨¥
+! (G
+%1java.util.List"Ycom.skybooker.seat.service.SeatService#getSeatsByFlight(Ljava/lang/Long;)Ljava/util/List;*J
+
+__unknown_file (.
+,
+%0&com.skybooker.seat.service.SeatService*8
+
+__unknown_file (
+
+flightIdjava.lang.Long2"getSeatsByFlight(Ljava/lang/Long;)¢
+Ÿ
+ (H-
+%2'org.springframework.http.ResponseEntity"gorg.springframework.http.ResponseEntity#ok(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;*G
+
+__unknown_file (+")
+'org.springframework.http.ResponseEntity*2
+
+__unknown_file (
+
+%1java.util.List";
+ (I/
+-
+%2'org.springframework.http.ResponseEntity:&
+= (X
+flightIdjava.lang.LongB0.
+,com.skybooker.seat.controller.SeatControllerH

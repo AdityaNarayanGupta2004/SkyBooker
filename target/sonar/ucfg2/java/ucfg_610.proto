@@ -1,0 +1,19 @@
+
+=com.skybooker.seat.entity.Seat#setStatus(Ljava/lang/String;)V
+__unknown_file ("1*œ
+1 («
+¨
+H
+>seat-service\src\main\java\com\skybooker\seat\entity\Seat.java2 2(, 
+com.skybooker.seat.entity.Seat"
+status"__id*(
+ (
+
+statusjava.lang.String"_
+H
+>seat-service\src\main\java\com\skybooker\seat\entity\Seat.java2 2(
+implicit return:f
+H
+>seat-service\src\main\java\com\skybooker\seat\entity\Seat.java2 2(
+statusjava.lang.StringB" 
+com.skybooker.seat.entity.SeatH

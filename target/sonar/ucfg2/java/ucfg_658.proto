@@ -1,0 +1,19 @@
+
+Pcom.skybooker.seat.dto.SeatResponse#setHoldExpiresAt(Ljava/time/LocalDateTime;)V
+__unknown_file ("1*À
+1 (Ê
+Ç
+M
+Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java ((8%
+#com.skybooker.seat.dto.SeatResponse"
+holdExpiresAt"__id*6
+ (*
+(
+holdExpiresAtjava.time.LocalDateTime"d
+M
+Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java ((
+implicit return:y
+M
+Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java (((
+holdExpiresAtjava.time.LocalDateTimeB'%
+#com.skybooker.seat.dto.SeatResponseH

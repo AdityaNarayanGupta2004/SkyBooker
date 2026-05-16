@@ -1,0 +1,37 @@
+
+bcom.skybooker.auth.dto.AuthResponse#token(Ljava/lang/String;)Lcom/skybooker/auth/dto/AuthResponse;M
+Cauth-service\src\main\java\com\skybooker\auth\dto\AuthResponse.java ($"1*š
+1 (-\Z
+ (+)
+%0#com.skybooker.auth.dto.AuthResponse"#com.skybooker.auth.dto.AuthResponse‹
+ˆ
+ (-
+%1"-com.skybooker.auth.dto.AuthResponse#<init>()V*G
+
+__unknown_file (+
+)
+%0#com.skybooker.auth.dto.AuthResponseˆ
+…
+ (.*
+res#com.skybooker.auth.dto.AuthResponse"__id*G
+
+__unknown_file (+
+)
+%0#com.skybooker.auth.dto.AuthResponseÙ
+Ö
+ (
+%2"Acom.skybooker.auth.dto.AuthResponse#setToken(Ljava/lang/String;)V*H
+
+__unknown_file (,
+*
+res#com.skybooker.auth.dto.AuthResponse*7
+
+__unknown_file (
+
+tokenjava.lang.String"8
+ (,
+*
+res#com.skybooker.auth.dto.AuthResponse:%
+% (1
+tokenjava.lang.StringB'"%
+#com.skybooker.auth.dto.AuthResponseH

@@ -1,0 +1,19 @@
+
+Ccom.skybooker.seat.dto.SeatResponse#setMessage(Ljava/lang/String;)V
+__unknown_file ("1*­
+1 (·
+´
+M
+Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java (2%
+#com.skybooker.seat.dto.SeatResponse"	
+message"__id*)
+ (
+
+messagejava.lang.String"d
+M
+Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java (
+implicit return:l
+M
+Cseat-service\src\main\java\com\skybooker\seat\dto\SeatResponse.java (
+messagejava.lang.StringB'%
+#com.skybooker.seat.dto.SeatResponseH

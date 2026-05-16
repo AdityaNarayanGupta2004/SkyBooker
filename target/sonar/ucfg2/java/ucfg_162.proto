@@ -1,0 +1,19 @@
+
+Lcom.skybooker.flight.dto.FlightResponse#setFlightNumber(Ljava/lang/String;)V
+__unknown_file ("1*Ç
+1 (Ë
+È
+S
+Iflight-service\src\main\java\com\skybooker\flight\dto\FlightResponse.java ( ;)
+'com.skybooker.flight.dto.FlightResponse"
+flightNumber"__id*.
+ ("
+ 
+flightNumberjava.lang.String"j
+S
+Iflight-service\src\main\java\com\skybooker\flight\dto\FlightResponse.java ( 
+implicit return:w
+S
+Iflight-service\src\main\java\com\skybooker\flight\dto\FlightResponse.java (  
+flightNumberjava.lang.StringB+)
+'com.skybooker.flight.dto.FlightResponseH

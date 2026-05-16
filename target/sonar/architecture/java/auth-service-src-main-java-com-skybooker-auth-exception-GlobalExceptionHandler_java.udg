@@ -1,0 +1,349 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917115258*java2.B‘
+X
+Sauth-service/src/main/java/com/skybooker/auth/exception/GlobalExceptionHandler.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+auth-service6
+
+package8
+.
+)auth-service:com.skybooker.auth.exception9
+9
+3com.skybooker.auth.exception.GlobalExceptionHandler11
+
+class12
+
+access13
+
+public14
+
+
+full-range15
+
+(13:1)-(39:2)16
+
+simple-name17
+
+GlobalExceptionHandler18
+B
+<org.springframework.web.bind.annotation.RestControllerAdvice20
+
+unknown21
+
+annotated by22
+
+
+uses23
+º
+³com.skybooker.auth.exception.GlobalExceptionHandler#handleValidationErrors(Lorg/springframework/web/bind/MethodArgumentNotValidException;)Lorg/springframework/http/ResponseEntity;25
+
+method26
+
+(19:5)-(28:6)27
+
+handleValidationErrors28
+-
+'org.springframework.http.ResponseEntity30
+
+returns31
+B
+<org.springframework.web.bind.MethodArgumentNotValidException33
+
+	has param34
+>
+8org.springframework.web.bind.annotation.ExceptionHandler36
+
+is type37
+/
+)org.springframework.validation.FieldError39
++
+%org.springframework.validation.Errors41
+
+
+references42
+L
+Forg.springframework.validation.Errors#getFieldErrors()Ljava/util/List;44
+
+calls45
+2
+,org.springframework.validation.BindingResult47
+2
+,org.springframework.validation.BindException49
+s
+morg.springframework.validation.BindException#getBindingResult()Lorg/springframework/validation/BindingResult;51
+L
+Forg.springframework.validation.FieldError#getField()Ljava/lang/String;53
+H
+Borg.springframework.context.support.DefaultMessageSourceResolvable55
+n
+horg.springframework.context.support.DefaultMessageSourceResolvable#getDefaultMessage()Ljava/lang/String;57
+9
+3org.springframework.http.ResponseEntity$BodyBuilder59
+{
+uorg.springframework.http.ResponseEntity$BodyBuilder#body(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;61
+•
+Žorg.springframework.http.ResponseEntity#status(Lorg/springframework/http/HttpStatusCode;)Lorg/springframework/http/ResponseEntity$BodyBuilder;63
+)
+#org.springframework.http.HttpStatus65
+5
+/org.springframework.http.HttpStatus.BAD_REQUEST67
+˜
+‘com.skybooker.auth.exception.GlobalExceptionHandler#handleRuntimeException(Ljava/lang/RuntimeException;)Lorg/springframework/http/ResponseEntity;69
+
+(33:5)-(38:6)70
+
+handleRuntimeException71J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68jÔ
+
+50
+505121
+
+40
+404121
+
+38
+383921
+
+66
+666721
+N
+68H
+686926 *
+1"0 "(F210:7B$
+
+
+13
+14
+
+
+15
+70
+
+
+17
+71
+
+52
+525321
+
+46
+464721
+
+58
+585921
+N
+24H
+242526 *
+10 (F210:7B$
+
+
+13
+14
+
+
+15
+27
+
+
+17
+28
+
+32
+323321
+
+56
+565721
+
+64
+646521
+
+19
+192021
+
+54
+545521
+
+60
+606121
+
+35
+353621
+
+29
+293021
+
+48
+484921
+
+43
+434421
+J
+10D
+101112 *
+1 ($:7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+
+62
+626321r‰	
+
+101922*
+1 (
+
+101923*
+1 (
+
+242931*
+1 (/
+
+243234*
+1 (,
+
+243522*
+1 (=
+
+243523*
+1 (
+
+243223*
+1 (6
+
+242923*
+1 (
+
+243237*
+1- (/
+
+243223*
+1 (,
+
+243837*
+1 (
+
+243823*
+1 (
+
+244042*
+1! (E
+
+244345*
+17 (E
+
+244631*
+1! (4
+
+244842*
+1! (4
+
+245045*
+1$ (4
+
+243842*
+1 (&
+
+245245*
+1 (&
+
+245442*
+1* (A
+
+245645*
+10 (A
+
+242931*
+1 (B
+
+245842*
+1 (B
+
+246045*
+1> (B
+
+245831*
+1 (%
+
+242942*
+1 (%
+
+246245*
+1 (%
+
+246423*
+1& (0
+
+246423*
+11 (<
+
+246642*
+11 (<
+
+682931*
+1" "(/
+
+683522*
+1! !(.
+
+683523*
+1! !(
+
+682923*
+1" "(
+
+682931*
+1% %(B
+
+685842*
+1% %(B
+
+686045*
+1%> %(B
+
+685831*
+1% %(%
+
+682942*
+1% %(%
+
+686245*
+1% %(%
+
+686423*
+1%& %(0
+
+686423*
+1%1 %(<
+
+686642*
+1%1 %(<

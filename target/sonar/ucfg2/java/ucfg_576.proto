@@ -1,0 +1,19 @@
+
+Acom.skybooker.seat.dto.SeatRequest#setColumn(Ljava/lang/String;)V
+__unknown_file ("1*¨
+1 (³
+°
+L
+Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (0$
+"com.skybooker.seat.dto.SeatRequest"
+column"__id*(
+ (
+
+columnjava.lang.String"c
+L
+Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (
+implicit return:j
+L
+Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (
+columnjava.lang.StringB&$
+"com.skybooker.seat.dto.SeatRequestH

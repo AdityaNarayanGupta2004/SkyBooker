@@ -1,0 +1,64 @@
+
+<__sonar_lambda_5$com.skybooker.booking.config.SecurityConfigW
+Mflight-booking\src\main\java\com\skybooker\booking\config\SecurityConfig.java6' >(5"1*â
+16/ 6(3©¦
+6/ <(s
+%39lorg.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl"ˆorg.springframework.security.config.annotation.web.AbstractRequestMatcherRegistry#requestMatchers([Ljava/lang/String;)Ljava/lang/Object;*²
+
+__unknown_file (•
+’
+auth‰org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry*.
+
+__unknown_file (
+/swagger-ui/***0
+
+__unknown_file (
+/swagger-ui.html*/
+
+__unknown_file (
+/v3/api-docs/***,
+
+__unknown_file (
+/v3/api-docs2$requestMatchers([Ljava/lang/String;)ÈÅ
+6/ <(%‘
+%40‰org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry"ƒorg.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl#permitAll()Lorg/springframework/security/config/annotation/web/configurers/AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry;*‘
+
+__unknown_file (u
+s
+%39lorg.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl2permitAll()•’
+6/ =(8s
+%41lorg.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl"ˆorg.springframework.security.config.annotation.web.AbstractRequestMatcherRegistry#requestMatchers([Ljava/lang/String;)Ljava/lang/Object;*±
+
+__unknown_file (”
+‘
+%40‰org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry*,
+
+__unknown_file (
+/bookings/**2$requestMatchers([Ljava/lang/String;)“
+6/ =(M‘
+%42‰org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry"“org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl#hasRole(Ljava/lang/String;)Lorg/springframework/security/config/annotation/web/configurers/AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry;*‘
+
+__unknown_file (u
+s
+%41lorg.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl*)
+
+__unknown_file (
+	PASSENGER2hasRole(Ljava/lang/String;)¶³
+6/ >(%s
+%43lorg.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl"porg.springframework.security.config.annotation.web.AbstractRequestMatcherRegistry#anyRequest()Ljava/lang/Object;*±
+
+__unknown_file (”
+‘
+%42‰org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry2anyRequest()ÐÍ
+6/ >(5‘
+%44‰org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry"‡org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl#authenticated()Lorg/springframework/security/config/annotation/web/configurers/AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry;*‘
+
+__unknown_file (u
+s
+%43lorg.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizedUrl2authenticated()"¡
+6/ >(5”
+‘
+%44‰org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry:Ÿ
+6' 6(+’
+auth‰org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistryB/-
++com.skybooker.booking.config.SecurityConfig

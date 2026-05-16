@@ -1,0 +1,509 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917100311*java2.B¨
+V
+Qpassenger-service/src/main/java/com/skybooker/passenger/entity/PassengerInfo.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+passenger-service6
+
+package8
+5
+0passenger-service:com.skybooker.passenger.entity9
+2
+,com.skybooker.passenger.entity.PassengerInfo11
+
+class12
+
+access13
+
+public14
+
+
+full-range15
+
+(8:1)-(43:2)16
+
+simple-name17
+
+PassengerInfo18
+ 
+jakarta.persistence.Entity20
+
+unknown21
+
+annotated by22
+
+
+uses23
+
+jakarta.persistence.Table25
+
+lombok.Data27
+
+lombok.NoArgsConstructor29
+
+lombok.AllArgsConstructor31
+>
+8com.skybooker.passenger.entity.PassengerInfo.passengerId33
+
+field34
+
+private35
+
+(15:5)-(17:30)36
+
+passengerId37
+
+jakarta.persistence.Id39
+(
+"jakarta.persistence.GeneratedValue41
+(
+"jakarta.persistence.GenerationType43
+1
++jakarta.persistence.GenerationType.IDENTITY45
+
+
+references46
+<
+6com.skybooker.passenger.entity.PassengerInfo.bookingId48
+
+(20:5)-(20:30)49
+
+	bookingId50
+8
+2com.skybooker.passenger.entity.PassengerInfo.title52
+
+(22:5)-(22:26)53
+
+title54
+<
+6com.skybooker.passenger.entity.PassengerInfo.firstName56
+
+(23:5)-(23:30)57
+
+	firstName58
+;
+5com.skybooker.passenger.entity.PassengerInfo.lastName60
+
+(24:5)-(24:29)61
+
+lastName62
+>
+8com.skybooker.passenger.entity.PassengerInfo.dateOfBirth64
+
+(25:5)-(25:35)65
+
+dateOfBirth66
+9
+3com.skybooker.passenger.entity.PassengerInfo.gender68
+
+(26:5)-(26:27)69
+
+gender70
+A
+;com.skybooker.passenger.entity.PassengerInfo.passportNumber72
+
+(28:5)-(28:35)73
+
+passportNumber74
+>
+8com.skybooker.passenger.entity.PassengerInfo.nationality76
+
+(29:5)-(29:32)77
+
+nationality78
+A
+;com.skybooker.passenger.entity.PassengerInfo.passportExpiry80
+
+(30:5)-(30:38)81
+
+passportExpiry82
+9
+3com.skybooker.passenger.entity.PassengerInfo.seatId84
+
+(33:5)-(33:25)85
+
+seatId86
+=
+7com.skybooker.passenger.entity.PassengerInfo.seatNumber88
+
+(34:5)-(34:31)89
+
+
+seatNumber90
+?
+9com.skybooker.passenger.entity.PassengerInfo.ticketNumber92
+
+(37:5)-(37:33)93
+
+ticketNumber94
+@
+:com.skybooker.passenger.entity.PassengerInfo.passengerType96
+
+(40:5)-(40:34)97
+
+passengerType98
+=
+6com.skybooker.passenger.entity.PassengerInfo.createdAt100
+
+(42:5)-(42:37)101
+
+	createdAt102J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68j³
+
+19
+192021
+Q
+99K
+9910034 *
+1* *($210:7B&
+
+
+13
+35
+
+15
+101
+
+17
+102
+
+42
+424321
+N
+47H
+474834 *
+1 (210:7B$
+
+
+13
+35
+
+
+15
+49
+
+
+17
+50
+
+24
+242521
+J
+10D
+101112 *
+1 (:7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+N
+87H
+878834 *
+1" "(210:7B$
+
+
+13
+35
+
+
+15
+89
+
+
+17
+90
+N
+32H
+323334 *
+1 (210:7B$
+
+
+13
+35
+
+
+15
+36
+
+
+17
+37
+N
+55H
+555634 *
+1 (210:7B$
+
+
+13
+35
+
+
+15
+57
+
+
+17
+58
+N
+71H
+717234 *
+1 ("210:7B$
+
+
+13
+35
+
+
+15
+73
+
+
+17
+74
+N
+75H
+757634 *
+1 (210:7B$
+
+
+13
+35
+
+
+15
+77
+
+
+17
+78
+N
+91H
+919234 *
+1% %( 210:7B$
+
+
+13
+35
+
+
+15
+93
+
+
+17
+94
+N
+59H
+596034 *
+1 (210:7B$
+
+
+13
+35
+
+
+15
+61
+
+
+17
+62
+
+38
+383921
+
+40
+404121
+
+44
+444521
+N
+63H
+636434 *
+1 ("210:7B$
+
+
+13
+35
+
+
+15
+65
+
+
+17
+66
+N
+67H
+676834 *
+1 (210:7B$
+
+
+13
+35
+
+
+15
+69
+
+
+17
+70
+N
+83H
+838434 *
+1! !(210:7B$
+
+
+13
+35
+
+
+15
+85
+
+
+17
+86
+N
+95H
+959634 *
+1( ((!210:7B$
+
+
+13
+35
+
+
+15
+97
+
+
+17
+98
+
+26
+262721
+
+30
+303121
+N
+79H
+798034 *
+1 (%210:7B$
+
+
+13
+35
+
+
+15
+81
+
+
+17
+82
+
+28
+282921
+N
+51H
+515234 *
+1 (210:7B$
+
+
+13
+35
+
+
+15
+53
+
+
+17
+54rË
+
+101922*
+1 (
+
+101923*
+1 (
+
+102422*
+1	 	(
+
+102423*
+1	 	(
+
+102622*
+1
+ 
+(
+
+102623*
+1
+ 
+(
+
+102822*
+1 (
+
+102823*
+1 (
+
+103022*
+1 (
+
+103023*
+1 (
+
+323822*
+1 (
+
+323823*
+1 (
+
+324022*
+1 (8
+
+324023*
+1 (
+
+324223*
+1  (.
+
+324223*
+1/ (7
+
+324446*
+1/ (7

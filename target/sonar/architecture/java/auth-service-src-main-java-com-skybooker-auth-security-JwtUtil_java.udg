@@ -1,0 +1,581 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917116346*java2.Bú
+H
+Cauth-service/src/main/java/com/skybooker/auth/security/JwtUtil.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+auth-service6
+
+package8
+-
+(auth-service:com.skybooker.auth.security9
+)
+#com.skybooker.auth.security.JwtUtil11
+
+class12
+
+access13
+
+public14
+
+
+full-range15
+
+(12:1)-(53:2)16
+
+simple-name17
+
+JwtUtil18
+
+lombok.extern.slf4j.Slf4j20
+
+unknown21
+
+annotated by22
+
+
+uses23
+.
+(org.springframework.stereotype.Component25
+0
+*com.skybooker.auth.security.JwtUtil.SECRET27
+
+field28
+
+private29
+
+(16:5)-(16:90)30
+
+SECRET31
+-
+'com.skybooker.auth.security.JwtUtil.key33
+
+(17:5)-(17:73)34
+	
+key35
+#
+io.jsonwebtoken.security.Keys37
+
+
+references38
+M
+Gio.jsonwebtoken.security.Keys#hmacShaKeyFor([B)Ljavax/crypto/SecretKey;40
+
+calls41
+o
+icom.skybooker.auth.security.JwtUtil#generateToken(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;43
+
+method44
+
+(20:5)-(28:6)45
+
+generateToken46
+ 
+io.jsonwebtoken.JwtBuilder48
+<
+6io.jsonwebtoken.JwtBuilder#compact()Ljava/lang/String;50
+
+returns51
+Z
+Tio.jsonwebtoken.JwtBuilder#signWith(Ljava/security/Key;)Lio/jsonwebtoken/JwtBuilder;53
+\
+Vio.jsonwebtoken.JwtBuilder#setExpiration(Ljava/util/Date;)Lio/jsonwebtoken/JwtBuilder;55
+Z
+Tio.jsonwebtoken.JwtBuilder#setIssuedAt(Ljava/util/Date;)Lio/jsonwebtoken/JwtBuilder;57
+h
+bio.jsonwebtoken.JwtBuilder#claim(Ljava/lang/String;Ljava/lang/Object;)Lio/jsonwebtoken/JwtBuilder;59
+[
+Uio.jsonwebtoken.JwtBuilder#setSubject(Ljava/lang/String;)Lio/jsonwebtoken/JwtBuilder;61
+
+io.jsonwebtoken.Jwts63
+@
+:io.jsonwebtoken.Jwts#builder()Lio/jsonwebtoken/JwtBuilder;65
+L
+Fcom.skybooker.auth.security.JwtUtil#validateToken(Ljava/lang/String;)Z67
+
+(30:5)-(38:6)68
+
+validateToken69
+
+io.jsonwebtoken.Jws71
+
+io.jsonwebtoken.JwtParser73
+W
+Qio.jsonwebtoken.JwtParser#parseClaimsJws(Ljava/lang/String;)Lio/jsonwebtoken/Jws;75
+&
+ io.jsonwebtoken.JwtParserBuilder77
+I
+Cio.jsonwebtoken.JwtParserBuilder#build()Lio/jsonwebtoken/JwtParser;79
+k
+eio.jsonwebtoken.JwtParserBuilder#setSigningKey(Ljava/security/Key;)Lio/jsonwebtoken/JwtParserBuilder;81
+L
+Fio.jsonwebtoken.Jwts#parserBuilder()Lio/jsonwebtoken/JwtParserBuilder;83
+\
+Vcom.skybooker.auth.security.JwtUtil#extractEmail(Ljava/lang/String;)Ljava/lang/String;85
+
+(40:5)-(45:6)86
+
+extractEmail87
+
+io.jsonwebtoken.Claims89
+;
+5io.jsonwebtoken.Claims#getSubject()Ljava/lang/String;91
+
+io.jsonwebtoken.Jwt93
+5
+/io.jsonwebtoken.Jwt#getBody()Ljava/lang/Object;95
+[
+Ucom.skybooker.auth.security.JwtUtil#extractRole(Ljava/lang/String;)Ljava/lang/String;97
+
+(47:5)-(52:6)98
+
+extractRole99J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68jŒ
+
+76
+767721
+
+94
+949521
+
+56
+565721
+
+72
+727321
+N
+66H
+666744 *
+1 (!210:7B$
+
+
+13
+14
+
+
+15
+68
+
+
+17
+69
+
+88
+888921
+
+92
+929321
+
+70
+707121
+
+36
+363721
+
+47
+474821
+
+58
+585921
+N
+96H
+969744 *
+1/ /(210:7B$
+
+
+13
+14
+
+
+15
+98
+
+
+17
+99
+N
+42H
+424344 *
+1 ( 210:7B$
+
+
+13
+14
+
+
+15
+45
+
+
+17
+46
+
+52
+525321
+N
+84H
+848544 *
+1( ((210:7B$
+
+
+13
+14
+
+
+15
+86
+
+
+17
+87
+N
+32H
+323328 *
+1 ( 210:7B$
+
+
+13
+29
+
+
+15
+34
+
+
+17
+35
+
+60
+606121
+
+80
+808121
+
+19
+192021
+
+24
+242521
+
+62
+626321
+
+90
+909121
+
+82
+828321
+
+54
+545521
+
+78
+787921
+
+64
+646521
+
+39
+394021
+J
+10D
+101112 *
+1 (:7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+
+74
+747521
+
+49
+495021
+N
+26H
+262728 *
+1! ('210:7B$
+
+
+13
+29
+
+
+15
+30
+
+
+17
+31r‹
+
+101922*
+1 (
+
+101923*
+1 (
+
+102422*
+1 (
+
+102423*
+1 (
+
+323638*
+1# (5
+
+323941*
+1( (5
+
+323623*
+1# ('
+
+322638*
+16 (<
+
+322638*
+16 (<
+
+424738*
+1 (
+
+424941*
+1 (
+
+424751*
+1 (
+
+424738*
+1 (
+
+425241*
+1 (
+
+424751*
+1 (
+
+424738*
+1 (
+
+425441*
+1 (
+
+424751*
+1 (
+
+424738*
+1 (
+
+425641*
+1 (
+
+424751*
+1 (
+
+424738*
+1 (
+
+425841*
+1 (
+
+424751*
+1 (
+
+424738*
+1 (
+
+426041*
+1 (
+
+424751*
+1 (
+
+426238*
+1 (
+
+426441*
+1 (
+
+426223*
+1 (
+
+423238*
+1 (
+
+667051*
+1   (K
+
+667238*
+1   (K
+
+667441*
+1 =  (K
+
+667251*
+1   (:
+
+667638*
+1   (:
+
+667841*
+1 5  (:
+
+667651*
+1   (/
+
+667638*
+1   (/
+
+668041*
+1 "  (/
+
+667651*
+1   (
+
+666238*
+1   (
+
+668241*
+1   (
+
+666223*
+1   (
+
+663238*
+1 0  (3
+
+848838*
+1) ,(&
+
+849041*
+1, ,(&
+
+848851*
+1) ,(
+
+849238*
+1) ,(
+
+849441*
+1, ,(
+
+847051*
+1) +( 
+
+847238*
+1) +( 
+
+847441*
+1+ +( 
+
+847251*
+1) *(*
+
+847638*
+1) *(*
+
+847841*
+1*% *(*
+
+847651*
+1) *(
+
+847638*
+1) *(
+
+848041*
+1* *(
+
+847651*
+1) )("
+
+846238*
+1) )("
+
+848241*
+1) )("
+
+846223*
+1) )(
+
+843238*
+1*  *(#
+
+968851*
+10 3(
+
+969238*
+10 3(
+
+969441*
+13 3(
+
+967051*
+10 2( 
+
+967238*
+10 2( 
+
+967441*
+12 2( 
+
+967251*
+10 1(*
+
+967638*
+10 1(*
+
+967841*
+11% 1(*
+
+967651*
+10 1(
+
+967638*
+10 1(
+
+968041*
+11 1(
+
+967651*
+10 0(+
+
+966238*
+10 0(+
+
+968241*
+10 0(+
+
+966223*
+10 0(
+
+963238*
+11  1(#

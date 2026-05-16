@@ -1,0 +1,63 @@
+
+Ñcom.skybooker.seat.controller.SeatController#getByClass(Ljava/lang/Long;Ljava/lang/String;)Lorg/springframework/http/ResponseEntity;V
+Lseat-service\src\main\java\com\skybooker\seat\controller\SeatController.java'. '(8"startingBlock*≤
+startingBlock'8 )(+≤
+Ø
+) )(
+%3"
+__annotate*T
+
+__unknown_file (86
+4org.springframework.web.bind.annotation.PathVariable*;
+
+__unknown_file (
+
+	seatClassjava.lang.String]
+[
+)! )(*
+	seatClassjava.lang.String"__annotation*"
+
+__unknown_file (
+
+%3*
+1*ú
+1* *(†
+ù
+*! *(,,
+%0&com.skybooker.seat.service.SeatService"__id*]
+
+__unknown_file (A*?.
+,com.skybooker.seat.controller.SeatController"
+seatServiceáÑ
+*! *(Q
+%1java.util.List"jcom.skybooker.seat.service.SeatService#getSeatsByClass(Ljava/lang/Long;Ljava/lang/String;)Ljava/util/List;*J
+
+__unknown_file (.
+,
+%0&com.skybooker.seat.service.SeatService*8
+
+__unknown_file (
+
+flightIdjava.lang.Long*;
+
+__unknown_file (
+
+	seatClassjava.lang.String23getSeatsByClass(Ljava/lang/Long;Ljava/lang/String;)¢
+ü
+* *(R-
+%2'org.springframework.http.ResponseEntity"gorg.springframework.http.ResponseEntity#ok(Ljava/lang/Object;)Lorg/springframework/http/ResponseEntity;*G
+
+__unknown_file (+")
+'org.springframework.http.ResponseEntity*2
+
+__unknown_file (
+
+%1java.util.List";
+* *(S/
+-
+%2'org.springframework.http.ResponseEntity:&
+( (((
+flightIdjava.lang.Long:)
+) )(*
+	seatClassjava.lang.StringB0.
+,com.skybooker.seat.controller.SeatControllerH

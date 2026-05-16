@@ -1,0 +1,345 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917112422*java2.BÙ
+K
+Fseat-service/src/main/java/com/skybooker/seat/service/SeatService.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+seat-service6
+
+package8
+,
+'seat-service:com.skybooker.seat.service9
+,
+&com.skybooker.seat.service.SeatService11
+
+	interface12
+
+access13
+
+public14
+
+
+full-range15
+
+(8:1)-(27:2)16
+
+simple-name17
+
+SeatService18
+
+ycom.skybooker.seat.service.SeatService#addSeat(Lcom/skybooker/seat/dto/SeatRequest;)Lcom/skybooker/seat/dto/SeatResponse;20
+
+method21
+
+(10:5)-(10:47)22
+
+addSeat23
+)
+#com.skybooker.seat.dto.SeatResponse25
+
+unknown26
+
+returns27
+(
+"com.skybooker.seat.dto.SeatRequest29
+
+	has param30
+
+
+uses31
+
+is type32
+_
+Ycom.skybooker.seat.service.SeatService#getSeatsByFlight(Ljava/lang/Long;)Ljava/util/List;34
+
+(12:5)-(12:56)35
+
+getSeatsByFlight36
+`
+Zcom.skybooker.seat.service.SeatService#getAvailableSeats(Ljava/lang/Long;)Ljava/util/List;38
+
+(14:5)-(14:57)39
+
+getAvailableSeats40
+p
+jcom.skybooker.seat.service.SeatService#getSeatsByClass(Ljava/lang/Long;Ljava/lang/String;)Ljava/util/List;42
+
+(16:5)-(16:73)43
+
+getSeatsByClass44
+~
+xcom.skybooker.seat.service.SeatService#holdSeat(Ljava/lang/Long;Ljava/lang/String;)Lcom/skybooker/seat/dto/SeatResponse;46
+
+(18:5)-(18:61)47
+
+holdSeat48
+Å
+{com.skybooker.seat.service.SeatService#confirmSeat(Ljava/lang/Long;Ljava/lang/String;)Lcom/skybooker/seat/dto/SeatResponse;50
+
+(20:5)-(20:64)51
+
+confirmSeat52
+Å
+{com.skybooker.seat.service.SeatService#releaseSeat(Ljava/lang/Long;Ljava/lang/String;)Lcom/skybooker/seat/dto/SeatResponse;54
+
+(22:5)-(22:64)55
+
+releaseSeat56
+Q
+Kcom.skybooker.seat.service.SeatService#getAvailableCount(Ljava/lang/Long;)I58
+
+(24:5)-(24:42)59
+
+getAvailableCount60
+C
+=com.skybooker.seat.service.SeatService#releaseExpiredHolds()V62
+
+(26:5)-(26:32)63
+
+releaseExpiredHolds64J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68jƒ
+J
+10D
+101112 *
+1 (:7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+N
+49H
+495021 *
+1 (210:7B$
+
+
+13
+14
+
+
+15
+51
+
+
+17
+52
+N
+53H
+535421 *
+1 (210:7B$
+
+
+13
+14
+
+
+15
+55
+
+
+17
+56
+N
+33H
+333421 *
+1 ((210:7B$
+
+
+13
+14
+
+
+15
+35
+
+
+17
+36
+N
+41H
+414221 *
+1 ('210:7B$
+
+
+13
+14
+
+
+15
+43
+
+
+17
+44
+N
+19H
+192021 *
+1
+ 
+(210:7B$
+
+
+13
+14
+
+
+15
+22
+
+
+17
+23
+N
+37H
+373821 *
+1 ()210:7B$
+
+
+13
+14
+
+
+15
+39
+
+
+17
+40
+N
+57H
+575821 *
+1	 (210:7B$
+
+
+13
+14
+
+
+15
+59
+
+
+17
+60
+N
+61H
+616221 *
+1
+ (210:7B$
+
+
+13
+14
+
+
+15
+63
+
+
+17
+64
+
+24
+242526
+N
+45H
+454621 *
+1 (210:7B$
+
+
+13
+14
+
+
+15
+47
+
+
+17
+48
+
+28
+282926r˙
+
+192427*
+1
+ 
+(
+
+192830*
+1
+ 
+(%
+
+192431*
+1
+ 
+(
+
+192832*
+1
+& 
+(-
+
+192831*
+1
+ 
+(%
+
+332431*
+1
+ (
+
+372431*
+1
+ (
+
+412431*
+1
+ (
+
+452427*
+1 (
+
+452431*
+1 (
+
+492427*
+1 (
+
+492431*
+1 (
+
+532427*
+1 (
+
+532431*
+1 (

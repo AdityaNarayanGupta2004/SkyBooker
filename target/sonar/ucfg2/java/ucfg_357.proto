@@ -1,0 +1,19 @@
+
+Rcom.skybooker.passenger.dto.PassengerRequest#setPassengerType(Ljava/lang/String;)V
+__unknown_file ("1*Þ
+1 (Ú
+×
+[
+Qpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerRequest.java (!A.
+,com.skybooker.passenger.dto.PassengerRequest"
+passengerType"__id*/
+ (#
+!
+passengerTypejava.lang.String"r
+[
+Qpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerRequest.java (!
+implicit return:€
+[
+Qpassenger-service\src\main\java\com\skybooker\passenger\dto\PassengerRequest.java (!!
+passengerTypejava.lang.StringB0.
+,com.skybooker.passenger.dto.PassengerRequestH

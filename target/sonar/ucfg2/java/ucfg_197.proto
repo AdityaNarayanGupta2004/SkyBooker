@@ -1,0 +1,16 @@
+
+Hcom.skybooker.flight.entity.Flight#getArrivalDate()Ljava/time/LocalDate;
+__unknown_file ("1*¸
+1 (¹
+¶
+N
+Dflight-service\src\main\java\com\skybooker\flight\entity\Flight.java ("
+%0java.time.LocalDate"__id*C
+ (7*5$
+"com.skybooker.flight.entity.Flight"
+arrivalDate"m
+N
+Dflight-service\src\main\java\com\skybooker\flight\entity\Flight.java ("
+
+%0java.time.LocalDateB&$
+"com.skybooker.flight.entity.FlightH

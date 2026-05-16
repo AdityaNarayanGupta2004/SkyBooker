@@ -1,0 +1,19 @@
+
+Kcom.skybooker.flight.dto.FlightResponse#setArrivalTime(Ljava/lang/String;)V
+__unknown_file ("1*Å
+1 (É
+Æ
+S
+Iflight-service\src\main\java\com\skybooker\flight\dto\FlightResponse.java (:)
+'com.skybooker.flight.dto.FlightResponse"
+arrivalTime"__id*-
+ (!
+
+arrivalTimejava.lang.String"j
+S
+Iflight-service\src\main\java\com\skybooker\flight\dto\FlightResponse.java (
+implicit return:v
+S
+Iflight-service\src\main\java\com\skybooker\flight\dto\FlightResponse.java (
+arrivalTimejava.lang.StringB+)
+'com.skybooker.flight.dto.FlightResponseH

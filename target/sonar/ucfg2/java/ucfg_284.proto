@@ -1,0 +1,19 @@
+
+Kcom.skybooker.passenger.entity.PassengerInfo#setGender(Ljava/lang/String;)V
+__unknown_file ("1*Ð
+1 (Ì
+É
+[
+Qpassenger-service\src\main\java\com\skybooker\passenger\entity\PassengerInfo.java (:.
+,com.skybooker.passenger.entity.PassengerInfo"
+gender"__id*(
+ (
+
+genderjava.lang.String"r
+[
+Qpassenger-service\src\main\java\com\skybooker\passenger\entity\PassengerInfo.java (
+implicit return:y
+[
+Qpassenger-service\src\main\java\com\skybooker\passenger\entity\PassengerInfo.java (
+genderjava.lang.StringB0.
+,com.skybooker.passenger.entity.PassengerInfoH

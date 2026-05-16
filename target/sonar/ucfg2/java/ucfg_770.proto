@@ -1,0 +1,19 @@
+
+Ccom.skybooker.auth.dto.RegisterRequest#setRole(Ljava/lang/String;)V
+__unknown_file ("1*°
+1 (·
+´
+P
+Fauth-service\src\main\java\com\skybooker\auth\dto\RegisterRequest.java: :(2(
+&com.skybooker.auth.dto.RegisterRequest"
+role"__id*&
+ (
+
+rolejava.lang.String"g
+P
+Fauth-service\src\main\java\com\skybooker\auth\dto\RegisterRequest.java: :(
+implicit return:l
+P
+Fauth-service\src\main\java\com\skybooker\auth\dto\RegisterRequest.java: :(
+rolejava.lang.StringB*(
+&com.skybooker.auth.dto.RegisterRequestH

@@ -1,0 +1,340 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917109775*java2.B­
+Y
+Tflight-booking/src/main/java/com/skybooker/booking/controller/BookingController.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+flight-booking6
+
+package8
+4
+/flight-booking:com.skybooker.booking.controller9
+8
+2com.skybooker.booking.controller.BookingController11
+
+class12
+
+access13
+
+public14
+
+
+full-range15
+
+(9:1)-(29:2)16
+
+simple-name17
+
+BookingController18
+<
+6org.springframework.web.bind.annotation.RestController20
+
+unknown21
+
+annotated by22
+
+
+uses23
+<
+6org.springframework.web.bind.annotation.RequestMapping25
+$
+lombok.RequiredArgsConstructor27
+G
+Acom.skybooker.booking.controller.BookingController.bookingService29
+
+field30
+
+private31
+
+(14:5)-(14:49)32
+
+bookingService33
+2
+,com.skybooker.booking.service.BookingService35
+
+is type36
+­
+¦com.skybooker.booking.controller.BookingController#bookFlight(Lcom/skybooker/booking/dto/BookingRequest;Ljava/lang/String;)Lcom/skybooker/booking/dto/BookingResponse;38
+
+method39
+
+(16:5)-(23:6)40
+
+
+bookFlight41
+/
+)com.skybooker.booking.dto.BookingResponse43
+
+returns44
+.
+(com.skybooker.booking.dto.BookingRequest46
+
+	has param47
+9
+3org.springframework.web.bind.annotation.PostMapping49
+9
+3org.springframework.web.bind.annotation.RequestBody51
+;
+5org.springframework.web.bind.annotation.RequestHeader53
+
+
+references54
+•
+Žcom.skybooker.booking.service.BookingService#bookFlight(Lcom/skybooker/booking/dto/BookingRequest;)Lcom/skybooker/booking/dto/BookingResponse;56
+
+calls57
+„
+~com.skybooker.booking.controller.BookingController#getBookingById(Ljava/lang/Long;)Lcom/skybooker/booking/dto/BookingResponse;59
+
+(25:5)-(28:6)60
+
+getBookingById61
+8
+2org.springframework.web.bind.annotation.GetMapping63
+:
+4org.springframework.web.bind.annotation.PathVariable65
+~
+xcom.skybooker.booking.service.BookingService#getBookingById(Ljava/lang/Long;)Lcom/skybooker/booking/dto/BookingResponse;67J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68jÀ
+J
+10D
+101112 *
+1 (:7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+
+48
+484921
+
+64
+646521
+N
+58H
+585939 *
+1 (*210:7B$
+
+
+13
+14
+
+
+15
+60
+
+
+17
+61
+
+45
+454621
+
+26
+262721
+
+24
+242521
+
+55
+555621
+
+19
+192021
+N
+28H
+282930 *
+1" (0210:7B$
+
+
+13
+31
+
+
+15
+32
+
+
+17
+33
+
+50
+505121
+
+66
+666721
+N
+37H
+373839 *
+1 (&210:7B$
+
+
+13
+14
+
+
+15
+40
+
+
+17
+41
+
+34
+343521
+
+62
+626321
+
+52
+525321
+
+42
+424321r‚
+
+101922*
+1	 	(
+
+101923*
+1	 	(
+
+102422*
+1
+ 
+(
+
+102423*
+1
+ 
+(
+
+102622*
+1 (
+
+102623*
+1 (
+
+283436*
+1 (!
+
+283423*
+1 (!
+
+283423*
+1" (0
+
+374244*
+1 (
+
+374547*
+1 ((
+
+374822*
+1 (
+
+374823*
+1 (
+
+374223*
+1 (
+
+374536*
+1) (0
+
+375022*
+1 (
+
+375023*
+1 (
+
+374523*
+1 ((
+
+375222*
+1 (,
+
+375223*
+1 (
+
+374244*
+1 ()
+
+373454*
+1 ()
+
+375557*
+1 ()
+
+372854*
+1 (
+
+373423*
+1 (
+
+372854*
+1 (
+
+584244*
+1 (
+
+586222*
+1 ( 
+
+586223*
+1 (
+
+584223*
+1 (
+
+586422*
+1+ (8
+
+586423*
+1, (8
+
+584244*
+1 (-
+
+583454*
+1 (-
+
+586657*
+1 (-
+
+582854*
+1 (
+
+583423*
+1 (
+
+582854*
+1 (

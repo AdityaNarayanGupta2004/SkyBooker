@@ -1,0 +1,221 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917088828*java2.B
+Z
+Uairline-service/src/main/java/com/skybooker/airline/repository/AirportRepository.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+airline-service6
+
+package8
+5
+0airline-service:com.skybooker.airline.repository9
+8
+2com.skybooker.airline.repository.AirportRepository11
+
+	interface12
+
+access13
+
+public14
+
+
+full-range15
+
+(9:1)-(21:2)16
+
+simple-name17
+
+AirportRepository18
+;
+5org.springframework.data.jpa.repository.JpaRepository20
+
+unknown21
+
+
+implements22
+
+
+uses23
+*
+$com.skybooker.airline.entity.Airport25
+o
+icom.skybooker.airline.repository.AirportRepository#findByIataCode(Ljava/lang/String;)Ljava/util/Optional;27
+
+method28
+
+(11:5)-(11:55)29
+
+findByIataCode30
+g
+acom.skybooker.airline.repository.AirportRepository#findByCity(Ljava/lang/String;)Ljava/util/List;32
+
+(13:5)-(13:43)33
+
+
+findByCity34
+j
+dcom.skybooker.airline.repository.AirportRepository#findByCountry(Ljava/lang/String;)Ljava/util/List;36
+
+(15:5)-(15:49)37
+
+findByCountry38
+¨
+¡com.skybooker.airline.repository.AirportRepository#findByCityContainingIgnoreCaseOrNameContainingIgnoreCase(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;40
+
+(18:5)-(18:102)41
+>
+8findByCityContainingIgnoreCaseOrNameContainingIgnoreCase42
+^
+Xcom.skybooker.airline.repository.AirportRepository#existsByIataCode(Ljava/lang/String;)Z44
+
+(20:5)-(20:47)45
+
+existsByIataCode46J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68j„
+N
+26H
+262728 *
+1 (%210:7B$
+
+
+13
+14
+
+
+15
+29
+
+
+17
+30
+N
+31H
+313228 *
+1 (210:7B$
+
+
+13
+14
+
+
+15
+33
+
+
+17
+34
+N
+39H
+394028 *
+1 (K210:7B$
+
+
+13
+14
+
+
+15
+41
+
+
+17
+42
+N
+43H
+434428 *
+1 (210:7B$
+
+
+13
+14
+
+
+15
+45
+
+
+17
+46
+J
+10D
+101112 *
+1	 	(#:7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+
+24
+242521
+N
+35H
+353628 *
+1 ( 210:7B$
+
+
+13
+14
+
+
+15
+37
+
+
+17
+38
+
+19
+192021r½
+
+101922*
+1	, 	(H
+
+101923*
+1	, 	(9
+
+102423*
+1	: 	(A
+
+262423*
+1 (
+
+312423*
+1
+ (
+
+352423*
+1
+ (
+
+392423*
+1
+ (

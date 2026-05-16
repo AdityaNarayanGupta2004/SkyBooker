@@ -1,0 +1,22 @@
+
+0com.skybooker.auth.entity.User#setIsVerified(Z)V
+__unknown_file ("1*›
+1 (ª
+§
+H
+>auth-service\src\main\java\com\skybooker\auth\entity\User.javaK L(0 
+com.skybooker.auth.entity.User"
+
+isVerified"__id*#
+ (
+
+
+isVerifiedboolean"_
+H
+>auth-service\src\main\java\com\skybooker\auth\entity\User.javaK L(
+implicit return:a
+H
+>auth-service\src\main\java\com\skybooker\auth\entity\User.javaK L(
+
+isVerifiedbooleanB" 
+com.skybooker.auth.entity.UserH

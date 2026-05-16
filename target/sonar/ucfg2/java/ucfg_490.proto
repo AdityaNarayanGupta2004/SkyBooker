@@ -1,0 +1,20 @@
+
+Gcom.skybooker.booking.dto.BookingRequest#setFlightId(Ljava/lang/Long;)V
+__unknown_file ("1*À
+1 (Ã
+À
+T
+Jflight-booking\src\main\java\com\skybooker\booking\dto\BookingRequest.java (8*
+(com.skybooker.booking.dto.BookingRequest"
+
+flightId"__id*(
+ (
+
+flightIdjava.lang.Long"k
+T
+Jflight-booking\src\main\java\com\skybooker\booking\dto\BookingRequest.java (
+implicit return:r
+T
+Jflight-booking\src\main\java\com\skybooker\booking\dto\BookingRequest.java (
+flightIdjava.lang.LongB,*
+(com.skybooker.booking.dto.BookingRequestH

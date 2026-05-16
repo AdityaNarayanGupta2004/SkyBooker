@@ -1,0 +1,17 @@
+
+acom.skybooker.flight.config.AppConfig#restTemplate()Lorg/springframework/web/client/RestTemplate;Q
+Gflight-service\src\main\java\com\skybooker\flight\config\AppConfig.java ($"1*Ú
+1 (!lj
+ (1
+%0+org.springframework.web.client.RestTemplate"+org.springframework.web.client.RestTemplate›
+˜
+ (!
+%1"5org.springframework.web.client.RestTemplate#<init>()V*O
+
+__unknown_file (3
+1
+%0+org.springframework.web.client.RestTemplate"?
+ ("3
+1
+%0+org.springframework.web.client.RestTemplateB)'
+%com.skybooker.flight.config.AppConfigH

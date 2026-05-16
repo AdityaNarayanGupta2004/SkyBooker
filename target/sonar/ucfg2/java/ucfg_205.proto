@@ -1,0 +1,19 @@
+
+Gcom.skybooker.flight.entity.Flight#setFlightNumber(Ljava/lang/String;)V
+__unknown_file ("1*¸
+1 (Á
+¾
+N
+Dflight-service\src\main\java\com\skybooker\flight\entity\Flight.java ( 6$
+"com.skybooker.flight.entity.Flight"
+flightNumber"__id*.
+ ("
+ 
+flightNumberjava.lang.String"e
+N
+Dflight-service\src\main\java\com\skybooker\flight\entity\Flight.java ( 
+implicit return:r
+N
+Dflight-service\src\main\java\com\skybooker\flight\entity\Flight.java (  
+flightNumberjava.lang.StringB&$
+"com.skybooker.flight.entity.FlightH

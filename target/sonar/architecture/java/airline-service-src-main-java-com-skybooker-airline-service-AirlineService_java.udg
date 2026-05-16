@@ -1,0 +1,495 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917087759*java2.BÝ
+T
+Oairline-service/src/main/java/com/skybooker/airline/service/AirlineService.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+airline-service6
+
+package8
+2
+-airline-service:com.skybooker.airline.service9
+2
+,com.skybooker.airline.service.AirlineService11
+
+	interface12
+
+access13
+
+public14
+
+
+full-range15
+
+(10:1)-(39:2)16
+
+simple-name17
+
+AirlineService18
+•
+Žcom.skybooker.airline.service.AirlineService#addAirline(Lcom/skybooker/airline/dto/AirlineRequest;)Lcom/skybooker/airline/dto/AirlineResponse;20
+
+method21
+
+(13:5)-(13:56)22
+
+
+addAirline23
+/
+)com.skybooker.airline.dto.AirlineResponse25
+
+unknown26
+
+returns27
+.
+(com.skybooker.airline.dto.AirlineRequest29
+
+	has param30
+
+
+uses31
+
+is type32
+~
+xcom.skybooker.airline.service.AirlineService#getAirlineById(Ljava/lang/Long;)Lcom/skybooker/airline/dto/AirlineResponse;34
+
+(15:5)-(15:45)35
+
+getAirlineById36
+‚
+|com.skybooker.airline.service.AirlineService#getAirlineByIata(Ljava/lang/String;)Lcom/skybooker/airline/dto/AirlineResponse;38
+
+(17:5)-(17:55)39
+
+getAirlineByIata40
+S
+Mcom.skybooker.airline.service.AirlineService#getAllAirlines()Ljava/util/List;42
+
+(19:5)-(19:44)43
+
+getAllAirlines44
+V
+Pcom.skybooker.airline.service.AirlineService#getActiveAirlines()Ljava/util/List;46
+
+(21:5)-(21:47)47
+
+getActiveAirlines48
+¨
+¡com.skybooker.airline.service.AirlineService#updateAirline(Ljava/lang/Long;Lcom/skybooker/airline/dto/AirlineRequest;)Lcom/skybooker/airline/dto/AirlineResponse;50
+
+(23:5)-(23:68)51
+
+updateAirline52
+ƒ
+}com.skybooker.airline.service.AirlineService#toggleAirlineStatus(Ljava/lang/Long;)Lcom/skybooker/airline/dto/AirlineResponse;54
+
+(25:5)-(25:50)55
+
+toggleAirlineStatus56
+•
+Žcom.skybooker.airline.service.AirlineService#addAirport(Lcom/skybooker/airline/dto/AirportRequest;)Lcom/skybooker/airline/dto/AirportResponse;58
+
+(28:5)-(28:56)59
+
+
+addAirport60
+/
+)com.skybooker.airline.dto.AirportResponse62
+.
+(com.skybooker.airline.dto.AirportRequest64
+~
+xcom.skybooker.airline.service.AirlineService#getAirportById(Ljava/lang/Long;)Lcom/skybooker/airline/dto/AirportResponse;66
+
+(30:5)-(30:45)67
+
+getAirportById68
+‚
+|com.skybooker.airline.service.AirlineService#getAirportByIata(Ljava/lang/String;)Lcom/skybooker/airline/dto/AirportResponse;70
+
+(32:5)-(32:55)71
+
+getAirportByIata72
+S
+Mcom.skybooker.airline.service.AirlineService#getAllAirports()Ljava/util/List;74
+
+(34:5)-(34:44)75
+
+getAllAirports76
+e
+_com.skybooker.airline.service.AirlineService#searchAirports(Ljava/lang/String;)Ljava/util/List;78
+
+(36:5)-(36:58)79
+
+searchAirports80
+¨
+¡com.skybooker.airline.service.AirlineService#updateAirport(Ljava/lang/Long;Lcom/skybooker/airline/dto/AirportRequest;)Lcom/skybooker/airline/dto/AirportResponse;82
+
+(38:5)-(38:68)83
+
+updateAirport84J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68j¬	
+N
+81H
+818221 *
+1& &("210:7B$
+
+
+13
+14
+
+
+15
+83
+
+
+17
+84
+N
+33H
+333421 *
+1 (#210:7B$
+
+
+13
+14
+
+
+15
+35
+
+
+17
+36
+N
+37H
+373821 *
+1 (%210:7B$
+
+
+13
+14
+
+
+15
+39
+
+
+17
+40
+N
+53H
+535421 *
+1 ((210:7B$
+
+
+13
+14
+
+
+15
+55
+
+
+17
+56
+N
+65H
+656621 *
+1 (#210:7B$
+
+
+13
+14
+
+
+15
+67
+
+
+17
+68
+
+28
+282926
+
+63
+636426
+J
+10D
+101112 *
+1
+ 
+( :7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+N
+77H
+777821 *
+1$ $()210:7B$
+
+
+13
+14
+
+
+15
+79
+
+
+17
+80
+
+24
+242526
+N
+45H
+454621 *
+1 (,210:7B$
+
+
+13
+14
+
+
+15
+47
+
+
+17
+48
+N
+69H
+697021 *
+1   (%210:7B$
+
+
+13
+14
+
+
+15
+71
+
+
+17
+72
+N
+73H
+737421 *
+1" "()210:7B$
+
+
+13
+14
+
+
+15
+75
+
+
+17
+76
+N
+41H
+414221 *
+1 ()210:7B$
+
+
+13
+14
+
+
+15
+43
+
+
+17
+44
+N
+49H
+495021 *
+1 ("210:7B$
+
+
+13
+14
+
+
+15
+51
+
+
+17
+52
+
+61
+616226
+N
+19H
+192021 *
+1 (210:7B$
+
+
+13
+14
+
+
+15
+22
+
+
+17
+23
+N
+57H
+575821 *
+1 (210:7B$
+
+
+13
+14
+
+
+15
+59
+
+
+17
+60r–
+
+192427*
+1 (
+
+192830*
+1  (.
+
+192431*
+1 (
+
+192832*
+1/ (6
+
+192831*
+1  (.
+
+332427*
+1 (
+
+332431*
+1 (
+
+372427*
+1 (
+
+372431*
+1 (
+
+412431*
+1
+ (
+
+452431*
+1
+ (
+
+492427*
+1 (
+
+492830*
+1, (:
+
+492431*
+1 (
+
+492832*
+1; (B
+
+492831*
+1, (:
+
+532427*
+1 (
+
+532431*
+1 (
+
+576127*
+1 (
+
+576330*
+1  (.
+
+576131*
+1 (
+
+576332*
+1/ (6
+
+576331*
+1  (.
+
+656127*
+1 (
+
+656131*
+1 (
+
+696127*
+1   (
+
+696131*
+1   (
+
+736131*
+1"
+ "(
+
+776131*
+1$
+ $(
+
+816127*
+1& &(
+
+816330*
+1&, &(:
+
+816131*
+1& &(
+
+816332*
+1&; &(B
+
+816331*
+1&, &(:

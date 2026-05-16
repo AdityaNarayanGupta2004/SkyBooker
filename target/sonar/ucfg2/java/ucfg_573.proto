@@ -1,0 +1,21 @@
+
+-com.skybooker.seat.dto.SeatRequest#setRow(I)V
+__unknown_file ("1*ï
+1 (†
+ù
+L
+Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (-$
+"com.skybooker.seat.dto.SeatRequest"
+row"__id*
+ (
+
+
+rowint"c
+L
+Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (
+implicit return:Z
+L
+Bseat-service\src\main\java\com\skybooker\seat\dto\SeatRequest.java (
+
+rowintB&$
+"com.skybooker.seat.dto.SeatRequestH

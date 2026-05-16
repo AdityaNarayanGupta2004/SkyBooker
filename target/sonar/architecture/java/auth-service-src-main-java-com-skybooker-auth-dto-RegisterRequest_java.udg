@@ -1,0 +1,382 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917116752*java2.BÅ
+K
+Fauth-service/src/main/java/com/skybooker/auth/dto/RegisterRequest.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+auth-service6
+
+package8
+(
+#auth-service:com.skybooker.auth.dto9
+,
+&com.skybooker.auth.dto.RegisterRequest11
+
+class12
+
+access13
+
+public14
+
+
+full-range15
+
+(6:1)-(65:2)16
+
+simple-name17
+
+RegisterRequest18
+
+lombok.Data20
+
+unknown21
+
+annotated by22
+
+
+uses23
+5
+/com.skybooker.auth.dto.RegisterRequest.fullName25
+
+field26
+
+private27
+
+(10:5)-(15:29)28
+
+fullName29
+-
+'jakarta.validation.constraints.NotBlank31
+,
+&jakarta.validation.constraints.Pattern33
+2
+,com.skybooker.auth.dto.RegisterRequest.email35
+
+(18:5)-(20:26)36
+
+email37
+*
+$jakarta.validation.constraints.Email39
+5
+/com.skybooker.auth.dto.RegisterRequest.password41
+
+(24:5)-(28:29)42
+
+password43
+2
+,com.skybooker.auth.dto.RegisterRequest.phone45
+
+(31:5)-(35:26)46
+
+phone47
+3
+-com.skybooker.auth.dto.RegisterRequest.gender49
+
+(38:5)-(42:27)50
+
+gender51
+8
+2com.skybooker.auth.dto.RegisterRequest.nationality53
+
+(44:5)-(48:32)54
+
+nationality55
+;
+5com.skybooker.auth.dto.RegisterRequest.passportNumber57
+
+(51:5)-(55:35)58
+
+passportNumber59
+1
++com.skybooker.auth.dto.RegisterRequest.role61
+
+(58:5)-(58:25)62
+
+
+role63
+;
+5com.skybooker.auth.dto.RegisterRequest.staffSecretKey65
+
+(61:5)-(61:35)66
+
+staffSecretKey67
+;
+5com.skybooker.auth.dto.RegisterRequest.adminSecretKey69
+
+(64:5)-(64:35)70
+
+adminSecretKey71J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68jº
+
+32
+323321
+N
+34H
+343526 *
+1 (210:7B$
+
+
+13
+27
+
+
+15
+36
+
+
+17
+37
+N
+68H
+686926 *
+1@ @("210:7B$
+
+
+13
+27
+
+
+15
+70
+
+
+17
+71
+
+38
+383921
+N
+48H
+484926 *
+1* *(210:7B$
+
+
+13
+27
+
+
+15
+50
+
+
+17
+51
+N
+56H
+565726 *
+17 7("210:7B$
+
+
+13
+27
+
+
+15
+58
+
+
+17
+59
+N
+64H
+646526 *
+1= =("210:7B$
+
+
+13
+27
+
+
+15
+66
+
+
+17
+67
+N
+24H
+242526 *
+1 (210:7B$
+
+
+13
+27
+
+
+15
+28
+
+
+17
+29
+
+30
+303121
+
+19
+192021
+N
+40H
+404126 *
+1 (210:7B$
+
+
+13
+27
+
+
+15
+42
+
+
+17
+43
+N
+52H
+525326 *
+10 0(210:7B$
+
+
+13
+27
+
+
+15
+54
+
+
+17
+55
+J
+10D
+101112 *
+1 (:7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+N
+44H
+444526 *
+1# #(210:7B$
+
+
+13
+27
+
+
+15
+46
+
+
+17
+47
+N
+60H
+606126 *
+1: :(210:7B$
+
+
+13
+27
+
+
+15
+62
+
+
+17
+63rú
+
+101922*
+1 (
+
+101923*
+1 (
+
+243022*
+1
+ 
+(1
+
+243023*
+1
+ 
+(
+
+243222*
+1 (
+
+243223*
+1 (
+
+343022*
+1 (-
+
+343023*
+1 (
+
+343822*
+1 (S
+
+343823*
+1 (
+
+403222*
+1 (
+
+403223*
+1 (
+
+443222*
+1 "(
+
+443223*
+1 (
+
+483222*
+1& )(
+
+483223*
+1& &(
+
+523222*
+1, /(
+
+523223*
+1, ,(
+
+563222*
+13 6(
+
+563223*
+13 3(

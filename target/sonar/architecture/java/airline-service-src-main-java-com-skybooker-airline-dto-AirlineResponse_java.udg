@@ -1,0 +1,312 @@
+
+1.0 AdityaNarayanGupta2004_SkyBookerJavaFrontend"1778917088504*java2.Bï
+
+Q
+Lairline-service/src/main/java/com/skybooker/airline/dto/AirlineResponse.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+airline-service6
+
+package8
+.
+)airline-service:com.skybooker.airline.dto9
+/
+)com.skybooker.airline.dto.AirlineResponse11
+
+class12
+
+access13
+
+public14
+
+
+full-range15
+
+(7:1)-(21:2)16
+
+simple-name17
+
+AirlineResponse18
+
+lombok.Data20
+
+unknown21
+
+annotated by22
+
+
+uses23
+
+lombok.AllArgsConstructor25
+
+lombok.NoArgsConstructor27
+2
+,com.skybooker.airline.dto.AirlineResponse.id29
+
+field30
+
+private31
+
+(12:5)-(12:21)32
+
+id33
+4
+.com.skybooker.airline.dto.AirlineResponse.name35
+
+(13:5)-(13:25)36
+
+
+name37
+8
+2com.skybooker.airline.dto.AirlineResponse.iataCode39
+
+(14:5)-(14:29)40
+
+iataCode41
+8
+2com.skybooker.airline.dto.AirlineResponse.icaoCode43
+
+(15:5)-(15:29)44
+
+icaoCode45
+7
+1com.skybooker.airline.dto.AirlineResponse.country47
+
+(16:5)-(16:28)48
+
+country49
+<
+6com.skybooker.airline.dto.AirlineResponse.contactEmail51
+
+(17:5)-(17:33)52
+
+contactEmail53
+<
+6com.skybooker.airline.dto.AirlineResponse.contactPhone55
+
+(18:5)-(18:33)56
+
+contactPhone57
+8
+2com.skybooker.airline.dto.AirlineResponse.isActive59
+
+(19:5)-(19:30)60
+
+isActive61
+7
+1com.skybooker.airline.dto.AirlineResponse.message63
+
+(20:5)-(20:28)64
+
+message65J%
+#
+1
+12
+
+3
+4
+
+5
+6 Z
+
+7
+7982
+
+
+5
+68jØ
+N
+42H
+424330 *
+1 (210:7B$
+
+
+13
+31
+
+
+15
+44
+
+
+17
+45
+N
+38H
+383930 *
+1 (210:7B$
+
+
+13
+31
+
+
+15
+40
+
+
+17
+41
+N
+50H
+505130 *
+1 ( 210:7B$
+
+
+13
+31
+
+
+15
+52
+
+
+17
+53
+N
+28H
+282930 *
+1 (210:7B$
+
+
+13
+31
+
+
+15
+32
+
+
+17
+33
+N
+34H
+343530 *
+1 (210:7B$
+
+
+13
+31
+
+
+15
+36
+
+
+17
+37
+J
+10D
+101112 *
+1
+ 
+(:7B$
+
+
+13
+14
+
+
+15
+16
+
+
+17
+18
+
+19
+192021
+N
+62H
+626330 *
+1 (210:7B$
+
+
+13
+31
+
+
+15
+64
+
+
+17
+65
+
+24
+242521
+N
+54H
+545530 *
+1 ( 210:7B$
+
+
+13
+31
+
+
+15
+56
+
+
+17
+57
+
+26
+262721
+N
+46H
+464730 *
+1 (210:7B$
+
+
+13
+31
+
+
+15
+48
+
+
+17
+49
+N
+58H
+585930 *
+1 (210:7B$
+
+
+13
+31
+
+
+15
+60
+
+
+17
+61r¢
+
+101922*
+1 (
+
+101923*
+1 (
+
+102422*
+1 (
+
+102423*
+1 (
+
+102622*
+1	 	(
+
+102623*
+1	 	(
