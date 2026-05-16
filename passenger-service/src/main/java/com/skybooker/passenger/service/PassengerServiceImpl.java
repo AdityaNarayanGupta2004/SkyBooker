@@ -20,6 +20,7 @@ import java.util.UUID;
 public class PassengerServiceImpl implements PassengerService {
 
     private static final String SUCCESS = "Success";
+    private static final String PASSENGER_NOT_FOUND_ID = "Passenger not found with id: ";
     private final PassengerRepository passengerRepository;
 
     @Override
@@ -56,7 +57,7 @@ public class PassengerServiceImpl implements PassengerService {
         PassengerInfo passenger = passengerRepository.findById(passengerId)
                 .orElseThrow(() -> {
                     log.warn("Passenger not found — id: {}", passengerId);
-                    return new IllegalArgumentException("Passenger not found with id: " + passengerId);
+                    return new IllegalArgumentException(PASSENGER_NOT_FOUND_ID + passengerId);
                 });
         return mapToResponse(passenger, SUCCESS);
     }
@@ -117,7 +118,7 @@ public class PassengerServiceImpl implements PassengerService {
         log.info("Assigning seat — passengerId: {}, seat: {}", request.getPassengerId(), request.getSeatNumber());
 
         PassengerInfo passenger = passengerRepository.findById(request.getPassengerId())
-                .orElseThrow(() -> new IllegalArgumentException("Passenger not found with id: " + request.getPassengerId()));
+                .orElseThrow(() -> new IllegalArgumentException(PASSENGER_NOT_FOUND_ID + request.getPassengerId()));
 
         boolean seatTaken = passengerRepository.findBySeatId(request.getSeatId()).isPresent();
         if (seatTaken) {
@@ -137,7 +138,7 @@ public class PassengerServiceImpl implements PassengerService {
         log.info("Deleting passenger — id: {}", passengerId);
         if (!passengerRepository.existsById(passengerId)) {
             log.warn("Delete failed — passenger not found: {}", passengerId);
-            throw new IllegalArgumentException("Passenger not found with id: " + passengerId);
+            throw new IllegalArgumentException(PASSENGER_NOT_FOUND_ID + passengerId);
         }
         passengerRepository.deleteById(passengerId);
         log.info("Passenger deleted — id: {}", passengerId);

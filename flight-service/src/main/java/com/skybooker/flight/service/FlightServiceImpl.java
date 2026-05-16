@@ -28,6 +28,7 @@ public class FlightServiceImpl implements FlightService {
 
     private static final String SEAT_SERVICE_URL = "http://localhost:8086/seats";
     private static final String JWT_SECRET = "my-super-secret-key-my-super-secret-key-12345";
+    private static final String FLIGHT_NOT_FOUND_ID = "Flight not found with id: ";
 
     @Override
     public FlightResponse addFlight(FlightRequest request) {
@@ -187,7 +188,7 @@ public class FlightServiceImpl implements FlightService {
         Flight flight = flightRepository.findById(id)
                 .orElseThrow(() -> {
                     log.warn("Flight not found — ID: {}", id);
-                    return new IllegalArgumentException("Flight not found with id: " + id);
+                    return new IllegalArgumentException(FLIGHT_NOT_FOUND_ID + id);
                 });
         return mapToResponse(flight);
     }

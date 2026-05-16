@@ -17,6 +17,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SeatServiceImpl implements SeatService {
 
+    private static final String SUCCESS = "Success";
+    private static final String SEAT_NOT_FOUND = "Seat not found: ";
     private final SeatRepository seatRepository;
 
     @Override
@@ -55,21 +57,21 @@ public class SeatServiceImpl implements SeatService {
     public List<SeatResponse> getSeatsByFlight(Long flightId) {
         log.debug("Fetching all seats for flightId: {}", flightId);
         return seatRepository.findByFlightId(flightId)
-                .stream().map(s -> mapToResponse(s, "Success")).toList();
+                .stream().map(s -> mapToResponse(s, SUCCESS)).toList();
     }
 
     @Override
     public List<SeatResponse> getAvailableSeats(Long flightId) {
         log.debug("Fetching seat map for flightId: {}", flightId);
         return seatRepository.findByFlightId(flightId)
-                .stream().map(s -> mapToResponse(s, "Success")).toList();
+                .stream().map(s -> mapToResponse(s, SUCCESS)).toList();
     }
 
     @Override
     public List<SeatResponse> getSeatsByClass(Long flightId, String seatClass) {
         log.debug("Fetching {} class seats for flightId: {}", seatClass, flightId);
         return seatRepository.findByFlightIdAndSeatClass(flightId, seatClass)
-                .stream().map(s -> mapToResponse(s, "Success")).toList();
+                .stream().map(s -> mapToResponse(s, SUCCESS)).toList();
     }
 
     @Override
@@ -79,7 +81,7 @@ public class SeatServiceImpl implements SeatService {
         Seat seat = seatRepository.findByFlightIdAndSeatNumber(flightId, seatNumber)
                 .orElseThrow(() -> {
                     log.warn("Hold failed — seat not found: {} flightId: {}", seatNumber, flightId);
-                    return new IllegalArgumentException("Seat not found: " + seatNumber);
+                    return new IllegalArgumentException(SEAT_NOT_FOUND + seatNumber);
                 });
 
         if (!seat.getStatus().equals("AVAILABLE")) {
@@ -102,7 +104,7 @@ public class SeatServiceImpl implements SeatService {
         Seat seat = seatRepository.findByFlightIdAndSeatNumber(flightId, seatNumber)
                 .orElseThrow(() -> {
                     log.warn("Confirm failed — seat not found: {} flightId: {}", seatNumber, flightId);
-                    return new IllegalArgumentException("Seat not found: " + seatNumber);
+                    return new IllegalArgumentException(SEAT_NOT_FOUND + seatNumber);
                 });
 
         if (seat.getStatus().equals("CONFIRMED")) {
