@@ -26,10 +26,12 @@ public class SecurityConfig {
 
     private final JwtFilter jwtFilter;
 
+    private static final String ROLE_ADMIN = "ADMIN";
+    private static final String ROLE_AIRLINE_STAFF = "AIRLINE_STAFF";
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-//                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .cors(cors -> cors.disable())
                 .csrf(csrf -> csrf.disable())
                 .exceptionHandling(ex -> ex
@@ -60,7 +62,7 @@ public class SecurityConfig {
                                 "/v3/api-docs"
                         ).permitAll()
                         .requestMatchers(HttpMethod.GET, "/seats/**").authenticated()
-                        .requestMatchers(HttpMethod.POST, "/seats/**").hasAnyRole("AIRLINE_STAFF", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/seats/**").hasAnyRole(ROLE_AIRLINE_STAFF, ROLE_ADMIN)
                         .requestMatchers(HttpMethod.PUT, "/seats/**").authenticated()
                         .anyRequest().authenticated()
                 )
@@ -68,15 +70,4 @@ public class SecurityConfig {
                 .build();
     }
 
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration config = new CorsConfiguration();
-//        config.setAllowedOrigins(List.of("http://localhost:8080"));
-//        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-//        config.setAllowedHeaders(List.of("*"));
-//        config.setAllowCredentials(true);
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", config);
-//        return source;
-//    }
 }

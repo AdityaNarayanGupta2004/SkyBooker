@@ -8,5 +8,6 @@ class PassengerServiceApplicationTests {
 
     @Test
     void contextLoads() {
+        // Test context loads successfully
     }
 }

@@ -8,5 +8,6 @@ class ApiGatewayApplicationTests {
 
     @Test
     void contextLoads() {
+        // Test context loads
     }
 }

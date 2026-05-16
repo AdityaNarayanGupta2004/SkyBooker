@@ -13,6 +13,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
@@ -49,7 +52,7 @@ public class JwtFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(auth);
                 }
             } catch (Exception e) {
-                System.out.println("JWT ERROR: " + e.getMessage());
+                log.error("JWT ERROR: {}", e.getMessage());
             }
         }
 

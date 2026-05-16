@@ -24,6 +24,10 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+    private static final String AIRLINES_PATH = "/airlines/**";
+    private static final String AIRPORTS_PATH = "/airports/**";
+    private static final String ROLE_ADMIN = "ADMIN";
+
     private final JwtFilter jwtFilter;
 
     @Bean
@@ -59,27 +63,16 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/v3/api-docs"
                         ).permitAll()
-                        .requestMatchers(HttpMethod.GET, "/airlines/**").authenticated()
-                        .requestMatchers(HttpMethod.GET, "/airports/**").authenticated()
-                        .requestMatchers(HttpMethod.POST, "/airlines/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/airlines/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/airports/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/airports/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, AIRLINES_PATH).authenticated()
+                        .requestMatchers(HttpMethod.GET, AIRPORTS_PATH).authenticated()
+                        .requestMatchers(HttpMethod.POST, AIRLINES_PATH).hasRole(ROLE_ADMIN)
+                        .requestMatchers(HttpMethod.PUT, AIRLINES_PATH).hasRole(ROLE_ADMIN)
+                        .requestMatchers(HttpMethod.POST, AIRPORTS_PATH).hasRole(ROLE_ADMIN)
+                        .requestMatchers(HttpMethod.PUT, AIRPORTS_PATH).hasRole(ROLE_ADMIN)
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration config = new CorsConfiguration();
-//        config.setAllowedOrigins(List.of("http://localhost:8080"));
-//        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-//        config.setAllowedHeaders(List.of("*"));
-//        config.setAllowCredentials(true);
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", config);
-//        return source;
-//    }
 }

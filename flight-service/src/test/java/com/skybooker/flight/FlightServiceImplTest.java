@@ -55,21 +55,7 @@ class FlightServiceImplTest {
         return f;
     }
 
-    // Ek ready-made FlightRequest banana ka helper
-    private FlightRequest banaoRequest() {
-        FlightRequest req = new FlightRequest();
-        req.setFlightNumber("6E-101");
-        req.setAirline("IndiGo");
-        req.setSource("DEL");
-        req.setDestination("BOM");
-        req.setDepartureDate(LocalDate.now().plusDays(5));
-        req.setDepartureTime("10:00");
-        req.setArrivalDate(LocalDate.now().plusDays(5));
-        req.setArrivalTime("12:00");
-        req.setTotalSeats(6); // kam seats rakho taaki autoGenerateSeats jaldi khatam ho
-        req.setPrice(5000.0);
-        return req;
-    }
+
 
     // ---------------------------------------------------------------
     // GET FLIGHT BY ID TESTS
