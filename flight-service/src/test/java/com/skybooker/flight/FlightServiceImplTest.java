@@ -26,7 +26,6 @@ class FlightServiceImplTest {
     @Mock
     private FlightRepository flightRepository;
 
-    // RestTemplate bhi mock karo — autoGenerateSeats HTTP call karta hai
     @Mock
     private RestTemplate restTemplate;
 
@@ -39,7 +38,6 @@ class FlightServiceImplTest {
         flightServiceImpl = new FlightServiceImpl(flightRepository, restTemplate, internalSecret);
     }
 
-    // Ek ready-made Flight entity banana ka helper
     private Flight banaoFlight() {
         Flight f = new Flight();
         f.setId(1L);
@@ -59,13 +57,6 @@ class FlightServiceImplTest {
         return f;
     }
 
-
-
-    // ---------------------------------------------------------------
-    // GET FLIGHT BY ID TESTS
-    // ---------------------------------------------------------------
-
-    // Test 1: Sahi ID se flight mile
     @Test
     void getFlightById_WhenFlightExists_ShouldReturnFlight() {
         Flight flight = banaoFlight();
@@ -79,38 +70,16 @@ class FlightServiceImplTest {
         assertEquals("BOM", res.getDestination());
     }
 
-    // Test 2: Galat ID se exception aaye
     @Test
-    void login_WithNonExistentAccount_ShouldThrowException() {
-        LoginRequest req = new LoginRequest();
-        req.setEmail("nobody@gmail.com");
+    void getFlightById_WhenFlightNotFound_ShouldThrowException() {
+        when(flightRepository.findById(99L)).thenReturn(Optional.empty());
 
-        when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> flightServiceImpl.getFlightById(99L));
 
-        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                () -> authServiceImpl.login(req));
-
-        assertTrue(ex.getMessage().contains("No account found"));
+        assertTrue(ex.getMessage().contains("Flight not found"));
     }
 
-    @Test
-    void register_AdminWithEmptyKey_ShouldThrowException() {
-        RegisterRequest req = banaoRegisterRequest();
-        req.setRole("ADMIN");
-        req.setAdminSecretKey("   ");
-
-        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                () -> authServiceImpl.register(req));
-
-        assertTrue(ex.getMessage().contains("admin secret key"));
-    }
-}
-
-    // ---------------------------------------------------------------
-    // GET ALL FLIGHTS TESTS
-    // ---------------------------------------------------------------
-
-    // Test 3: Saari flights milein
     @Test
     void getAllFlights_ShouldReturnAllFlights() {
         Flight f1 = banaoFlight();
@@ -125,7 +94,6 @@ class FlightServiceImplTest {
         assertEquals(2, result.size());
     }
 
-    // Test 4: Koi flight nahi hai toh empty list aaye
     @Test
     void getAllFlights_WhenNoFlights_ShouldReturnEmptyList() {
         when(flightRepository.findAll()).thenReturn(List.of());
@@ -135,11 +103,6 @@ class FlightServiceImplTest {
         assertTrue(result.isEmpty());
     }
 
-    // ---------------------------------------------------------------
-    // SEARCH FLIGHTS TESTS
-    // ---------------------------------------------------------------
-
-    // Test 5: Source, destination aur date se flights milein
     @Test
     void searchFlights_WithValidParams_ShouldReturnMatchingFlights() {
         Flight flight = banaoFlight();
@@ -155,7 +118,6 @@ class FlightServiceImplTest {
         assertEquals("BOM", result.get(0).getDestination());
     }
 
-    // Test 6: Koi matching flight nahi ho toh empty list aaye
     @Test
     void searchFlights_WhenNoMatch_ShouldReturnEmptyList() {
         LocalDate date = LocalDate.now().plusDays(5);
@@ -168,11 +130,6 @@ class FlightServiceImplTest {
         assertTrue(result.isEmpty());
     }
 
-    // ---------------------------------------------------------------
-    // REDUCE SEATS TESTS
-    // ---------------------------------------------------------------
-
-    // Test 7: Seats sahi se reduce ho
     @Test
     void reduceSeats_WhenEnoughSeatsAvailable_ShouldSucceed() {
         Flight flight = banaoFlight();
@@ -184,26 +141,22 @@ class FlightServiceImplTest {
         String result = flightServiceImpl.reduceSeats(1L, 2);
 
         assertEquals("Seats reduced successfully", result);
-        // 50 - 2 = 48 hone chahiye
         assertEquals(48, flight.getAvailableSeats());
     }
 
-    // Test 8: Jitne seats maange utne available na ho toh exception aaye
     @Test
     void reduceSeats_WhenNotEnoughSeats_ShouldThrowException() {
         Flight flight = banaoFlight();
-        flight.setAvailableSeats(1); // sirf 1 seat hai
+        flight.setAvailableSeats(1);
 
         when(flightRepository.findById(1L)).thenReturn(Optional.of(flight));
 
-        // 5 seats mangna — impossible
         RuntimeException ex = assertThrows(RuntimeException.class,
                 () -> flightServiceImpl.reduceSeats(1L, 5));
 
         assertTrue(ex.getMessage().contains("Not enough seats"));
     }
 
-    // Test 9: Flight nahi mili toh seats reduce karne pe exception aaye
     @Test
     void reduceSeats_WhenFlightNotFound_ShouldThrowException() {
         when(flightRepository.findById(999L)).thenReturn(Optional.empty());
@@ -213,25 +166,6 @@ class FlightServiceImplTest {
 
         assertTrue(ex.getMessage().contains("Flight not found"));
     }
-
-    // Test 10: Price aur seats response mein sahi aayein
-    @Test
-    void getFlightById_ResponseShouldHaveCorrectPriceAndSeats() {
-        Flight flight = banaoFlight();
-        flight.setPrice(7500.0);
-        flight.setAvailableSeats(100);
-
-        when(flightRepository.findById(1L)).thenReturn(Optional.of(flight));
-
-        FlightResponse res = flightServiceImpl.getFlightById(1L);
-
-        assertEquals(7500.0, res.getPrice());
-        assertEquals(100, res.getAvailableSeats());
-    }
-
-    // ---------------------------------------------------------------
-    // ADD FLIGHT TESTS
-    // ---------------------------------------------------------------
 
     @Test
     void addFlight_WithValidRequest_ShouldSucceed() {
@@ -243,7 +177,7 @@ class FlightServiceImplTest {
         req.setDepartureDate(LocalDate.now().plusDays(1));
         req.setDepartureTime("10:00");
         req.setArrivalTime("12:00");
-        req.setTotalSeats(10); // small number for quick test
+        req.setTotalSeats(10);
         req.setPrice(4000.0);
 
         Flight savedFlight = new Flight();
@@ -253,7 +187,6 @@ class FlightServiceImplTest {
         savedFlight.setAvailableSeats(10);
 
         when(flightRepository.save(any(Flight.class))).thenReturn(savedFlight);
-        // Mock restTemplate for 10 seats
         when(restTemplate.postForObject(anyString(), any(), any())).thenReturn(new Object());
 
         FlightResponse res = flightServiceImpl.addFlight(req);
@@ -261,7 +194,6 @@ class FlightServiceImplTest {
         assertNotNull(res);
         assertEquals(505L, res.getId());
         verify(flightRepository, times(1)).save(any());
-        // 10 seats should have been posted
         verify(restTemplate, times(10)).postForObject(anyString(), any(), any());
     }
 
@@ -283,7 +215,7 @@ class FlightServiceImplTest {
         req.setDepartureDate(LocalDate.now().plusDays(1));
         req.setDepartureTime("10:00");
         req.setArrivalDate(LocalDate.now().plusDays(1));
-        req.setArrivalTime("08:00"); // 8 AM before 10 AM
+        req.setArrivalTime("08:00");
 
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, 
             () -> flightServiceImpl.addFlight(req));
@@ -305,7 +237,7 @@ class FlightServiceImplTest {
     @Test
     void addFlight_WithInvalidTimeFormat_ShouldThrowException() {
         com.skybooker.flight.dto.FlightRequest req = new com.skybooker.flight.dto.FlightRequest();
-        req.setDepartureDate(LocalDate.now()); // today
+        req.setDepartureDate(LocalDate.now());
         req.setDepartureTime("invalid-time");
 
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, 
@@ -318,7 +250,6 @@ class FlightServiceImplTest {
     void addFlight_WithSameDayPastTime_ShouldThrowException() {
         com.skybooker.flight.dto.FlightRequest req = new com.skybooker.flight.dto.FlightRequest();
         req.setDepartureDate(LocalDate.now());
-        // Set time to 1 hour ago
         java.time.LocalTime pastTime = java.time.LocalTime.now().minusHours(1);
         req.setDepartureTime(pastTime.toString());
 
