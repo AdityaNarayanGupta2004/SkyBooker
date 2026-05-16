@@ -256,4 +256,60 @@ class AuthServiceImplTest {
 
         assertTrue(ex.getMessage().contains("Google Sign-In"));
     }
+
+    // ---------------------------------------------------------------
+    // EXTRA EDGE CASE TESTS
+    // ---------------------------------------------------------------
+
+    @Test
+    void register_WithInvalidRole_ShouldThrowException() {
+        RegisterRequest req = banaoRegisterRequest();
+        req.setRole("SUPERMAN");
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> authServiceImpl.register(req));
+
+        assertTrue(ex.getMessage().contains("Invalid role"));
+    }
+
+    @Test
+    void register_StaffWithoutSecretKey_ShouldThrowException() {
+        RegisterRequest req = banaoRegisterRequest();
+        req.setRole("AIRLINE_STAFF");
+        req.setStaffSecretKey("");
+
+        when(userRepository.existsByEmail(req.getEmail())).thenReturn(false);
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> authServiceImpl.register(req));
+
+        assertTrue(ex.getMessage().contains("Staff registration requires the staff secret key"));
+    }
+
+    @Test
+    void register_StaffWithWrongKey_ShouldThrowException() {
+        RegisterRequest req = banaoRegisterRequest();
+        req.setRole("AIRLINE_STAFF");
+        req.setStaffSecretKey("wrong-staff-key");
+
+        when(userRepository.existsByEmail(req.getEmail())).thenReturn(false);
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> authServiceImpl.register(req));
+
+        assertTrue(ex.getMessage().contains("Invalid staff secret key"));
+    }
+
+    @Test
+    void login_WithNonExistentAccount_ShouldThrowException() {
+        LoginRequest req = new LoginRequest();
+        req.setEmail("nobody@gmail.com");
+
+        when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+                () -> authServiceImpl.login(req));
+
+        assertTrue(ex.getMessage().contains("No account found"));
+    }
 }

@@ -7,7 +7,6 @@ import com.skybooker.flight.service.FlightServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.client.RestTemplate;
@@ -31,11 +30,13 @@ class FlightServiceImplTest {
     @Mock
     private RestTemplate restTemplate;
 
+    private final String internalSecret = "my-new-secure-random-secret-key-for-skybooker-2026-flight";
+
     private FlightServiceImpl flightServiceImpl;
 
     @BeforeEach
     void setUp() {
-        flightServiceImpl = new FlightServiceImpl(flightRepository, restTemplate, "test-secret-key-must-be-long-enough-1234567890");
+        flightServiceImpl = new FlightServiceImpl(flightRepository, restTemplate, internalSecret);
     }
 
     // Ek ready-made Flight entity banana ka helper
@@ -210,5 +211,90 @@ class FlightServiceImplTest {
 
         assertEquals(7500.0, res.getPrice());
         assertEquals(100, res.getAvailableSeats());
+    }
+
+    // ---------------------------------------------------------------
+    // ADD FLIGHT TESTS
+    // ---------------------------------------------------------------
+
+    @Test
+    void addFlight_WithValidRequest_ShouldSucceed() {
+        com.skybooker.flight.dto.FlightRequest req = new com.skybooker.flight.dto.FlightRequest();
+        req.setFlightNumber("6E-505");
+        req.setAirline("IndiGo");
+        req.setSource("DEL");
+        req.setDestination("BOM");
+        req.setDepartureDate(LocalDate.now().plusDays(1));
+        req.setDepartureTime("10:00");
+        req.setArrivalTime("12:00");
+        req.setTotalSeats(10); // small number for quick test
+        req.setPrice(4000.0);
+
+        Flight savedFlight = new Flight();
+        savedFlight.setId(505L);
+        savedFlight.setFlightNumber("6E-505");
+        savedFlight.setTotalSeats(10);
+        savedFlight.setAvailableSeats(10);
+
+        when(flightRepository.save(any(Flight.class))).thenReturn(savedFlight);
+        // Mock restTemplate for 10 seats
+        when(restTemplate.postForObject(anyString(), any(), any())).thenReturn(new Object());
+
+        FlightResponse res = flightServiceImpl.addFlight(req);
+
+        assertNotNull(res);
+        assertEquals(505L, res.getId());
+        verify(flightRepository, times(1)).save(any());
+        // 10 seats should have been posted
+        verify(restTemplate, times(10)).postForObject(anyString(), any(), any());
+    }
+
+    @Test
+    void addFlight_WithPastDate_ShouldThrowException() {
+        com.skybooker.flight.dto.FlightRequest req = new com.skybooker.flight.dto.FlightRequest();
+        req.setDepartureDate(LocalDate.now().minusDays(1));
+        req.setDepartureTime("10:00");
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, 
+            () -> flightServiceImpl.addFlight(req));
+        
+        assertTrue(ex.getMessage().contains("cannot be in the past"));
+    }
+
+    @Test
+    void addFlight_WithArrivalBeforeDeparture_ShouldThrowException() {
+        com.skybooker.flight.dto.FlightRequest req = new com.skybooker.flight.dto.FlightRequest();
+        req.setDepartureDate(LocalDate.now().plusDays(1));
+        req.setDepartureTime("10:00");
+        req.setArrivalDate(LocalDate.now().plusDays(1));
+        req.setArrivalTime("08:00"); // 8 AM before 10 AM
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, 
+            () -> flightServiceImpl.addFlight(req));
+        
+        assertTrue(ex.getMessage().contains("arrival time must be after departure time"));
+    }
+
+    @Test
+    void addFlight_WithMissingDepartureDate_ShouldThrowException() {
+        com.skybooker.flight.dto.FlightRequest req = new com.skybooker.flight.dto.FlightRequest();
+        req.setDepartureDate(null);
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, 
+            () -> flightServiceImpl.addFlight(req));
+        
+        assertTrue(ex.getMessage().contains("Departure date is required"));
+    }
+
+    @Test
+    void addFlight_WithInvalidTimeFormat_ShouldThrowException() {
+        com.skybooker.flight.dto.FlightRequest req = new com.skybooker.flight.dto.FlightRequest();
+        req.setDepartureDate(LocalDate.now()); // today
+        req.setDepartureTime("invalid-time");
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, 
+            () -> flightServiceImpl.addFlight(req));
+        
+        assertTrue(ex.getMessage().contains("Invalid departure time format"));
     }
 }

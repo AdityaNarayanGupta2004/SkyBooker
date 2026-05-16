@@ -25,13 +25,13 @@ public class SecurityConfig {
     private static final String FLIGHTS_PATTERN = "/flights/**";
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) {
         return http
 //                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .cors(cors -> cors.disable())
                 .csrf(csrf -> csrf.disable())
                 .exceptionHandling(ex -> ex
-                        .authenticationEntryPoint((request, response, e) -> {
+                        .authenticationEntryPoint((request, response, authException) -> {
                             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                             response.setContentType("application/json");
                             Map<String, Object> error = new HashMap<>();
@@ -40,7 +40,7 @@ public class SecurityConfig {
                             error.put("message", "Please login first. Token missing or invalid.");
                             response.getWriter().write(new ObjectMapper().writeValueAsString(error));
                         })
-                        .accessDeniedHandler((request, response, e) -> {
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
                             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                             response.setContentType("application/json");
                             Map<String, Object> error = new HashMap<>();
