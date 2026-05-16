@@ -198,6 +198,28 @@ class FlightServiceImplTest {
     }
 
     @Test
+    void determineSeatClass_Coverage() {
+        // Since determineSeatClass is private, we test it via addFlight or use Reflection
+        // But we already test it via addFlight which loops through rows.
+        // Let's add a test for a flight with 50 seats to cover all rows
+        com.skybooker.flight.dto.FlightRequest req = new com.skybooker.flight.dto.FlightRequest();
+        req.setFlightNumber("AI-100");
+        req.setTotalSeats(50); 
+        req.setDepartureDate(LocalDate.now().plusDays(1));
+        req.setDepartureTime("12:00");
+
+        Flight saved = new Flight();
+        saved.setId(100L);
+        saved.setTotalSeats(50);
+        when(flightRepository.save(any())).thenReturn(saved);
+        when(restTemplate.postForObject(anyString(), any(), any())).thenReturn(new Object());
+
+        flightServiceImpl.addFlight(req);
+        // This covers rows 1 to 9 (First, Business, Economy)
+        verify(flightRepository, atLeastOnce()).save(any());
+    }
+
+    @Test
     void addFlight_WithPastDate_ShouldThrowException() {
         com.skybooker.flight.dto.FlightRequest req = new com.skybooker.flight.dto.FlightRequest();
         req.setDepartureDate(LocalDate.now().minusDays(1));

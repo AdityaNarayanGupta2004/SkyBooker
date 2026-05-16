@@ -324,4 +324,33 @@ class AuthServiceImplTest {
 
         assertTrue(ex.getMessage().contains("admin secret key"));
     }
+
+    @Test
+    void register_AdminWithValidKeyButLimitReached_ShouldThrowException() {
+        RegisterRequest req = banaoRegisterRequest();
+        req.setRole("ADMIN");
+        req.setAdminSecretKey("SkyAdmin#9999");
+
+        when(userRepository.existsByEmail(anyString())).thenReturn(false);
+        when(userRepository.countByRole("ADMIN")).thenReturn(4L);
+
+        IllegalStateException ex = assertThrows(IllegalStateException.class,
+                () -> authServiceImpl.register(req));
+
+        assertTrue(ex.getMessage().contains("Maximum 4 admin"));
+    }
+
+    @Test
+    void register_StaffWithValidKey_ShouldSucceed() {
+        RegisterRequest req = banaoRegisterRequest();
+        req.setRole("AIRLINE_STAFF");
+        req.setStaffSecretKey("SkyStaff#2025");
+
+        when(userRepository.existsByEmail(anyString())).thenReturn(false);
+        when(passwordEncoder.encode(anyString())).thenReturn("hash");
+        when(userRepository.save(any())).thenAnswer(i -> i.getArgument(0));
+
+        AuthResponse res = authServiceImpl.register(req);
+        assertTrue(res.getMessage().contains("AIRLINE_STAFF"));
+    }
 }
