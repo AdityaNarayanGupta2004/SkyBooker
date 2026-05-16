@@ -1,5 +1,0 @@
-# Created at 2026-05-16T14:38:19.569
-Boot Manifest-JAR contains absolute paths in classpath 'E:\SkyBooker\seat-service\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-

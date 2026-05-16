@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AirlineServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">airline-service</a> &gt; <a href="index.source.html" class="el_package">com.skybooker.airline.service</a> &gt; <span class="el_source">AirlineServiceImpl.java</span></div><h1>AirlineServiceImpl.java</h1><pre class="source lang-java linenums">package com.skybooker.airline.service;
+
+import com.skybooker.airline.dto.AirlineRequest;
+import com.skybooker.airline.dto.AirlineResponse;
+import com.skybooker.airline.dto.AirportRequest;
+import com.skybooker.airline.dto.AirportResponse;
+import com.skybooker.airline.entity.Airline;
+import com.skybooker.airline.entity.Airport;
+import com.skybooker.airline.repository.AirlineRepository;
+import com.skybooker.airline.repository.AirportRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+<span class="fc" id="L18">@Slf4j</span>
+@Service
+<span class="fc" id="L20">@RequiredArgsConstructor</span>
+public class AirlineServiceImpl implements AirlineService {
+
+    private static final String SUCCESS_MSG = &quot;Success&quot;;
+    private static final String AIRLINE_NOT_FOUND_ID_MSG = &quot;Airline not found with id: &quot;;
+
+    private final AirlineRepository airlineRepository;
+    private final AirportRepository airportRepository;
+
+    // ==================== AIRLINE OPERATIONS ====================
+
+    @Override
+    public AirlineResponse addAirline(AirlineRequest request) {
+<span class="fc" id="L33">        log.info(&quot;Adding airline — name: {}, IATA: {}&quot;, request.getName(), request.getIataCode());</span>
+
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (airlineRepository.existsByIataCode(request.getIataCode())) {</span>
+<span class="fc" id="L36">            log.warn(&quot;Airline add rejected — IATA code already exists: {}&quot;, request.getIataCode());</span>
+<span class="fc" id="L37">            throw new IllegalArgumentException(&quot;Airline with IATA code &quot; + request.getIataCode() + &quot; already exists&quot;);</span>
+        }
+
+<span class="fc" id="L40">        Airline airline = new Airline();</span>
+<span class="fc" id="L41">        airline.setName(request.getName());</span>
+<span class="fc" id="L42">        airline.setIataCode(request.getIataCode().toUpperCase());</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        airline.setIcaoCode(request.getIcaoCode() != null ? request.getIcaoCode().toUpperCase() : null);</span>
+<span class="fc" id="L44">        airline.setCountry(request.getCountry());</span>
+<span class="fc" id="L45">        airline.setContactEmail(request.getContactEmail());</span>
+<span class="fc" id="L46">        airline.setContactPhone(request.getContactPhone());</span>
+<span class="fc" id="L47">        airline.setActive(true);</span>
+
+<span class="fc" id="L49">        Airline saved = airlineRepository.save(airline);</span>
+<span class="fc" id="L50">        log.info(&quot;Airline added — ID: {}, name: {}, IATA: {}&quot;, saved.getId(), saved.getName(), saved.getIataCode());</span>
+<span class="fc" id="L51">        return mapAirlineToResponse(saved, &quot;Airline added successfully&quot;);</span>
+    }
+
+    @Override
+    public AirlineResponse getAirlineById(Long id) {
+<span class="fc" id="L56">        log.debug(&quot;Fetching airline — id: {}&quot;, id);</span>
+<span class="fc" id="L57">        Airline airline = airlineRepository.findById(id)</span>
+<span class="fc" id="L58">                .orElseThrow(() -&gt; {</span>
+<span class="fc" id="L59">                    log.warn(&quot;Airline not found — id: {}&quot;, id);</span>
+<span class="fc" id="L60">                    return new IllegalArgumentException(AIRLINE_NOT_FOUND_ID_MSG + id);</span>
+                });
+<span class="fc" id="L62">        return mapAirlineToResponse(airline, SUCCESS_MSG);</span>
+    }
+
+    @Override
+    public AirlineResponse getAirlineByIata(String iataCode) {
+<span class="fc" id="L67">        log.debug(&quot;Fetching airline by IATA: {}&quot;, iataCode);</span>
+<span class="fc" id="L68">        Airline airline = airlineRepository.findByIataCode(iataCode.toUpperCase())</span>
+<span class="fc" id="L69">                .orElseThrow(() -&gt; {</span>
+<span class="fc" id="L70">                    log.warn(&quot;Airline not found — IATA: {}&quot;, iataCode);</span>
+<span class="fc" id="L71">                    return new IllegalArgumentException(&quot;Airline not found with IATA code: &quot; + iataCode);</span>
+                });
+<span class="fc" id="L73">        return mapAirlineToResponse(airline, SUCCESS_MSG);</span>
+    }
+
+    @Override
+    public List&lt;AirlineResponse&gt; getAllAirlines() {
+<span class="fc" id="L78">        log.debug(&quot;Fetching all airlines&quot;);</span>
+<span class="fc" id="L79">        List&lt;AirlineResponse&gt; list = airlineRepository.findAll()</span>
+<span class="fc" id="L80">                .stream().map(a -&gt; mapAirlineToResponse(a, SUCCESS_MSG)).toList();</span>
+<span class="fc" id="L81">        log.debug(&quot;Total airlines found: {}&quot;, list.size());</span>
+<span class="fc" id="L82">        return list;</span>
+    }
+
+    @Override
+    public List&lt;AirlineResponse&gt; getActiveAirlines() {
+<span class="fc" id="L87">        log.debug(&quot;Fetching active airlines&quot;);</span>
+<span class="fc" id="L88">        return airlineRepository.findByIsActive(true)</span>
+<span class="fc" id="L89">                .stream().map(a -&gt; mapAirlineToResponse(a, SUCCESS_MSG)).toList();</span>
+    }
+
+    @Override
+    public AirlineResponse updateAirline(Long id, AirlineRequest request) {
+<span class="fc" id="L94">        log.info(&quot;Updating airline — id: {}&quot;, id);</span>
+<span class="fc" id="L95">        Airline airline = airlineRepository.findById(id)</span>
+<span class="fc" id="L96">                .orElseThrow(() -&gt; {</span>
+<span class="nc" id="L97">                    log.warn(&quot;Update failed — airline not found: {}&quot;, id);</span>
+<span class="nc" id="L98">                    return new IllegalArgumentException(AIRLINE_NOT_FOUND_ID_MSG + id);</span>
+                });
+
+<span class="fc" id="L101">        airline.setName(request.getName());</span>
+<span class="fc" id="L102">        airline.setCountry(request.getCountry());</span>
+<span class="fc" id="L103">        airline.setContactEmail(request.getContactEmail());</span>
+<span class="fc" id="L104">        airline.setContactPhone(request.getContactPhone());</span>
+
+<span class="fc" id="L106">        Airline updated = airlineRepository.save(airline);</span>
+<span class="fc" id="L107">        log.info(&quot;Airline updated — id: {}, name: {}&quot;, id, updated.getName());</span>
+<span class="fc" id="L108">        return mapAirlineToResponse(updated, &quot;Airline updated successfully&quot;);</span>
+    }
+
+    @Override
+    public AirlineResponse toggleAirlineStatus(Long id) {
+<span class="fc" id="L113">        log.info(&quot;Toggle status request — airlineId: {}&quot;, id);</span>
+<span class="fc" id="L114">        Airline airline = airlineRepository.findById(id)</span>
+<span class="fc" id="L115">                .orElseThrow(() -&gt; {</span>
+<span class="nc" id="L116">                    log.warn(&quot;Toggle failed — airline not found: {}&quot;, id);</span>
+<span class="nc" id="L117">                    return new IllegalArgumentException(AIRLINE_NOT_FOUND_ID_MSG + id);</span>
+                });
+
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        airline.setActive(!airline.isActive());</span>
+<span class="fc" id="L121">        Airline updated = airlineRepository.save(airline);</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        String status = updated.isActive() ? &quot;ACTIVE&quot; : &quot;INACTIVE&quot;;</span>
+<span class="fc" id="L123">        log.info(&quot;Airline status changed — id: {}, new status: {}&quot;, id, status);</span>
+
+<span class="fc bfc" id="L125" title="All 2 branches covered.">        String msg = updated.isActive() ? &quot;Airline activated successfully&quot; : &quot;Airline deactivated successfully&quot;;</span>
+<span class="fc" id="L126">        return mapAirlineToResponse(updated, msg);</span>
+    }
+
+    // ==================== AIRPORT OPERATIONS ====================
+
+    @Override
+    public AirportResponse addAirport(AirportRequest request) {
+<span class="fc" id="L133">        log.info(&quot;Adding airport — name: {}, IATA: {}, city: {}&quot;,</span>
+<span class="fc" id="L134">                request.getName(), request.getIataCode(), request.getCity());</span>
+
+<span class="fc bfc" id="L136" title="All 2 branches covered.">        if (airportRepository.existsByIataCode(request.getIataCode())) {</span>
+<span class="fc" id="L137">            log.warn(&quot;Airport add rejected — IATA code already exists: {}&quot;, request.getIataCode());</span>
+<span class="fc" id="L138">            throw new IllegalArgumentException(&quot;Airport with IATA code &quot; + request.getIataCode() + &quot; already exists&quot;);</span>
+        }
+
+<span class="fc" id="L141">        Airport airport = new Airport();</span>
+<span class="fc" id="L142">        airport.setName(request.getName());</span>
+<span class="fc" id="L143">        airport.setIataCode(request.getIataCode().toUpperCase());</span>
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">        airport.setIcaoCode(request.getIcaoCode() != null ? request.getIcaoCode().toUpperCase() : null);</span>
+<span class="fc" id="L145">        airport.setCity(request.getCity());</span>
+<span class="fc" id="L146">        airport.setCountry(request.getCountry());</span>
+<span class="fc" id="L147">        airport.setLatitude(request.getLatitude());</span>
+<span class="fc" id="L148">        airport.setLongitude(request.getLongitude());</span>
+<span class="fc" id="L149">        airport.setTimezone(request.getTimezone());</span>
+
+<span class="fc" id="L151">        Airport saved = airportRepository.save(airport);</span>
+<span class="fc" id="L152">        log.info(&quot;Airport added — ID: {}, name: {}, city: {}&quot;, saved.getId(), saved.getName(), saved.getCity());</span>
+<span class="fc" id="L153">        return mapAirportToResponse(saved, &quot;Airport added successfully&quot;);</span>
+    }
+
+    @Override
+    public AirportResponse getAirportById(Long id) {
+<span class="fc" id="L158">        log.debug(&quot;Fetching airport — id: {}&quot;, id);</span>
+<span class="fc" id="L159">        Airport airport = airportRepository.findById(id)</span>
+<span class="fc" id="L160">                .orElseThrow(() -&gt; {</span>
+<span class="nc" id="L161">                    log.warn(&quot;Airport not found — id: {}&quot;, id);</span>
+<span class="nc" id="L162">                    return new IllegalArgumentException(&quot;Airport not found with id: &quot; + id);</span>
+                });
+<span class="fc" id="L164">        return mapAirportToResponse(airport, SUCCESS_MSG);</span>
+    }
+
+    @Override
+    public AirportResponse getAirportByIata(String iataCode) {
+<span class="nc" id="L169">        log.debug(&quot;Fetching airport by IATA: {}&quot;, iataCode);</span>
+<span class="nc" id="L170">        Airport airport = airportRepository.findByIataCode(iataCode.toUpperCase())</span>
+<span class="nc" id="L171">                .orElseThrow(() -&gt; {</span>
+<span class="nc" id="L172">                    log.warn(&quot;Airport not found — IATA: {}&quot;, iataCode);</span>
+<span class="nc" id="L173">                    return new IllegalArgumentException(&quot;Airport not found with IATA code: &quot; + iataCode);</span>
+                });
+<span class="nc" id="L175">        return mapAirportToResponse(airport, SUCCESS_MSG);</span>
+    }
+
+    @Override
+    public List&lt;AirportResponse&gt; getAllAirports() {
+<span class="nc" id="L180">        log.debug(&quot;Fetching all airports&quot;);</span>
+<span class="nc" id="L181">        return airportRepository.findAll()</span>
+<span class="nc" id="L182">                .stream().map(a -&gt; mapAirportToResponse(a, SUCCESS_MSG)).toList();</span>
+    }
+
+    @Override
+    public List&lt;AirportResponse&gt; searchAirports(String keyword) {
+<span class="fc" id="L187">        log.info(&quot;Searching airports — keyword: {}&quot;, keyword);</span>
+<span class="fc" id="L188">        List&lt;AirportResponse&gt; results = airportRepository</span>
+<span class="fc" id="L189">                .findByCityContainingIgnoreCaseOrNameContainingIgnoreCase(keyword, keyword)</span>
+<span class="fc" id="L190">                .stream().map(a -&gt; mapAirportToResponse(a, SUCCESS_MSG)).toList();</span>
+<span class="fc" id="L191">        log.info(&quot;Airport search results — {} found for keyword: {}&quot;, results.size(), keyword);</span>
+<span class="fc" id="L192">        return results;</span>
+    }
+
+    @Override
+    public AirportResponse updateAirport(Long id, AirportRequest request) {
+<span class="nc" id="L197">        log.info(&quot;Updating airport — id: {}&quot;, id);</span>
+<span class="nc" id="L198">        Airport airport = airportRepository.findById(id)</span>
+<span class="nc" id="L199">                .orElseThrow(() -&gt; {</span>
+<span class="nc" id="L200">                    log.warn(&quot;Update failed — airport not found: {}&quot;, id);</span>
+<span class="nc" id="L201">                    return new IllegalArgumentException(&quot;Airport not found with id: &quot; + id);</span>
+                });
+
+<span class="nc" id="L204">        airport.setName(request.getName());</span>
+<span class="nc" id="L205">        airport.setCity(request.getCity());</span>
+<span class="nc" id="L206">        airport.setCountry(request.getCountry());</span>
+<span class="nc" id="L207">        airport.setLatitude(request.getLatitude());</span>
+<span class="nc" id="L208">        airport.setLongitude(request.getLongitude());</span>
+<span class="nc" id="L209">        airport.setTimezone(request.getTimezone());</span>
+
+<span class="nc" id="L211">        Airport updated = airportRepository.save(airport);</span>
+<span class="nc" id="L212">        log.info(&quot;Airport updated — id: {}, name: {}&quot;, id, updated.getName());</span>
+<span class="nc" id="L213">        return mapAirportToResponse(updated, &quot;Airport updated successfully&quot;);</span>
+    }
+
+    // ==================== MAPPERS ====================
+
+    private AirlineResponse mapAirlineToResponse(Airline airline, String message) {
+<span class="fc" id="L219">        AirlineResponse res = new AirlineResponse();</span>
+<span class="fc" id="L220">        res.setId(airline.getId());</span>
+<span class="fc" id="L221">        res.setName(airline.getName());</span>
+<span class="fc" id="L222">        res.setIataCode(airline.getIataCode());</span>
+<span class="fc" id="L223">        res.setIcaoCode(airline.getIcaoCode());</span>
+<span class="fc" id="L224">        res.setCountry(airline.getCountry());</span>
+<span class="fc" id="L225">        res.setContactEmail(airline.getContactEmail());</span>
+<span class="fc" id="L226">        res.setContactPhone(airline.getContactPhone());</span>
+<span class="fc" id="L227">        res.setActive(airline.isActive());</span>
+<span class="fc" id="L228">        res.setMessage(message);</span>
+<span class="fc" id="L229">        return res;</span>
+    }
+
+    private AirportResponse mapAirportToResponse(Airport airport, String message) {
+<span class="fc" id="L233">        AirportResponse res = new AirportResponse();</span>
+<span class="fc" id="L234">        res.setId(airport.getId());</span>
+<span class="fc" id="L235">        res.setName(airport.getName());</span>
+<span class="fc" id="L236">        res.setIataCode(airport.getIataCode());</span>
+<span class="fc" id="L237">        res.setIcaoCode(airport.getIcaoCode());</span>
+<span class="fc" id="L238">        res.setCity(airport.getCity());</span>
+<span class="fc" id="L239">        res.setCountry(airport.getCountry());</span>
+<span class="fc" id="L240">        res.setLatitude(airport.getLatitude());</span>
+<span class="fc" id="L241">        res.setLongitude(airport.getLongitude());</span>
+<span class="fc" id="L242">        res.setTimezone(airport.getTimezone());</span>
+<span class="fc" id="L243">        res.setMessage(message);</span>
+<span class="fc" id="L244">        return res;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

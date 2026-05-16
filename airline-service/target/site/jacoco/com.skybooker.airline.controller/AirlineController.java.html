@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AirlineController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">airline-service</a> &gt; <a href="index.source.html" class="el_package">com.skybooker.airline.controller</a> &gt; <span class="el_source">AirlineController.java</span></div><h1>AirlineController.java</h1><pre class="source lang-java linenums">package com.skybooker.airline.controller;
+
+import com.skybooker.airline.dto.AirlineRequest;
+import com.skybooker.airline.dto.AirlineResponse;
+import com.skybooker.airline.dto.AirportRequest;
+import com.skybooker.airline.dto.AirportResponse;
+import com.skybooker.airline.service.AirlineService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+<span class="fc" id="L15">@RequiredArgsConstructor</span>
+public class AirlineController {
+
+    private final AirlineService airlineService;
+
+    // ==================== AIRLINE ENDPOINTS ====================
+
+    // nai airline add karo - admin karega
+    @PostMapping(&quot;/airlines&quot;)
+    public ResponseEntity&lt;AirlineResponse&gt; addAirline(@RequestBody AirlineRequest request) {
+<span class="nc" id="L25">        return ResponseEntity.ok(airlineService.addAirline(request));</span>
+    }
+
+    // id se airline lo
+    @GetMapping(&quot;/airlines/{id}&quot;)
+    public ResponseEntity&lt;AirlineResponse&gt; getById(@PathVariable Long id) {
+<span class="nc" id="L31">        return ResponseEntity.ok(airlineService.getAirlineById(id));</span>
+    }
+
+    // IATA code se airline lo - jaise 6E, AI
+    @GetMapping(&quot;/airlines/iata/{iataCode}&quot;)
+    public ResponseEntity&lt;AirlineResponse&gt; getByIata(@PathVariable String iataCode) {
+<span class="nc" id="L37">        return ResponseEntity.ok(airlineService.getAirlineByIata(iataCode));</span>
+    }
+
+    // saari airlines
+    @GetMapping(&quot;/airlines&quot;)
+    public ResponseEntity&lt;List&lt;AirlineResponse&gt;&gt; getAll() {
+<span class="nc" id="L43">        return ResponseEntity.ok(airlineService.getAllAirlines());</span>
+    }
+
+    // sirf active airlines - flight search mein use hoga
+    @GetMapping(&quot;/airlines/active&quot;)
+    public ResponseEntity&lt;List&lt;AirlineResponse&gt;&gt; getActive() {
+<span class="nc" id="L49">        return ResponseEntity.ok(airlineService.getActiveAirlines());</span>
+    }
+
+    // airline update karo
+    @PutMapping(&quot;/airlines/{id}&quot;)
+    public ResponseEntity&lt;AirlineResponse&gt; update(
+            @PathVariable Long id,
+            @RequestBody AirlineRequest request) {
+<span class="nc" id="L57">        return ResponseEntity.ok(airlineService.updateAirline(id, request));</span>
+    }
+
+    // activate ya deactivate toggle karo
+    @PutMapping(&quot;/airlines/{id}/toggle-status&quot;)
+    public ResponseEntity&lt;AirlineResponse&gt; toggleStatus(@PathVariable Long id) {
+<span class="nc" id="L63">        return ResponseEntity.ok(airlineService.toggleAirlineStatus(id));</span>
+    }
+
+    // ==================== AIRPORT ENDPOINTS ====================
+
+    // naya airport add karo - admin karega
+    @PostMapping(&quot;/airports&quot;)
+    public ResponseEntity&lt;AirportResponse&gt; addAirport(@RequestBody AirportRequest request) {
+<span class="nc" id="L71">        return ResponseEntity.ok(airlineService.addAirport(request));</span>
+    }
+
+    // id se airport lo
+    @GetMapping(&quot;/airports/{id}&quot;)
+    public ResponseEntity&lt;AirportResponse&gt; getAirportById(@PathVariable Long id) {
+<span class="nc" id="L77">        return ResponseEntity.ok(airlineService.getAirportById(id));</span>
+    }
+
+    // IATA code se airport lo - jaise DEL, BOM
+    @GetMapping(&quot;/airports/iata/{iataCode}&quot;)
+    public ResponseEntity&lt;AirportResponse&gt; getAirportByIata(@PathVariable String iataCode) {
+<span class="nc" id="L83">        return ResponseEntity.ok(airlineService.getAirportByIata(iataCode));</span>
+    }
+
+    // saare airports
+    @GetMapping(&quot;/airports&quot;)
+    public ResponseEntity&lt;List&lt;AirportResponse&gt;&gt; getAllAirports() {
+<span class="nc" id="L89">        return ResponseEntity.ok(airlineService.getAllAirports());</span>
+    }
+
+    // city ya name se search - flight form autocomplete ke liye
+    @GetMapping(&quot;/airports/search&quot;)
+    public ResponseEntity&lt;List&lt;AirportResponse&gt;&gt; searchAirports(@RequestParam String keyword) {
+<span class="nc" id="L95">        return ResponseEntity.ok(airlineService.searchAirports(keyword));</span>
+    }
+
+    // airport update karo
+    @PutMapping(&quot;/airports/{id}&quot;)
+    public ResponseEntity&lt;AirportResponse&gt; updateAirport(
+            @PathVariable Long id,
+            @RequestBody AirportRequest request) {
+<span class="nc" id="L103">        return ResponseEntity.ok(airlineService.updateAirport(id, request));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
